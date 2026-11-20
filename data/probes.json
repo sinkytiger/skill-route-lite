@@ -1,0 +1,821 @@
+[
+ {
+  "pid": "p000",
+  "split": "test",
+  "skill": "forward-pe",
+  "session": 1,
+  "text": "Using next year's consensus EPS, what forward P/E is Hyundai Motor on?"
+ },
+ {
+  "pid": "p001",
+  "split": "test",
+  "skill": "trailing-pe-us",
+  "session": 2,
+  "text": "Compute Apple's trailing P/E from diluted GAAP EPS in its last four 10-Q and 10-K filings."
+ },
+ {
+  "pid": "p002",
+  "split": "test",
+  "skill": "low-pe-screener",
+  "session": 3,
+  "text": "List KOSDAQ stocks with a P/E under 8 and a market cap above 300 billion won."
+ },
+ {
+  "pid": "p003",
+  "split": "dev",
+  "skill": "valuation-multiples-toolkit",
+  "session": 1,
+  "text": "Explain what the PEG ratio means and when it is misleading."
+ },
+ {
+  "pid": "p004",
+  "split": "test",
+  "skill": "pbr-band-chart",
+  "session": 3,
+  "text": "Plot Samsung Electronics's price against 0.5x to 1.5x book value bands for the last five years."
+ },
+ {
+  "pid": "p005",
+  "split": "test",
+  "skill": "pe-band-chart-us",
+  "session": 4,
+  "text": "Draw a forward P/E band chart for Microsoft with yfinance data."
+ },
+ {
+  "pid": "p006",
+  "split": "test",
+  "skill": "bank-ptbv",
+  "session": 1,
+  "text": "What is KB Financial's price to tangible book value after removing goodwill and hybrid capital?"
+ },
+ {
+  "pid": "p007",
+  "split": "dev",
+  "skill": "book-value-history",
+  "session": 2,
+  "text": "How fast has POSCO Holdings's book value per share compounded over the last ten years?"
+ },
+ {
+  "pid": "p008",
+  "split": "test",
+  "skill": "price-to-book-insurer",
+  "session": 4,
+  "text": "Value Samsung Life on price to book with the after-tax CSM added back to equity."
+ },
+ {
+  "pid": "p009",
+  "split": "test",
+  "skill": "roe-ranking",
+  "session": 3,
+  "text": "Rank Korean chemical companies by last year's ROE."
+ },
+ {
+  "pid": "p010",
+  "split": "test",
+  "skill": "roe-analyzer",
+  "session": 4,
+  "text": "What was Samsung C&T's ROE last year using average equity?"
+ },
+ {
+  "pid": "p011",
+  "split": "dev",
+  "skill": "ev-ebitda-us",
+  "session": 1,
+  "text": "Compute Nvidia's EV to adjusted EBITDA using the figures in its latest earnings release."
+ },
+ {
+  "pid": "p012",
+  "split": "test",
+  "skill": "ebitda-margin-trend",
+  "session": 2,
+  "text": "Show Krafton's EBITDA margin for each of the last 12 quarters."
+ },
+ {
+  "pid": "p013",
+  "split": "test",
+  "skill": "ev-sales",
+  "session": 3,
+  "text": "SK hynix is loss-making; value it on enterprise value to revenue."
+ },
+ {
+  "pid": "p014",
+  "split": "test",
+  "skill": "ebitda-adjustments-review",
+  "session": 5,
+  "text": "Strip one-off impairment and disposal gains out of HD Hyundai Heavy Industries's EBITDA."
+ },
+ {
+  "pid": "p015",
+  "split": "dev",
+  "skill": "cost-of-capital",
+  "session": 1,
+  "text": "What required return on equity does CAPM give for LG Electronics?"
+ },
+ {
+  "pid": "p016",
+  "split": "test",
+  "skill": "wacc-estimator-us",
+  "session": 2,
+  "text": "Estimate the WACC of Coca-Cola with the 10-year Treasury yield and Damodaran's equity risk premium."
+ },
+ {
+  "pid": "p017",
+  "split": "test",
+  "skill": "country-risk-premium",
+  "session": 4,
+  "text": "What country risk premium should I add for an investment in Vietnam?"
+ },
+ {
+  "pid": "p018",
+  "split": "test",
+  "skill": "dcf-sensitivity",
+  "session": 4,
+  "text": "Build a grid of SK hynix's value per share for WACC from 7% to 9% and terminal growth from 0% to 2%, from my finished DCF."
+ },
+ {
+  "pid": "p019",
+  "split": "dev",
+  "skill": "quick-dcf",
+  "session": 5,
+  "text": "Value Korean Air with a single-stage dividend discount model at an 8% required return and 2% growth."
+ },
+ {
+  "pid": "p020",
+  "split": "test",
+  "skill": "dividend-calculator",
+  "session": 1,
+  "text": "How much of a 3 million won dividend do I keep after Korean withholding tax?"
+ },
+ {
+  "pid": "p021",
+  "split": "test",
+  "skill": "dividend-growth-screen",
+  "session": 2,
+  "text": "Which KOSPI companies have raised their dividend every year for five years?"
+ },
+ {
+  "pid": "p022",
+  "split": "test",
+  "skill": "dividend-yield-payout-us",
+  "session": 3,
+  "text": "What is Johnson & Johnson's forward dividend yield from its latest quarterly dividend?"
+ },
+ {
+  "pid": "p023",
+  "split": "dev",
+  "skill": "dividend-reinvestment",
+  "session": 5,
+  "text": "If I had reinvested every Samsung Electronics dividend since 2015, how many shares would I own now?"
+ },
+ {
+  "pid": "p024",
+  "split": "test",
+  "skill": "shareholder-meeting-calendar",
+  "session": 2,
+  "text": "When and where is Orion's annual general meeting this year?"
+ },
+ {
+  "pid": "p025",
+  "split": "test",
+  "skill": "ex-dividend-calendar-us",
+  "session": 4,
+  "text": "Which S&P 500 stocks go ex-dividend next week?"
+ },
+ {
+  "pid": "p026",
+  "split": "test",
+  "skill": "share-issue-summary",
+  "session": 1,
+  "text": "Summarize LG Chem's bonus issue: new shares per existing share and the listing date."
+ },
+ {
+  "pid": "p027",
+  "split": "dev",
+  "skill": "rights-offering-calendar",
+  "session": 2,
+  "text": "Give me the subscription and payment dates of SK Telecom's rights offering."
+ },
+ {
+  "pid": "p028",
+  "split": "test",
+  "skill": "capital-raise-digest",
+  "session": 3,
+  "text": "List all capital-raising filings on DART in the past week."
+ },
+ {
+  "pid": "p029",
+  "split": "test",
+  "skill": "korean-disclosure-toolkit",
+  "session": 1,
+  "text": "Explain the main DART report types and their Korean names."
+ },
+ {
+  "pid": "p030",
+  "split": "test",
+  "skill": "bond-issuance-summary",
+  "session": 1,
+  "text": "Summarize Korean Air's exchangeable bond: which shares it exchanges into and at what price."
+ },
+ {
+  "pid": "p031",
+  "split": "dev",
+  "skill": "bw-summary",
+  "session": 2,
+  "text": "What are the warrant exercise price and exercise window of Samsung SDI's BW issue?"
+ },
+ {
+  "pid": "p032",
+  "split": "test",
+  "skill": "convertible-bond-summary-us",
+  "session": 3,
+  "text": "Summarize the conversion rate and capped call of MicroStrategy's latest convertible notes."
+ },
+ {
+  "pid": "p033",
+  "split": "test",
+  "skill": "mezzanine-market-stats",
+  "session": 4,
+  "text": "How much CB issuance was there on KOSDAQ each month this year?"
+ },
+ {
+  "pid": "p034",
+  "split": "test",
+  "skill": "margin-balance-monitor",
+  "session": 1,
+  "text": "How high is the credit loan balance ratio on Hanwha Aerospace shares right now?"
+ },
+ {
+  "pid": "p035",
+  "split": "dev",
+  "skill": "operating-margin-trend-global",
+  "session": 2,
+  "text": "Chart annual adjusted EBIT margins for Tesla, BYD and Toyota from a Capital IQ export."
+ },
+ {
+  "pid": "p036",
+  "split": "test",
+  "skill": "margin-call-calculator",
+  "session": 3,
+  "text": "At what price will my broker issue a margin call on my leveraged Samsung SDI position?"
+ },
+ {
+  "pid": "p037",
+  "split": "test",
+  "skill": "margin-trend",
+  "session": 4,
+  "text": "Show LG H&H's net profit margin for each of the last 8 quarters."
+ },
+ {
+  "pid": "p038",
+  "split": "test",
+  "skill": "cost-analysis",
+  "session": 4,
+  "text": "Break Amorepacific's expenses down by nature: raw materials, employee costs and depreciation."
+ },
+ {
+  "pid": "p039",
+  "split": "dev",
+  "skill": "price-volume-mix",
+  "session": 5,
+  "text": "Decompose NCSoft's revenue growth into price, volume and mix by product."
+ },
+ {
+  "pid": "p040",
+  "split": "test",
+  "skill": "coverage-tracker",
+  "session": 1,
+  "text": "Which brokers started covering Coway this quarter?"
+ },
+ {
+  "pid": "p041",
+  "split": "test",
+  "skill": "solvency-check",
+  "session": 2,
+  "text": "What is Yuhan's liabilities-to-equity ratio?"
+ },
+ {
+  "pid": "p042",
+  "split": "test",
+  "skill": "credit-health-snapshot",
+  "session": 3,
+  "text": "What is Hanmi Pharm's current ratio at the last quarter end?"
+ },
+ {
+  "pid": "p043",
+  "split": "dev",
+  "skill": "coverage-review",
+  "session": 4,
+  "text": "What property insurance coverage does Lotte Chemical disclose for its plants?"
+ },
+ {
+  "pid": "p044",
+  "split": "test",
+  "skill": "debt-maturity-profile-us",
+  "session": 3,
+  "text": "Chart Ford's debt maturities from the contractual obligations table in its 10-K."
+ },
+ {
+  "pid": "p045",
+  "split": "test",
+  "skill": "refinancing-risk",
+  "session": 5,
+  "text": "Which KOSPI companies have more short-term borrowings than cash?"
+ },
+ {
+  "pid": "p046",
+  "split": "test",
+  "skill": "rating-watch-screen",
+  "session": 5,
+  "text": "Which Korean issuers are on a negative rating outlook right now?"
+ },
+ {
+  "pid": "p047",
+  "split": "dev",
+  "skill": "credit-ratings",
+  "session": 5,
+  "text": "How does a Korean A+ rating map to the global S&P scale?"
+ },
+ {
+  "pid": "p048",
+  "split": "test",
+  "skill": "fcf-yield-screen",
+  "session": 1,
+  "text": "Rank KOSPI 200 members by free cash flow yield."
+ },
+ {
+  "pid": "p049",
+  "split": "test",
+  "skill": "free-cash-flow-fcff",
+  "session": 2,
+  "text": "Turn my EBIT, tax rate, D&A, capex and working capital forecasts for S-Oil into unlevered free cash flow."
+ },
+ {
+  "pid": "p050",
+  "split": "test",
+  "skill": "cash-flow-reader",
+  "session": 3,
+  "text": "Where does CJ CheilJedang classify interest paid in its cash flow statement?"
+ },
+ {
+  "pid": "p051",
+  "split": "dev",
+  "skill": "capex-tracker",
+  "session": 5,
+  "text": "List LG Energy Solution's new facility investment announcements from the past three years."
+ },
+ {
+  "pid": "p052",
+  "split": "test",
+  "skill": "working-capital-analysis",
+  "session": 5,
+  "text": "How much did Kakao's net working capital in won change last quarter?"
+ },
+ {
+  "pid": "p053",
+  "split": "test",
+  "skill": "dart-financial-statements",
+  "session": 1,
+  "text": "Download Krafton's separate (parent-only) income statement from DART for last year."
+ },
+ {
+  "pid": "p054",
+  "split": "test",
+  "skill": "edgar-financials",
+  "session": 2,
+  "text": "Pull Amazon's quarterly revenue from SEC XBRL company facts."
+ },
+ {
+  "pid": "p055",
+  "split": "dev",
+  "skill": "dart-quick-financials",
+  "session": 3,
+  "text": "Just give me POSCO Holdings's headline revenue and operating profit for last year from DART's key-accounts API."
+ },
+ {
+  "pid": "p056",
+  "split": "test",
+  "skill": "dart-search",
+  "session": 4,
+  "text": "Find all of Celltrion's DART filings from last month with their receipt numbers."
+ },
+ {
+  "pid": "p057",
+  "split": "test",
+  "skill": "dart-consolidated-statements-audit",
+  "session": 5,
+  "text": "Get the consolidated statements of an unlisted company from its audit report on DART."
+ },
+ {
+  "pid": "p058",
+  "split": "test",
+  "skill": "segment-chart",
+  "session": 3,
+  "text": "Turn this segment revenue table into a stacked bar chart."
+ },
+ {
+  "pid": "p059",
+  "split": "dev",
+  "skill": "revenue-by-region",
+  "session": 5,
+  "text": "How much of Hyundai Mobis's revenue came from the Americas last year?"
+ },
+ {
+  "pid": "p060",
+  "split": "test",
+  "skill": "earnings-review",
+  "session": 1,
+  "text": "Summarize the guidance and analyst questions from NAVER's latest earnings call."
+ },
+ {
+  "pid": "p061",
+  "split": "test",
+  "skill": "earnings-surprise-us",
+  "session": 2,
+  "text": "Did Meta beat consensus EPS last quarter, and by what percent?"
+ },
+ {
+  "pid": "p062",
+  "split": "test",
+  "skill": "consensus-tracker",
+  "session": 3,
+  "text": "How has the consensus operating profit estimate for Celltrion moved over the past three months?"
+ },
+ {
+  "pid": "p063",
+  "split": "dev",
+  "skill": "earnings-calendar",
+  "session": 4,
+  "text": "When is Celltrion expected to release its quarterly results?"
+ },
+ {
+  "pid": "p064",
+  "split": "test",
+  "skill": "earnings-alert",
+  "session": 4,
+  "text": "Alert me on Slack the moment HYBE files its preliminary earnings."
+ },
+ {
+  "pid": "p065",
+  "split": "test",
+  "skill": "report-reader",
+  "session": 5,
+  "text": "What does HD Hyundai Heavy Industries's annual report say about its main products and market share?"
+ },
+ {
+  "pid": "p066",
+  "split": "test",
+  "skill": "price-bands",
+  "session": 1,
+  "text": "Is Lotte Chemical trading above its upper Bollinger band?"
+ },
+ {
+  "pid": "p067",
+  "split": "dev",
+  "skill": "rsi-indicator",
+  "session": 2,
+  "text": "What is Kia's 14-day RSI and is it oversold?"
+ },
+ {
+  "pid": "p068",
+  "split": "test",
+  "skill": "technical-analysis-toolkit",
+  "session": 3,
+  "text": "Explain the difference between support and resistance levels."
+ },
+ {
+  "pid": "p069",
+  "split": "test",
+  "skill": "moving-average-signals-crypto",
+  "session": 4,
+  "text": "Give me EMA 12/26 crossover signals for BTC/KRW on Upbit hourly candles."
+ },
+ {
+  "pid": "p070",
+  "split": "test",
+  "skill": "volatility-check",
+  "session": 3,
+  "text": "Where is VKOSPI now compared with its one-year average?"
+ },
+ {
+  "pid": "p071",
+  "split": "dev",
+  "skill": "volatility-of-earnings",
+  "session": 4,
+  "text": "How volatile has S-Oil's EPS growth been over the past decade?"
+ },
+ {
+  "pid": "p072",
+  "split": "test",
+  "skill": "beta-release",
+  "session": 1,
+  "text": "Prepare a checklist for releasing the beta version of our trading app."
+ },
+ {
+  "pid": "p073",
+  "split": "test",
+  "skill": "risk-adjusted-return",
+  "session": 2,
+  "text": "What is Coway's Sharpe ratio over the past three years using the CD rate as risk-free?"
+ },
+ {
+  "pid": "p074",
+  "split": "test",
+  "skill": "stock-beta-us",
+  "session": 3,
+  "text": "What is Apple's Blume-adjusted beta against the S&P 500 on five years of monthly returns?"
+ },
+ {
+  "pid": "p075",
+  "split": "dev",
+  "skill": "risk-dashboard",
+  "session": 4,
+  "text": "Plot Amorepacific's drawdowns from peak over the past five years."
+ },
+ {
+  "pid": "p076",
+  "split": "test",
+  "skill": "portfolio-stress-test",
+  "session": 5,
+  "text": "How much would my portfolio lose if March 2020 happened again?"
+ },
+ {
+  "pid": "p077",
+  "split": "test",
+  "skill": "var-backtest",
+  "session": 5,
+  "text": "My VaR model had 9 exceptions in 250 days; does it pass the Kupiec test?"
+ },
+ {
+  "pid": "p078",
+  "split": "test",
+  "skill": "portfolio-report",
+  "session": 1,
+  "text": "What was my portfolio's time-weighted return versus the KOSPI this year?"
+ },
+ {
+  "pid": "p079",
+  "split": "dev",
+  "skill": "tax-loss-harvesting",
+  "session": 2,
+  "text": "Which of my US stock losses should I realize before December to cut my capital gains tax?"
+ },
+ {
+  "pid": "p080",
+  "split": "test",
+  "skill": "portfolio-toolkit",
+  "session": 3,
+  "text": "Explain the difference between strategic and tactical asset allocation."
+ },
+ {
+  "pid": "p081",
+  "split": "test",
+  "skill": "portfolio-rebalancing-pension",
+  "session": 4,
+  "text": "Adjust my retirement pension allocation to respect the 70% risky-asset limit at age 45."
+ },
+ {
+  "pid": "p082",
+  "split": "test",
+  "skill": "bond-spread-monitor",
+  "session": 1,
+  "text": "How wide is the AA- three-year corporate bond spread over KTBs today?"
+ },
+ {
+  "pid": "p083",
+  "split": "dev",
+  "skill": "bond-ytm-us",
+  "session": 2,
+  "text": "Convert a Treasury note price of 99-16 into yield to maturity."
+ },
+ {
+  "pid": "p084",
+  "split": "test",
+  "skill": "fixed-income-quick",
+  "session": 3,
+  "text": "What is the current yield of a bond paying a 3.5% coupon priced at 97?"
+ },
+ {
+  "pid": "p085",
+  "split": "test",
+  "skill": "yield-curve-plot",
+  "session": 5,
+  "text": "Plot today's KTB yield curve against the one from a year ago."
+ },
+ {
+  "pid": "p086",
+  "split": "test",
+  "skill": "duration-estimator",
+  "session": 2,
+  "text": "Estimate how long our data migration project will take from optimistic, likely and pessimistic guesses."
+ },
+ {
+  "pid": "p087",
+  "split": "dev",
+  "skill": "key-rate-duration",
+  "session": 4,
+  "text": "Which key rates of the KTB curve is my bond portfolio most exposed to?"
+ },
+ {
+  "pid": "p088",
+  "split": "test",
+  "skill": "ownership-analysis",
+  "session": 1,
+  "text": "Draw the cross-shareholding structure of the Coway group affiliates."
+ },
+ {
+  "pid": "p089",
+  "split": "test",
+  "skill": "agm-agenda-review",
+  "session": 2,
+  "text": "What items are on the agenda of Lotte Chemical's upcoming shareholder meeting?"
+ },
+ {
+  "pid": "p090",
+  "split": "test",
+  "skill": "ownership-watch",
+  "session": 3,
+  "text": "Who are Celltrion's ten largest shareholders according to the annual report?"
+ },
+ {
+  "pid": "p091",
+  "split": "dev",
+  "skill": "major-shareholder-changes-us",
+  "session": 5,
+  "text": "Which funds filed 13G reports on Tesla this quarter?"
+ },
+ {
+  "pid": "p092",
+  "split": "test",
+  "skill": "insider-trading-filings-us",
+  "session": 4,
+  "text": "Show me Form 4 insider sales at Nvidia in the past month."
+ },
+ {
+  "pid": "p093",
+  "split": "test",
+  "skill": "executive-disclosures",
+  "session": 5,
+  "text": "How much was Orion's CEO paid last year according to the annual report?"
+ },
+ {
+  "pid": "p094",
+  "split": "test",
+  "skill": "treasury-shares",
+  "session": 5,
+  "text": "How many treasury shares did SK Telecom decide to cancel, and what is the EPS effect?"
+ },
+ {
+  "pid": "p095",
+  "split": "dev",
+  "skill": "buyback-screen",
+  "session": 5,
+  "text": "Which KOSPI companies announced the biggest buybacks relative to market cap this year?"
+ },
+ {
+  "pid": "p096",
+  "split": "test",
+  "skill": "trading-flows",
+  "session": 1,
+  "text": "How much non-arbitrage program buying hit the KOSPI today?"
+ },
+ {
+  "pid": "p097",
+  "split": "test",
+  "skill": "retail-sentiment",
+  "session": 2,
+  "text": "Are retail investor deposits rising or falling this month?"
+ },
+ {
+  "pid": "p098",
+  "split": "test",
+  "skill": "market-flow-board",
+  "session": 3,
+  "text": "Show today's KOSPI level, turnover and advancing versus declining issues."
+ },
+ {
+  "pid": "p099",
+  "split": "dev",
+  "skill": "fund-flows",
+  "session": 4,
+  "text": "Which Korean ETFs saw the largest creations this week?"
+ },
+ {
+  "pid": "p100",
+  "split": "test",
+  "skill": "peer-finder",
+  "session": 1,
+  "text": "Suggest five listed peers for Samsung C&T by industry code and size."
+ },
+ {
+  "pid": "p101",
+  "split": "test",
+  "skill": "equity-research-kit",
+  "session": 2,
+  "text": "Give me a checklist for starting coverage of a new stock."
+ },
+ {
+  "pid": "p102",
+  "split": "test",
+  "skill": "peer-comparison-table-global",
+  "session": 4,
+  "text": "Build a USD comps table of global semiconductor firms from a FactSet export."
+ },
+ {
+  "pid": "p103",
+  "split": "dev",
+  "skill": "fx-rates",
+  "session": 1,
+  "text": "What was the Bank of Korea KRW/USD rate on the last business day of 2025?"
+ },
+ {
+  "pid": "p104",
+  "split": "test",
+  "skill": "fx-hedge-review",
+  "session": 3,
+  "text": "How much FX forward notional does Hanmi Pharm hold according to its derivatives note?"
+ },
+ {
+  "pid": "p105",
+  "split": "test",
+  "skill": "fx-translation-consolidation",
+  "session": 5,
+  "text": "How large was Krafton's foreign operations translation gain in other comprehensive income?"
+ },
+ {
+  "pid": "p106",
+  "split": "test",
+  "skill": "rate-sensitivity",
+  "session": 2,
+  "text": "How would a one percentage point rise in interest rates change Hanmi Pharm's pre-tax profit, according to its notes?"
+ },
+ {
+  "pid": "p107",
+  "split": "dev",
+  "skill": "finance-analysis-assistant",
+  "session": 1,
+  "text": "How should I structure an analysis of whether a Korean company is undervalued?"
+ },
+ {
+  "pid": "p108",
+  "split": "test",
+  "skill": "excel-modeling-best-practices",
+  "session": 1,
+  "text": "What are good conventions for laying out a three-statement model in Excel?"
+ },
+ {
+  "pid": "p109",
+  "split": "test",
+  "skill": "korean-market-glossary",
+  "session": 2,
+  "text": "What is the English term for 지배주주순이익?"
+ },
+ {
+  "pid": "p110",
+  "split": "test",
+  "skill": "chart-style-guide",
+  "session": 2,
+  "text": "What colors and fonts should our research charts use?"
+ },
+ {
+  "pid": "p111",
+  "split": "dev",
+  "skill": "python-data-cleaning",
+  "session": 3,
+  "text": "Clean a pandas column where negative numbers are written in parentheses with commas."
+ },
+ {
+  "pid": "p112",
+  "split": "test",
+  "skill": "investment-memo-writer",
+  "session": 3,
+  "text": "Turn my notes on a stock into a one-page investment memo."
+ },
+ {
+  "pid": "p113",
+  "split": "test",
+  "skill": "data-quality-checklist",
+  "session": 4,
+  "text": "What should I check in a financial dataset before I trust it?"
+ },
+ {
+  "pid": "p114",
+  "split": "test",
+  "skill": "financial-news-search",
+  "session": 4,
+  "text": "Find this week's news articles about NCSoft."
+ },
+ {
+  "pid": "p115",
+  "split": "dev",
+  "skill": "report-formatting-helper",
+  "session": 5,
+  "text": "Format my draft research note with consistent headings, tables and a disclaimer."
+ },
+ {
+  "pid": "p116",
+  "split": "test",
+  "skill": "spreadsheet-formula-helper",
+  "session": 5,
+  "text": "Write a spreadsheet formula that computes a CAGR from a start and end value."
+ }
+]
