@@ -1,0 +1,180 @@
+{
+ "router": "qwen3:4b",
+ "cond": "spp_noexcl_haiku",
+ "split": "dev",
+ "checkpoint": 1,
+ "order_seed": 0,
+ "prompt_digest": "9bc1461c55253de1",
+ "head_digest": "751d594ed6343eb3",
+ "library_size": 48,
+ "items": {
+  "d120": {
+   "content": "{\n  \"skills\": [\n    \"k828\",\n    \"k115\",\n    \"k475\",\n    \"k229\",\n    \"k487\"\n  ]\n}",
+   "prompt_tokens": 2261,
+   "output_tokens": 45,
+   "seconds": 6.96,
+   "selected": [
+    "k828",
+    "k115",
+    "k475",
+    "k229",
+    "k487"
+   ],
+   "parsed": true
+  },
+  "d121": {
+   "content": "{\n  \"skills\": [\n    \"k229\",\n    \"k836\",\n    \"k115\",\n    \"k475\",\n    \"k487\"\n  ]\n}",
+   "prompt_tokens": 2274,
+   "output_tokens": 45,
+   "seconds": 3.28,
+   "selected": [
+    "k229",
+    "k836",
+    "k115",
+    "k475",
+    "k487"
+   ],
+   "parsed": true
+  },
+  "d122": {
+   "content": "{\n  \"skills\": [\n    \"k416\",\n    \"k318\",\n    \"k696\",\n    \"k698\",\n    \"k115\"\n  ]\n}",
+   "prompt_tokens": 2285,
+   "output_tokens": 45,
+   "seconds": 3.13,
+   "selected": [
+    "k416",
+    "k318",
+    "k696",
+    "k698",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d123": {
+   "content": "{\n  \"skills\": [\n    \"k476\",\n    \"k527\",\n    \"k229\",\n    \"k322\",\n    \"k115\"\n  ]\n}",
+   "prompt_tokens": 2263,
+   "output_tokens": 45,
+   "seconds": 3.16,
+   "selected": [
+    "k476",
+    "k527",
+    "k229",
+    "k322",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d124": {
+   "content": "{\n  \"skills\": [\n    \"k475\",\n    \"k476\",\n    \"k242\",\n    \"k527\",\n    \"k229\"\n  ]\n}",
+   "prompt_tokens": 2266,
+   "output_tokens": 45,
+   "seconds": 3.15,
+   "selected": [
+    "k475",
+    "k476",
+    "k242",
+    "k527",
+    "k229"
+   ],
+   "parsed": true
+  },
+  "d125": {
+   "content": "{\n  \"skills\": [\n    \"k534\",\n    \"k980\",\n    \"k115\",\n    \"k406\",\n    \"k208\"\n  ]\n}",
+   "prompt_tokens": 2276,
+   "output_tokens": 45,
+   "seconds": 3.13,
+   "selected": [
+    "k534",
+    "k980",
+    "k115",
+    "k406",
+    "k208"
+   ],
+   "parsed": true
+  },
+  "d126": {
+   "content": "{\n  \"skills\": [\n    \"k208\",\n    \"k438\",\n    \"k115\",\n    \"k554\",\n    \"k975\"\n  ]\n}",
+   "prompt_tokens": 2273,
+   "output_tokens": 45,
+   "seconds": 3.14,
+   "selected": [
+    "k208",
+    "k438",
+    "k115",
+    "k554",
+    "k975"
+   ],
+   "parsed": true
+  },
+  "d127": {
+   "content": "{\n  \"skills\": [\n    \"k495\",\n    \"k237\",\n    \"k260\",\n    \"k115\",\n    \"k554\"\n  ]\n}",
+   "prompt_tokens": 2287,
+   "output_tokens": 45,
+   "seconds": 3.15,
+   "selected": [
+    "k495",
+    "k237",
+    "k260",
+    "k115",
+    "k554"
+   ],
+   "parsed": true
+  },
+  "d128": {
+   "content": "{\n  \"skills\": [\n    \"k400\",\n    \"k696\",\n    \"k975\",\n    \"k208\",\n    \"k115\"\n  ]\n}",
+   "prompt_tokens": 2278,
+   "output_tokens": 45,
+   "seconds": 3.23,
+   "selected": [
+    "k400",
+    "k696",
+    "k975",
+    "k208",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d129": {
+   "content": "{\n  \"skills\": [\n    \"k773\",\n    \"k154\",\n    \"k406\",\n    \"k229\",\n    \"k487\"\n  ]\n}",
+   "prompt_tokens": 2264,
+   "output_tokens": 45,
+   "seconds": 3.16,
+   "selected": [
+    "k773",
+    "k154",
+    "k406",
+    "k229",
+    "k487"
+   ],
+   "parsed": true
+  },
+  "d130": {
+   "content": "{\n  \"skills\": [\n    \"k554\",\n    \"k208\",\n    \"k475\",\n    \"k115\",\n    \"k487\"\n  ]\n}",
+   "prompt_tokens": 2283,
+   "output_tokens": 45,
+   "seconds": 3.2,
+   "selected": [
+    "k554",
+    "k208",
+    "k475",
+    "k115",
+    "k487"
+   ],
+   "parsed": true
+  },
+  "d131": {
+   "content": "{\n  \"skills\": [\n    \"k242\",\n    \"k631\",\n    \"k554\",\n    \"k322\",\n    \"k115\"\n  ]\n}",
+   "prompt_tokens": 2272,
+   "output_tokens": 45,
+   "seconds": 3.2,
+   "selected": [
+    "k242",
+    "k631",
+    "k554",
+    "k322",
+    "k115"
+   ],
+   "parsed": true
+  }
+ }
+}

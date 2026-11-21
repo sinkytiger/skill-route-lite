@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+from decimal import ROUND_HALF_UP, Decimal
 
 import numpy as np
 
@@ -41,3 +42,9 @@ def mcnemar_exact(b: int, c: int) -> float:
 def discordant(a, b) -> tuple[int, int]:
     a, b = np.asarray(a, int), np.asarray(b, int)
     return int(((a == 1) & (b == 0)).sum()), int(((a == 0) & (b == 1)).sum())
+
+
+def r1(x: float, sign: bool = False) -> str:
+    """One decimal, halves rounded away from zero (so 63.75 -> 63.8 and 56.25 -> 56.3 alike)."""
+    d = Decimal(repr(round(float(x), 9))).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    return f"{d:+}" if sign else f"{d}"

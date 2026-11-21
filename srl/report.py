@@ -11,7 +11,7 @@ import numpy as np
 
 from . import metrics as M
 from .conditions import load_rewrites
-from .stats import boot_paired, boot_stat, discordant, mcnemar_exact
+from .stats import boot_paired, boot_stat, discordant, mcnemar_exact, r1
 
 ROOT = Path(__file__).resolve().parent.parent
 ROUTERS = ["qwen3:4b", "llama3.2:3b", "claude-haiku-5-5"]
@@ -21,11 +21,11 @@ CPS = [1, 2, 3, 4, 5]
 
 
 def pct(x: float) -> str:
-    return f"{100 * x:.1f}"
+    return r1(100 * x)
 
 
 def pp(x: float) -> str:
-    return f"{100 * x:+.1f}"
+    return r1(100 * x, sign=True)
 
 
 class Runs:
@@ -109,8 +109,8 @@ def main_table(R: Runs, router: str, conds: list[str]) -> list[str]:
 def side_table(R: Runs, router: str, conds: list[str]) -> list[str]:
     out = [f"### Router {router}: interference, incoming-skill probes and S5 error forms", "",
            "| Condition | correct at first checkpoint -> wrong at S5 | probe hit@5 | probe hit@1 | "
-           "incoming skills in 5 slots (S5 mean) | missing skills at S5 | substitution | crowding | top types |",
-           "|---|---|---|---|---|---|---|---|---|"]
+           "incoming skills in 5 slots (S5 mean) | missing skills at S5 | substitution | crowding | other | top types |",
+           "|---|---|---|---|---|---|---|---|---|---|"]
     for cond in conds:
         if not R.complete(router, cond):
             continue
@@ -125,7 +125,7 @@ def side_table(R: Runs, router: str, conds: list[str]) -> list[str]:
         top = ", ".join(f"{t} {v}" for t, v in err.most_common(3))
         sl = M.incoming_slots(R.D, R.items(router, cond, 5), R.D.qs(R.split, 5))
         out.append(f"| {cond} | {lost} of {ok} (of {n}) | {ph5} | {ph1} | {statistics.mean(sl.values()):.2f} | "
-                   f"{tot} | {sub} | {crowd} | {top} |")
+                   f"{tot} | {sub} | {crowd} | {err['other']} | {top} |")
     return out + [""]
 
 
@@ -159,7 +159,24 @@ def report(split: str) -> str:
                 lines.append(f"Exclusion pull ({gen}, {router}): {len(pairs)} (query, excluding skill) pairs over "
                              f"{len(per_q)} queries; selected with exclusions {a}, without {b}.")
         lines.append("")
+    lines += order_table(R)
     if split == "test":
         from .prereg import decisions
         lines += decisions(R)
     return "\n".join(lines)
+
+
+def order_table(R: Runs, router: str = "qwen3:4b") -> list[str]:
+    """FC@5 at S5 under the three display-order seeds (secondary check of position effects)."""
+    seeds = [s for s in (0, 1, 2) if all(R.items(router, c, 5, s) is not None for c in ("vanilla", "spp_haiku"))]
+    if len(seeds) < 2:
+        return []
+    out = [f"### Router {router}: display-order seeds at S5 (FC@5 %)", "",
+           "| Order seed | vanilla | spp_haiku | spp_haiku - vanilla [95% CI] |", "|---|---|---|---|"]
+    for s in seeds:
+        v, p = R.fc(router, "vanilla", 5, s), R.fc(router, "spp_haiku", 5, s)
+        k = sorted(v)
+        d = boot_paired([p[x] for x in k], [v[x] for x in k])
+        out.append(f"| {s} | {pct(statistics.mean(v.values()))} | {pct(statistics.mean(p.values()))} | "
+                   f"{pp(d[0])} [{pp(d[1])}, {pp(d[2])}] |")
+    return out + [""]

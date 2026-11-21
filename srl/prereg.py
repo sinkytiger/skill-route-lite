@@ -12,7 +12,7 @@ import statistics
 import numpy as np
 
 from . import metrics as M
-from .stats import boot_paired, boot_stat, discordant, mcnemar_exact
+from .stats import boot_paired, boot_stat, discordant, mcnemar_exact, r1
 
 PRIMARY = "qwen3:4b"
 H1_DROP = 0.15          # Vanilla FC@5 falls at least 15 pp from S1 to S5
@@ -23,15 +23,15 @@ JUDGE_MIN = 0.05        # H2 is judged only if the Vanilla fall is >= 5 pp; H3 o
 
 
 def pct(x):
-    return f"{100 * x:.1f}"
+    return r1(100 * x)
 
 
 def pp(x):
-    return f"{100 * x:+.1f} pp"
+    return r1(100 * x, sign=True) + " pp"
 
 
 def ci(t):
-    return f"{pp(t[0])} [95% CI {100 * t[1]:+.1f}, {100 * t[2]:+.1f}]"
+    return f"{pp(t[0])} [95% CI {r1(100 * t[1], True)}, {r1(100 * t[2], True)}]"
 
 
 def s5_pair(R, router, a, b):

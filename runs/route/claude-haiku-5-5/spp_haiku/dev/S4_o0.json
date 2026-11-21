@@ -1,0 +1,582 @@
+{
+ "router": "claude-haiku-5-5",
+ "cond": "spp_haiku",
+ "split": "dev",
+ "checkpoint": 4,
+ "order_seed": 0,
+ "prompt_digest": "9bc1461c55253de1",
+ "head_digest": "df4fa11bd70045b8",
+ "library_size": 131,
+ "items": {
+  "d120": {
+   "content": "{\"skills\":[\"k828\",\"k479\",\"k472\",\"k940\",\"k607\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 63,
+    "output_tokens": 24,
+    "cache_creation_input_tokens": 12111,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.24,
+   "selected": [
+    "k828",
+    "k479",
+    "k472",
+    "k940",
+    "k607"
+   ],
+   "parsed": true
+  },
+  "d121": {
+   "content": "{\"skills\": [\"k229\", \"k836\", \"k811\", \"k693\", \"k132\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 78,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.45,
+   "selected": [
+    "k229",
+    "k836",
+    "k811",
+    "k693",
+    "k132"
+   ],
+   "parsed": true
+  },
+  "d122": {
+   "content": "{\"skills\": [\"k416\", \"k318\", \"k698\", \"k689\", \"k703\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 94,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.22,
+   "selected": [
+    "k416",
+    "k318",
+    "k698",
+    "k689",
+    "k703"
+   ],
+   "parsed": true
+  },
+  "d123": {
+   "content": "{\"skills\": [\"k527\", \"k476\", \"k147\", \"k698\", \"k554\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 62,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.45,
+   "selected": [
+    "k527",
+    "k476",
+    "k147",
+    "k698",
+    "k554"
+   ],
+   "parsed": true
+  },
+  "d124": {
+   "content": "{\"skills\": [\"k527\", \"k476\", \"k147\", \"k664\", \"k381\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 68,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.31,
+   "selected": [
+    "k527",
+    "k476",
+    "k147",
+    "k664",
+    "k381"
+   ],
+   "parsed": true
+  },
+  "d125": {
+   "content": "{\"skills\": [\"k534\", \"k980\", \"k139\", \"k806\", \"k495\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 85,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.26,
+   "selected": [
+    "k534",
+    "k980",
+    "k139",
+    "k806",
+    "k495"
+   ],
+   "parsed": true
+  },
+  "d126": {
+   "content": "{\"skills\": [\"k208\", \"k438\", \"k554\", \"k219\", \"k989\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 75,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.33,
+   "selected": [
+    "k208",
+    "k438",
+    "k554",
+    "k219",
+    "k989"
+   ],
+   "parsed": true
+  },
+  "d127": {
+   "content": "{\"skills\": [\"k495\", \"k237\", \"k260\", \"k534\", \"k806\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 99,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.29,
+   "selected": [
+    "k495",
+    "k237",
+    "k260",
+    "k534",
+    "k806"
+   ],
+   "parsed": true
+  },
+  "d128": {
+   "content": "{\"skills\": [\"k400\", \"k696\", \"k980\", \"k139\", \"k444\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 89,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.3,
+   "selected": [
+    "k400",
+    "k696",
+    "k980",
+    "k139",
+    "k444"
+   ],
+   "parsed": true
+  },
+  "d129": {
+   "content": "{\"skills\": [\"k773\", \"k981\", \"k175\", \"k406\", \"k855\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 67,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.36,
+   "selected": [
+    "k773",
+    "k981",
+    "k175",
+    "k406",
+    "k855"
+   ],
+   "parsed": true
+  },
+  "d130": {
+   "content": "{\"skills\": [\"k554\", \"k208\", \"k698\", \"k828\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 95,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.33,
+   "selected": [
+    "k554",
+    "k208",
+    "k698",
+    "k828",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d131": {
+   "content": "{\"skills\": [\"k242\", \"k631\", \"k554\", \"k476\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 77,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.3,
+   "selected": [
+    "k242",
+    "k631",
+    "k554",
+    "k476",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d132": {
+   "content": "{\"skills\": [\"k543\", \"k940\", \"k233\", \"k115\", \"k554\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 65,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.34,
+   "selected": [
+    "k543",
+    "k940",
+    "k233",
+    "k115",
+    "k554"
+   ],
+   "parsed": true
+  },
+  "d133": {
+   "content": "{\"skills\": [\"k607\", \"k972\", \"k476\", \"k308\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 79,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.42,
+   "selected": [
+    "k607",
+    "k972",
+    "k476",
+    "k308",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d134": {
+   "content": "{\"skills\": [\"k155\", \"k578\", \"k476\", \"k832\", \"k607\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 76,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.36,
+   "selected": [
+    "k155",
+    "k578",
+    "k476",
+    "k832",
+    "k607"
+   ],
+   "parsed": true
+  },
+  "d135": {
+   "content": "{\"skills\": [\"k846\", \"k534\", \"k180\", \"k899\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 62,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.3,
+   "selected": [
+    "k846",
+    "k534",
+    "k180",
+    "k899",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d136": {
+   "content": "{\"skills\": [\"k400\", \"k476\", \"k698\", \"k322\", \"k554\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 106,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.41,
+   "selected": [
+    "k400",
+    "k476",
+    "k698",
+    "k322",
+    "k554"
+   ],
+   "parsed": true
+  },
+  "d137": {
+   "content": "{\"skills\": [\"k476\", \"k147\", \"k493\", \"k154\", \"k132\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 69,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.31,
+   "selected": [
+    "k476",
+    "k147",
+    "k493",
+    "k154",
+    "k132"
+   ],
+   "parsed": true
+  },
+  "d138": {
+   "content": "{\"skills\":[\"k274\",\"k308\",\"k989\",\"k531\",\"k775\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 89,
+    "output_tokens": 24,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.31,
+   "selected": [
+    "k274",
+    "k308",
+    "k989",
+    "k531",
+    "k775"
+   ],
+   "parsed": true
+  },
+  "d139": {
+   "content": "{\"skills\": [\"k308\", \"k693\", \"k464\", \"k153\", \"k971\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 84,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.24,
+   "selected": [
+    "k308",
+    "k693",
+    "k464",
+    "k153",
+    "k971"
+   ],
+   "parsed": true
+  },
+  "d140": {
+   "content": "{\"skills\":[\"k242\",\"k693\",\"k153\",\"k828\",\"k607\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 85,
+    "output_tokens": 24,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.28,
+   "selected": [
+    "k242",
+    "k693",
+    "k153",
+    "k828",
+    "k607"
+   ],
+   "parsed": true
+  },
+  "d141": {
+   "content": "{\"skills\": [\"k274\", \"k972\", \"k229\", \"k476\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 113,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.41,
+   "selected": [
+    "k274",
+    "k972",
+    "k229",
+    "k476",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d142": {
+   "content": "{\"skills\": [\"k696\", \"k229\", \"k980\", \"k139\", \"k444\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 94,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.28,
+   "selected": [
+    "k696",
+    "k229",
+    "k980",
+    "k139",
+    "k444"
+   ],
+   "parsed": true
+  },
+  "d143": {
+   "content": "{\"skills\": [\"k543\", \"k940\", \"k233\", \"k115\", \"k476\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 69,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.31,
+   "selected": [
+    "k543",
+    "k940",
+    "k233",
+    "k115",
+    "k476"
+   ],
+   "parsed": true
+  },
+  "d144": {
+   "content": "{\"skills\": [\"k381\", \"k858\", \"k115\", \"k476\", \"k147\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 77,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.34,
+   "selected": [
+    "k381",
+    "k858",
+    "k115",
+    "k476",
+    "k147"
+   ],
+   "parsed": true
+  },
+  "d145": {
+   "content": "{\"skills\": [\"k484\", \"k347\", \"k475\", \"k118\", \"k846\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 78,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.27,
+   "selected": [
+    "k484",
+    "k347",
+    "k475",
+    "k118",
+    "k846"
+   ],
+   "parsed": true
+  },
+  "d146": {
+   "content": "{\"skills\": [\"k631\", \"k347\", \"k484\", \"k690\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 123,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.19,
+   "selected": [
+    "k631",
+    "k347",
+    "k484",
+    "k690",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d147": {
+   "content": "{\"skills\": [\"k846\", \"k858\", \"k607\", \"k828\", \"k115\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 98,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.25,
+   "selected": [
+    "k846",
+    "k858",
+    "k607",
+    "k828",
+    "k115"
+   ],
+   "parsed": true
+  },
+  "d148": {
+   "content": "{\"skills\": [\"k631\", \"k554\", \"k698\", \"k115\", \"k607\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 64,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.44,
+   "selected": [
+    "k631",
+    "k554",
+    "k698",
+    "k115",
+    "k607"
+   ],
+   "parsed": true
+  },
+  "d149": {
+   "content": "{\"skills\": [\"k495\", \"k806\", \"k416\", \"k698\", \"k534\"]}",
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 92,
+    "output_tokens": 29,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 12111
+   },
+   "seconds": 1.41,
+   "selected": [
+    "k495",
+    "k806",
+    "k416",
+    "k698",
+    "k534"
+   ],
+   "parsed": true
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "val": {
+  "queries": [
+   "What's the forward P/E for Samsung Electronics (005930) based on current analyst EPS estimates?",
+   "Can you calculate the 12-month forward P/E for SK Hynix using the consensus EPS for this year and next year?",
+   "I need the forward price-to-earnings ratio for Hyundai Motor, blended by how many months are left in the fiscal year.",
+   "How expensive is Naver (035420) on forward earnings? Use the broker average EPS for FY1 and FY2.",
+   "Compute the forward P/E for KB Financial Group and show me how many analyst estimates are behind the consensus.",
+   "What is the forward multiple for POSCO Holdings given the current price and blended consensus EPS?",
+   "Please check how much the EPS forecasts for Kakao (035720) disagree across brokers and give me its forward P/E.",
+   "Give me the forward P/E for LG Chem and the consensus EPS inputs you used in the calculation."
+  ]
+ },
+ "log": {
+  "model": "claude-haiku-5-5",
+  "usage": {
+   "input_tokens": 519,
+   "output_tokens": 315,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0
+  },
+  "seconds": 3.18
+ }
+}

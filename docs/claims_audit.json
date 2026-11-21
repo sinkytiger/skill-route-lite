@@ -1,0 +1,462 @@
+{
+ "auditor": "independent_subagent",
+ "auditor_note": "general-purpose agent that did not write the README; recomputed 344 numbers from runs/, data/ and data/rewrites/ with its own scripts and read the paper's arXiv HTML text (main text, appendices A-C)",
+ "recheck": "every 'problem' entry was rechecked by the author against the raw files before the README was changed; all were confirmed and fixed or qualified in the README",
+ "claims": [
+  {
+   "text": "L109-110: 'Here substitution stayed at 16 and crowding rose from 57 to 64.' (and table 'Crowding' column 57/64/50 set against the paper's 41.5% -> 20.0%)",
+   "type": "wrong basis / factual error",
+   "source": "srl/metrics.py CROWD=('duplicate_crowding','generic_crowding','other'); paper Tab. A3 (Crowding = Duplicate 18.0 + Generic 23.5; 'Others' 12.5 -> 4.5 is a separate column); own recount from runs/route/qwen3_4b/*/test/S5_o0.json",
+   "verdict": "problem",
+   "note": "README counts 'other' as crowding; the paper does not. With the paper's partition: crowding (duplicate+generic) Vanilla 38 -> Skill++(Haiku) 23 -> Skill++(qwen) 19, i.e. 52.1% -> 31.5% of the 73 Vanilla errors (close to the paper's halving); 'other' 19 -> 41 -> 31. 'Crowding rose' flips under the paper's definition. Certain."
+  },
+  {
+   "text": "L213-214: 'display order alone moved Vanilla at S5 by 13.4 pp (45.8% to 59.2%)'",
+   "type": "wrong number",
+   "source": "runs/route/qwen3_4b/vanilla/test/S5_o0.json (71/120) and S5_o2.json (55/120)",
+   "verdict": "problem",
+   "note": "16/120 = 13.3 pp; 13.4 is the difference of rounded values. Certain."
+  },
+  {
+   "text": "L204-205: 'The qwen3:4b run stopped for about 16 hours overnight (cause not recorded) and continued from its saved files'",
+   "type": "unsupported / factual error",
+   "source": "logs/test_local.log (one start, one finish, no restart); runs/route/qwen3_4b/spp_qwen3_4b/test/S3_o0.json item t042 seconds=57195.6",
+   "verdict": "problem",
+   "note": "One call hung ~15.9 h and then returned inside an uninterrupted run; nothing was resumed from saved files. Two further stalls are not mentioned: qwen3:4b spp_qwen3_4b S5 t084 2,140 s; llama3.2:3b spp_qwen3_4b S5 t106 4,119 s. Likely."
+  },
+  {
+   "text": "L207: 'Claims in this README were audited against the raw runs and the paper by a separate agent (see below).'",
+   "type": "internal contradiction",
+   "source": "README.md (no later section on the audit)",
+   "verdict": "problem",
+   "note": "'see below' points to nothing; give the audit record path and scope or drop the reference. Certain."
+  },
+  {
+   "text": "L203: 'No data, rewrite, prompt or rule changed after the dev results.'",
+   "type": "unsupported / internal contradiction",
+   "source": "file mtimes: data 10:08, rewrites 10:52/10:54, rewrite.py 10:10, route.py 10:11 (all before dev routing; first dev file 10:12); srl/metrics.py 13:21 and srl/prereg.py 13:42 (after dev blocks 13:03-13:50); README L37/L216 say H5-H7 were written after dev",
+   "verdict": "problem",
+   "note": "Data/rewrite/prompt part supported; 'rule' is not (rules were written after dev results by design). Verified instead: nothing frozen changed after commit 1555eba (git diff empty for data, prereg/metrics/stats/route/rewrite/conditions, docs, tests; 21 tests pass). Reword to 'after the pre-registration commit'."
+  },
+  {
+   "text": "L200: 'Dev split first (36 queries, 29 probes, every condition, all three routers).'",
+   "type": "factual error",
+   "source": "runs/route/claude-haiku-5-5/{vanilla,spp_haiku}/dev only; llama3.2:3b dev spp_noexcl/noname/bodydist/spp_qwen3_4b blocks 14:04-14:32 > commit 14:04:05; docs/hypotheses.md says the same",
+   "verdict": "problem",
+   "note": "Claude router ran 2 conditions on dev; four llama3.2:3b dev conditions finished after the pre-registration commit. Certain."
+  },
+  {
+   "text": "L215: 'One router call instead of the paper's two; no retrieval stage; library 157 skills, not 731.'",
+   "type": "factual error (comparison)",
+   "source": "paper Sec. 4.1 Router: 'The first call shortlists ten skills from all installed skills'; retrieval only in R&R/Hybrid/CC-Pages baselines (App. B.3)",
+   "verdict": "problem",
+   "note": "The paper's main Skill++ setting has no retrieval stage either; say 'no retrieval baselines were run'. Likely."
+  },
+  {
+   "text": "L194: 'The synthetic queries are used only to rank exclusion references.' (also L184 'using only the original records of earlier skills')",
+   "type": "factual error (minor)",
+   "source": "srl/rewrite.py refine_all: CharTfidf fitted on all 157 skills' name+desc, bodies and all synthetic queries, then used for U (reference g, Eq. 7); data/rewrites: g differs between haiku.json and qwen3_4b.json for 5 of 117 skills",
+   "verdict": "problem",
+   "note": "Synthetic queries (and later skills' records) also shape the IDF weights that pick the differentiation reference. Certain."
+  },
+  {
+   "text": "L26-28: 'Does not cover clauses neither pulled the router toward the excluding skill nor cost much ... +3.3 pp (95% CI -5.0 to +11.7)'",
+   "type": "overstated",
+   "source": "own paired bootstrap spp_noexcl_haiku - spp_haiku at S5: +3.3 [-5.0, +11.7], McNemar 15/11 p=0.557",
+   "verdict": "problem",
+   "note": "The interval allows a cost of up to ~12 pp; 'nor cost much' is not shown. Pull part (14 vs 14 of 308, +0.0 [-1.8, +1.8]) is supported."
+  },
+  {
+   "text": "L23-25: 'The writer mattered. ... 10.8 pp above the Haiku-written version (95% CI 3.3 to 18.3, McNemar p = 0.011)'",
+   "type": "overstated / missing caveat",
+   "source": "own recompute qwen3:4b: +10.8 [3.3, 18.3], 18/5, p=0.0106; llama3.2:3b same contrast +3.3 [-3.3, +10.0], p=0.45; H3 not judged",
+   "verdict": "problem",
+   "note": "Numbers correct. Exploratory (not one of H1-H7), no multiplicity control, not seen on llama3.2:3b, confounded with description length (152 vs 231 chars) and with the writer also writing the synthetic queries. Likely."
+  },
+  {
+   "text": "L18-19 / L92-96: display order paragraph and table",
+   "type": "missing caveat",
+   "source": "runs/route/qwen3_4b/{vanilla,spp_haiku}/test/S5_o1.json: -10.0 [-18.3, -2.5], McNemar 6/18 p=0.023",
+   "verdict": "problem",
+   "note": "Under order seed 1 the H5 rule (interval below 0) would hold; the H5 verdict depends on display order. Values themselves are correct."
+  },
+  {
+   "text": "L20-22: 'What Skill++ did do: new skills became much easier to find for their own work ... 79 of 88 ... against 41'",
+   "type": "missing caveat",
+   "source": "own recompute: Body-distilled 78/88, Skill++ 79/88, Vanilla 41/88; data/skills.json: original incoming desc mean 59.8 chars, 44 of 65 'similar' skills style 'vague'",
+   "verdict": "problem",
+   "note": "Numbers correct (38 gained, 0 lost). The gain is shared by Body-distilled, so it is not specific to Skill++'s components, and the original incoming descriptions were short/vague by construction."
+  },
+  {
+   "text": "L37-38: 'H5-H7 were added after the dev split showed the opposite of the paper's direction.'",
+   "type": "factual error (minor)",
+   "source": "docs/hypotheses.md: H7 '(plasticity, as in the paper)'; dev probes 13/29 -> 22/29",
+   "verdict": "problem",
+   "note": "Only H5/H6 came from the opposite direction; H7 follows the paper's direction. Likely."
+  },
+  {
+   "text": "L37: 'Hypotheses H1-H4 come from the project proposal'",
+   "type": "unverifiable",
+   "source": "repository has one commit (after dev); docs/hypotheses.md 'Written after the dev split'",
+   "verdict": "problem",
+   "note": "No proposal file or earlier commit in the repo; cannot be verified here. Link the proposal or state it is not in the repo."
+  },
+  {
+   "text": "L138-140: 'nearest earlier skill was the one an incoming skill was written to resemble for 52 of 107 Haiku rewrites ... among the three exclusion references for 76 of 107'",
+   "type": "internal contradiction (minor)",
+   "source": "data/rewrites/haiku.json g==target 52/107, target in G 76/107; docs/paper_notes.md says 53 of 107",
+   "verdict": "problem",
+   "note": "README numbers correct; paper_notes says 53 (equals g==target-or-also for Haiku; qwen file gives 51). Align or explain."
+  },
+  {
+   "text": "L224-225: 'Prices: $0.10 / $0.50 per million input / output tokens, cache reads 0.1x.'",
+   "type": "missing detail",
+   "source": "srl/claude.py cost_of (cache writes 1.25x); claude-api skill price table (Haiku 5.5 $0.10/$0.50 for prompts up to 100K tokens)",
+   "verdict": "problem",
+   "note": "Prices correct; cache writes at 1.25x are charged but not stated (147,396 write tokens = $0.0184, ~8% of the total)."
+  },
+  {
+   "text": "L72 / L218: 'llama3.2:3b (near the floor ...)' / 'llama3.2:3b is near the floor'",
+   "type": "overstated (minor)",
+   "source": "own recompute: llama FC@5 S1 52.5-77.5%, S5 20.8-35.0%; 127-192 of 488 replies with repeated IDs",
+   "verdict": "problem",
+   "note": "FC@5 is not at a floor; what is high is the rate of degenerate replies. Reword."
+  },
+  {
+   "text": "L105: Skill++ (Haiku) 'Most common types: other 41, generic crowding 12, similar skill 11'",
+   "type": "missing detail (minor)",
+   "source": "own error typing: duplicate_crowding also 11",
+   "verdict": "problem",
+   "note": "Tie with duplicate crowding 11 not shown."
+  },
+  {
+   "text": "L70: Skill++ (written by qwen3:4b) S3 = 63.7",
+   "type": "rounding (cosmetic)",
+   "source": "51/80 = 63.75%",
+   "verdict": "problem",
+   "note": "Floating-point artifact of f'{100*x:.1f}'; other half-way cells: 53.8, 48.8, 38.8 (up) and 56.2, 46.2, 31.2 (down). Pick one rounding rule."
+  },
+  {
+   "text": "L186-188: 'Three earlier skills, ranked by the paper's fused rank of three similarities over 8 synthetic queries per skill'",
+   "type": "imprecise wording (minor)",
+   "source": "srl/rewrite.py _refine_one (s3 = metadata vs metadata); paper Eq. 13",
+   "verdict": "problem",
+   "note": "Only sigma1 and sigma2 use synthetic queries; sigma3 compares name + description."
+  },
+  {
+   "text": "L219: 'Claude Haiku 5.5 was the rewriter instead of the paper's Gemini 3.5 Flash-Lite'",
+   "type": "missing detail (minor)",
+   "source": "paper App. A (Gemini 3.6 Flash retry, DeepSeek-V4-Flash synthetic queries); srl/rewrite.py synth_all uses the same generator",
+   "verdict": "problem",
+   "note": "Here each writer also wrote its own synthetic queries; retries use the same model."
+  },
+  {
+   "text": "L175: 'returns 5 IDs under a JSON schema restricted to the installed IDs'",
+   "type": "imprecise (minor)",
+   "source": "srl/claude.py api_schema drops minItems/maxItems; no uniqueItems in srl/route.py schema_for",
+   "verdict": "problem",
+   "note": "Claude's reply length is not forced to 5 and duplicates are allowed for all routers; every reply with <5 distinct IDs is a duplicate (qwen 155 test, llama 1,019 test, Claude 4 test)."
+  },
+  {
+   "text": "L112-114, L222-226, L228-240: results/cost reproducible from the repo",
+   "type": "missing caveat / publish readiness",
+   "source": ".gitignore (runs/), git status (README.md, reports/ untracked; srl/report.py, srl/overlap.py modified)",
+   "verdict": "problem",
+   "note": "Raw runs (router token usage, prompt tokens, replies) are not published, so router spend and the 4,200/8,500-token figures cannot be checked by readers; 'srl report' needs runs/. Commit reports/ and the report.py change (display-order table) with the README."
+  },
+  {
+   "text": "L168-170: 'four test and two dev phrasings per skill, never shared' + L39 bootstrap over test queries",
+   "type": "missing caveat (minor)",
+   "source": "srl/build.py make_queries (phrasings cycled); every required skill appears in 5-13 test queries",
+   "verdict": "problem",
+   "note": "Phrasings are not shared across splits (verified) but are reused across test queries (232 uses of 160 phrasings, up to 4 times each); the query-level bootstrap treats queries as independent, so intervals may be somewhat narrow."
+  },
+  {
+   "text": "L5-6: 157 synthetic skills; qwen3:4b and llama3.2:3b routers; Haiku 5.5 rewriter and third router",
+   "type": "setup",
+   "source": "data/skills.json; runs/route",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L10: 120 test queries; library 48 (S1) to 157 (S5); thinking off",
+   "type": "setup",
+   "source": "data/queries.json; data/skills.json; srl/ollama.py think=False",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L12-15: Vanilla FC@5 85.0 -> 59.2, fall 25.8 [11.7, 38.9]; 40 early queries 16/2, McNemar p=0.0013; llama 72.5 -> 35.0",
+   "type": "numbers",
+   "source": "own recompute from raw runs",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L16-17: Skill++ (Haiku) 54.2, -5.0 [-14.2, +4.2]; llama -9.2 [-16.7, -1.7]",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L18-19: order seeds: Vanilla 45.8-59.2; difference -10.0 to +1.7",
+   "type": "numbers",
+   "source": "S5_o0/o1/o2 blocks",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L21: probes 79/88 vs 41/88, 38 gained, 0 lost",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L23-25: qwen-written 65.0; +10.8 [3.3, 18.3] p=0.011 vs Haiku-written; +5.8 [-2.5, +14.2] vs Vanilla",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": "wording flagged separately"
+  },
+  {
+   "text": "L27-28: 308 pairs, 14 vs 14; +3.3 [-5.0, +11.7]",
+   "type": "numbers",
+   "source": "own H4 pairs and bootstrap",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L29: Haiku router Vanilla 99.2, Skill++ 99.2 at S5",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L31-33: small router did not benefit; Haiku did not need rewrites; paper's five API routers on 731 skills",
+   "type": "summary + paper",
+   "source": "own recompute; paper App. C.3 (five routers, all CIs exclude 0)",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L38-40: all seven hypotheses committed (1555eba) before any test routing; bootstrap 10,000 seed 0; exact McNemar",
+   "type": "pre-registration",
+   "source": "git log 14:04:05; earliest test file created 14:04:34 (first 5 calls 5.7 s); srl/stats.py",
+   "verdict": "supported",
+   "note": "Timeline margin ~23 s; based on file times."
+  },
+  {
+   "text": "L44-50: pre-registration table H1-H7 values and verdicts; share -0.19",
+   "type": "numbers + rules",
+   "source": "own recompute; docs/hypotheses.md vs srl/prereg.py (rules match)",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L52-54: llama H1/H5/H7 hold, H2/H4/H6 not, H3 not judged; Haiku H1 not (0.8 pp), H2 not judged, H5 not, H7 holds 81->88 p=0.016",
+   "type": "numbers + verdicts",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L58-59: checkpoint query counts 40/60/80/100/120; library 48/76/104/131/157",
+   "type": "numbers",
+   "source": "data files",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L63-70: qwen3:4b table (48 cells)",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": "63.7 rounding flagged separately"
+  },
+  {
+   "text": "L72-81: llama3.2:3b table (42 cells) and 127-192 of 488 short replies",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L85-88: Haiku router table (14 cells)",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L92-96: display-order table values",
+   "type": "numbers",
+   "source": "own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L102-106: missing/substitution/crowding counts and listed type counts",
+   "type": "numbers",
+   "source": "own error typing per srl/metrics.py docstring",
+   "verdict": "supported",
+   "note": "counts match the code's definition; basis vs paper flagged"
+  },
+  {
+   "text": "L109: paper substitution 46.0 -> 6.5% and crowding 41.5 -> 20.0% of Vanilla errors",
+   "type": "paper",
+   "source": "paper Sec. 4.2 RQ2",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L118-123: paper column (Haiku 4.5, SRA-Bench, 92.5->36.4, 76.3 +39.9, Body-distilled 44.4, rank-1 56.9 vs 51.9) and this-study column (85.0->59.2, 54.2 -5.0, 58.3, hit@1 69 vs 24, hit@5 79 vs 41)",
+   "type": "paper + numbers",
+   "source": "paper Tab. A1, Sec. 4.2, App. C.1; own recompute",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L129-133: required desc mean 128; Haiku Skill++ 231 (181 without clause); original incoming 60; S5 list ~4,200 -> ~8,500 prompt tokens; <5 distinct 18 -> 30 of 488; qwen-written mean 152",
+   "type": "numbers",
+   "source": "data/skills.json, data/rewrites/*.json, prompt_tokens in qwen S5 blocks (4,128-4,190 vs 8,501-8,563)",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L134-137: paper two-call harness shortlist 10 + rerank on API models; 731 web-collected skills and 198 coding tasks",
+   "type": "paper",
+   "source": "paper Sec. 4.1, App. B.1",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L141-142: paper rules (drop phrases with a reference's name head; trim to 298); Haiku kept 0.79 phrases on average, 39 of 117 none",
+   "type": "paper + numbers",
+   "source": "paper App. A; data/rewrites/haiku.json phrases_used",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L148-152: 40 required skills and listed topics; 117 incoming skills; no query needs them",
+   "type": "data",
+   "source": "data/skills.json (major-shareholder-changes = 5% reports); queries needing incoming = 0",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L155-162: kind counts 65/21/6/10/5/10 and the six examples",
+   "type": "data",
+   "source": "data/skills.json (forward-pe, trailing-pe-us, margin-balance-monitor, roe-analyzer, valuation-multiples-toolkit, finance-analysis-assistant)",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L164-166: S0 20 required; 4 required + 22-24 incoming per session; 20/48/76/104/131/157; required first, then seeded incoming order",
+   "type": "data",
+   "source": "data/skills.json (24,24,24,23,22; 0 order violations)",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L168-171: 20 test + 6 dev per session; 1-3 phrasings; 4 test / 2 dev phrasings per skill not shared across splits; 12 of 20 need a new skill from S1; probes 88 test / 29 dev",
+   "type": "data",
+   "source": "data/queries.json, data/probes.json, srl/catalog_required.py",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L173-176: Ollama, context 10,240; Haiku with prompt caching; ID | name | first 300 chars; temperature 0, seed 0; order shuffled once per checkpoint, same in every condition",
+   "type": "setup",
+   "source": "srl/route.py, srl/ollama.py, srl/conditions.py; cache reads in 1,254 of 1,274 Claude calls; max prompt 8,563 tokens < 10,240",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L177-181: conditions; only incoming skills change, as in the paper's main study",
+   "type": "setup + paper",
+   "source": "srl/conditions.py; tests/test_conditions.py; paper Sec. 4.1",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L183-192: Skill++ steps (reference by name+desc, 220 chars, never names reference, 3 tries then original, 3 references, name-head rule, 4-60 chars); Haiku renamed all 58 conflicts; qwen3:4b returned the original name for 14 of 58; paper's name rule checks only length",
+   "type": "method + numbers + paper",
+   "source": "srl/rewrite.py; data/rewrites/*.json; paper Sec. 3.2, App. A",
+   "verdict": "supported",
+   "note": "step 3 wording flagged separately"
+  },
+  {
+   "text": "L195-196: closest synthetic-to-evaluation cosine 0.80 (Haiku) and 0.87 (qwen3:4b); two per writer >= 0.8",
+   "type": "numbers",
+   "source": "own re-implementation of the char 3-5-gram TF-IDF check (0.804, 0.867; 2 and 2)",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L205-206: per-block median call times 3.1-3.8 s (qwen3:4b) except one block 8.3 s; 2.5-2.9 s (llama3.2:3b)",
+   "type": "numbers",
+   "source": "test blocks: qwen 3.09-3.77 and 8.28 (spp_qwen3_4b S4); llama 2.55-2.92",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L211-212: rewrites never saw evaluation queries; nothing tuned on test queries",
+   "type": "absolute claim",
+   "source": "srl/rewrite.py prompts read only skill names/descriptions/bodies; rewrite path never loads queries.json; all test files created after the commit; frozen files unchanged since",
+   "verdict": "supported",
+   "note": "Supported as far as checkable; runs/ is unversioned, so deleted earlier runs cannot be excluded (Claude spend found equals the README total)."
+  },
+  {
+   "text": "L213: differences of about 5 pp are inside the noise",
+   "type": "evaluative",
+   "source": "S5 paired CIs about +/-9 pp",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L216: H5-H7 written after the dev run, confirmatory only for test",
+   "type": "pre-registration",
+   "source": "docs/hypotheses.md",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L218: many llama replies repeat IDs",
+   "type": "data",
+   "source": "all 1,019 short llama test replies are duplicates",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L219-220: Haiku default sampling; rewrites committed",
+   "type": "setup",
+   "source": "srl/claude.py (no temperature); commit 1555eba includes data/rewrites",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L224-226: spend $0.2244 = rewrites $0.0654 + router dev $0.0414 + router test $0.1174 + smoke $0.0002; $3 cap in code; prices; RTX 2060 6 GB",
+   "type": "numbers",
+   "source": "own pricing of every usage dict (data/rewrites, runs/route/claude-haiku-5-5, runs/smoke); srl/claude.py Budget.check; claude-api price table; nvidia-smi on this PC",
+   "verdict": "supported",
+   "note": "cache-write multiplier omission flagged separately"
+  },
+  {
+   "text": "L230-240: reproduce commands, SRL_BUDGET default $3, build from catalogs",
+   "type": "setup",
+   "source": "srl/__main__.py; logs/test_local.log commands match",
+   "verdict": "supported",
+   "note": ""
+  },
+  {
+   "text": "L255-256: paper citation; no paper benchmark data used",
+   "type": "citation",
+   "source": "paper title/authors; data is a hand-written catalog",
+   "verdict": "supported",
+   "note": "'No official code was found' not checked (needs a web search)."
+  }
+ ]
+}

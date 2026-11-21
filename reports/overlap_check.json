@@ -1,0 +1,24 @@
+[
+ {
+  "generator": "haiku",
+  "synthetic_queries": 1256,
+  "evaluation_texts": 273,
+  "max_cosine": 0.804,
+  "n_at_or_above_0.8": 2,
+  "closest_pair": [
+   "Is LG Chem trading above its 120-day moving average right now?",
+   "Is Orion trading above its 120-day moving average?"
+  ]
+ },
+ {
+  "generator": "qwen3_4b",
+  "synthetic_queries": 1256,
+  "evaluation_texts": 273,
+  "max_cosine": 0.867,
+  "n_at_or_above_0.8": 2,
+  "closest_pair": [
+   "What's the forward P/E for Hyundai Motor with the current and next year's consensus EPS?",
+   "Using next year's consensus EPS, what forward P/E is Hyundai Motor on?"
+  ]
+ }
+]

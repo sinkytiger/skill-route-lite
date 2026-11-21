@@ -11,7 +11,8 @@ Error types (S5): every required skill missing from the selection gets one type,
 labels (kind and target of each incoming skill), in the paper's order: description inconsistency, similar-skill
 confusion (same name or not), scope overreach, name confusion (substitution: a selected incoming skill targets the
 missing skill); then duplicate crowding (a selected incoming skill targets another required skill of the query, or
-two selected skills share a target), generic crowding (a generic skill was selected), other.
+two selected skills share a target), generic crowding (a generic skill was selected), other. As in the paper's
+Table A3, "other" is a third column, not part of crowding.
 """
 
 from __future__ import annotations
@@ -24,7 +25,7 @@ from . import build as B
 from .route import block_path
 
 SUBST = ("description_inconsistency", "similar_same_name", "similar", "scope_overreach", "name_confusion")
-CROWD = ("duplicate_crowding", "generic_crowding", "other")
+CROWD = ("duplicate_crowding", "generic_crowding")   # "other" is counted apart, as the paper does
 KIND_TYPE = {"overclaim": "description_inconsistency", "samename": "similar_same_name", "similar": "similar",
              "broad": "scope_overreach", "nameonly": "name_confusion"}
 

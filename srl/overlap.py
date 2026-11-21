@@ -25,5 +25,4 @@ def check(tag: str, threshold: float = 0.8) -> dict:
 
 if __name__ == "__main__":
     import sys
-    for t in sys.argv[1:]:
-        print(json.dumps(check(t), ensure_ascii=False, indent=1))
+    print(json.dumps([check(t) for t in sys.argv[1:]], ensure_ascii=False, indent=1))
