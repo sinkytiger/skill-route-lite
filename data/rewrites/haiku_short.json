@@ -1,0 +1,5592 @@
+{
+ "generator": "claude-haiku-5-5",
+ "derived_from": "haiku.json",
+ "desc_ask": 110,
+ "desc_max": 130,
+ "lmax": 160,
+ "prompt": "You are improving the routing description of a NEW skill that is being added to a skill library. A router picks skills by reading only their names and short descriptions.\n\nNEW skill name: {n_t}\nNEW skill body (excerpt):\n<new_body>\n{b_t}\n</new_body>\n\nThe most similar EXISTING skill in the library is shown only so that you can tell the two apart.\nEXISTING skill name: {n_g}\nEXISTING skill body (excerpt):\n<existing_body>\n{b_g}\n</existing_body>\n\nWrite a description of the NEW skill, at most 110 characters, that:\n- states only capabilities contained in the NEW skill's body;\n- leads with what the NEW skill does that the EXISTING skill does not offer;\n- never names or alludes to the EXISTING skill.\nReturn JSON: {{\"description\": \"...\"}}",
+ "skills": {
+  "ownership-analysis": {
+   "g": "price-to-book",
+   "G": [
+    "trailing-pe",
+    "foreign-investor-flows",
+    "price-to-book"
+   ],
+   "d_hat": "Maps cross-holding ownership among a business group's affiliates from the annual report and draws the group structure chart.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "calculating trailing earnings multiple from quarterly net income",
+    "tracking foreign and institutional daily net trading flows",
+    "computing price relative to consolidated book value"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Maps cross-holding ownership among a business group's affiliates from the annual report and draws the group structure chart.",
+   "name_conflict": false,
+   "name": "ownership-analysis",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "fx-rates": {
+   "g": "fx-sensitivity",
+   "G": [
+    "fx-translation",
+    "fx-sensitivity",
+    "bond-duration"
+   ],
+   "d_hat": "Look up daily foreign exchange rates for a currency pair on a given date from Bank of Korea ECOS.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "converting krw statements into usd",
+    "estimating profit impact of currency moves",
+    "computing bond duration and convexity"
+   ],
+   "phrases_kept": [
+    "converting krw statements into usd",
+    "estimating profit impact of currency moves"
+   ],
+   "phrases_used": [
+    "converting krw statements into usd"
+   ],
+   "assembled": "Look up daily foreign exchange rates for a currency pair on a given date from Bank of Korea ECOS. Does not cover: converting krw statements into usd.",
+   "name_conflict": false,
+   "name": "fx-rates",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "excel-modeling-best-practices": {
+   "g": "fx-sensitivity",
+   "G": [
+    "ex-dividend-calendar",
+    "fx-sensitivity",
+    "dart-consolidated-statements"
+   ],
+   "d_hat": "Spreadsheet model structure: separate inputs, calcs and outputs, color-code cells, avoid hard-coded numbers, add checks.",
+   "d_tries": 2,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking dividend dates and payments for korean stocks",
+    "estimating profit impact from krw/usd currency moves",
+    "downloading consolidated financial statements from dart api"
+   ],
+   "phrases_kept": [
+    "tracking dividend dates and payments for korean stocks",
+    "estimating profit impact from krw/usd currency moves"
+   ],
+   "phrases_used": [],
+   "assembled": "Spreadsheet model structure: separate inputs, calcs and outputs, color-code cells, avoid hard-coded numbers, add checks.",
+   "name_conflict": false,
+   "name": "excel-modeling-best-practices",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "margin-balance-monitor": {
+   "g": "price-to-book",
+   "G": [
+    "operating-margin-trend",
+    "price-to-book",
+    "dart-consolidated-statements"
+   ],
+   "d_hat": "Tracks daily margin loan (신용융자) balances per stock, computes credit balance ratio to listed shares, and flags stocks above 8%.",
+   "d_tries": 3,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking operating margin turning points over time",
+    "computing price-to-book ratio from balance sheet",
+    "downloading consolidated financial statements from dart"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Tracks daily margin loan (신용융자) balances per stock, computes credit balance ratio to listed shares, and flags stocks above 8%.",
+   "name_conflict": false,
+   "name": "margin-balance-monitor",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "korean-disclosure-toolkit": {
+   "g": "ownership-analysis",
+   "G": [
+    "ownership-analysis",
+    "convertible-bond-summary",
+    "major-shareholder-changes"
+   ],
+   "d_hat": "Orientation to DART: Korean report types, where information sits in filings, and OpenAPI endpoint groups. No specific analysis.",
+   "d_tries": 3,
+   "d_fallback": false,
+   "phrases_raw": [
+    "ownership structure analysis for korean companies",
+    "summarizing convertible bond issuance terms and dilution",
+    "tracking 5% bulk-holding reports and stake changes"
+   ],
+   "phrases_kept": [
+    "tracking 5% bulk-holding reports and stake changes"
+   ],
+   "phrases_used": [],
+   "assembled": "Orientation to DART: Korean report types, where information sits in filings, and OpenAPI endpoint groups. No specific analysis.",
+   "name_conflict": false,
+   "name": "korean-disclosure-toolkit",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "forward-pe": {
+   "g": "ownership-analysis",
+   "G": [
+    "trailing-pe",
+    "dart-consolidated-statements",
+    "ownership-analysis"
+   ],
+   "d_hat": "Forward P/E for KRX stocks: blends FY1/FY2 analyst consensus EPS into 12-month forward EPS, with estimate count and dispersion.",
+   "d_tries": 3,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing trailing price-to-earnings ratios from quarterly earnings",
+    "downloading consolidated financial statements from dart",
+    "analyzing shareholder ownership structures of korean companies"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Forward P/E for KRX stocks: blends FY1/FY2 analyst consensus EPS into 12-month forward EPS, with estimate count and dispersion.",
+   "name_conflict": false,
+   "name": "forward-pe",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dividend-calculator": {
+   "g": "ex-dividend-calendar",
+   "G": [
+    "ex-dividend-calendar",
+    "dividend-yield-payout",
+    "forward-pe"
+   ],
+   "d_hat": "Computes after-tax dividend income in Korea: 15.4% withholding tax and the 20M won comprehensive taxation check.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "locating record, ex-dividend and payment dates",
+    "computing dividend yield and payout ratio",
+    "calculating forward price-to-earnings ratios"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Computes after-tax dividend income in Korea: 15.4% withholding tax and the 20M won comprehensive taxation check.",
+   "name_conflict": true,
+   "name": "korea-dividend-tax-calculator",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "trading-flows": {
+   "g": "foreign-investor-flows",
+   "G": [
+    "foreign-investor-flows",
+    "moving-average-signals",
+    "trailing-pe"
+   ],
+   "d_hat": "Market-wide KOSPI program trading net buying from arbitrage and non-arbitrage flows, daily and cumulative, for a given date.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking foreign and institutional net trading flows",
+    "computing moving averages and crossover signals",
+    "calculating trailing price-to-earnings from quarterly earnings"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Market-wide KOSPI program trading net buying from arbitrage and non-arbitrage flows, daily and cumulative, for a given date.",
+   "name_conflict": false,
+   "name": "trading-flows",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "ev-ebitda-us": {
+   "g": "ev-ebitda",
+   "G": [
+    "ev-ebitda",
+    "peer-comparison-table",
+    "stock-beta"
+   ],
+   "d_hat": "EV/adjusted EBITDA for US-listed companies using press-release adjusted EBITDA and 10-Q net debt, in USD.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing enterprise value to ebitda multiples",
+    "building comparable company valuation tables",
+    "estimating stock beta against kospi"
+   ],
+   "phrases_kept": [
+    "computing enterprise value to ebitda multiples",
+    "building comparable company valuation tables"
+   ],
+   "phrases_used": [],
+   "assembled": "EV/adjusted EBITDA for US-listed companies using press-release adjusted EBITDA and 10-Q net debt, in USD.",
+   "name_conflict": false,
+   "name": "ev-ebitda",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "bank-ptbv": {
+   "g": "price-to-book",
+   "G": [
+    "price-to-book",
+    "free-cash-flow",
+    "dividend-yield-payout"
+   ],
+   "d_hat": "P/TBV for bank holding companies: tangible book per share, excluding hybrid perpetual capital from equity. Inputs: stock code.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing price-to-book valuation ratios",
+    "deriving free cash flow history",
+    "calculating dividend yield and payout"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "P/TBV for bank holding companies: tangible book per share, excluding hybrid perpetual capital from equity. Inputs: stock code.",
+   "name_conflict": false,
+   "name": "bank-ptbv",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "share-issue-summary": {
+   "g": "rights-offering-summary",
+   "G": [
+    "rights-offering-summary",
+    "major-shareholder-changes",
+    "free-cash-flow"
+   ],
+   "d_hat": "무상증자(bonus issue) 공시 요약: 주당 신주 배정 비율, 기준일·신주 상장일, 재원(자본잉여금)을 정리합니다. 현금 유입 없음.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing paid-in capital increase disclosures",
+    "tracking 5% stake bulk-holding reports",
+    "computing free cash flow from statements"
+   ],
+   "phrases_kept": [
+    "summarizing paid-in capital increase disclosures",
+    "tracking 5% stake bulk-holding reports"
+   ],
+   "phrases_used": [
+    "summarizing paid-in capital increase disclosures"
+   ],
+   "assembled": "무상증자(bonus issue) 공시 요약: 주당 신주 배정 비율, 기준일·신주 상장일, 재원(자본잉여금)을 정리합니다. 현금 유입 없음. Does not cover: summarizing paid-in capital increase disclosures.",
+   "name_conflict": false,
+   "name": "share-issue-summary",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "coverage-tracker": {
+   "g": "interest-coverage",
+   "G": [
+    "interest-coverage",
+    "dividend-calculator",
+    "pe-band-chart"
+   ],
+   "d_hat": "Lists brokers covering a stock over the past 12 months, tracking initiations, dropped coverage, and analyst count over time.",
+   "d_tries": 2,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing interest coverage ratios from financial statements",
+    "calculating dividend yields and payouts for korean stocks",
+    "plotting p/e band charts against historical eps"
+   ],
+   "phrases_kept": [
+    "plotting p/e band charts against historical eps"
+   ],
+   "phrases_used": [],
+   "assembled": "Lists brokers covering a stock over the past 12 months, tracking initiations, dropped coverage, and analyst count over time.",
+   "name_conflict": false,
+   "name": "coverage-tracker",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "beta-release": {
+   "g": "stock-beta",
+   "G": [
+    "stock-beta",
+    "trading-flows",
+    "ownership-analysis"
+   ],
+   "d_hat": "Builds a software beta release checklist: feature freeze, test plan, feedback and crash reporting, go/no-go criteria.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating market beta from weekly return regressions",
+    "tracking investor trading flow data",
+    "analyzing corporate shareholder ownership structures"
+   ],
+   "phrases_kept": [
+    "estimating market beta from weekly return regressions"
+   ],
+   "phrases_used": [],
+   "assembled": "Builds a software beta release checklist: feature freeze, test plan, feedback and crash reporting, go/no-go criteria.",
+   "name_conflict": false,
+   "name": "beta-release",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dart-financial-statements": {
+   "g": "dart-consolidated-statements",
+   "G": [
+    "dart-consolidated-statements",
+    "fx-translation",
+    "korean-disclosure-toolkit"
+   ],
+   "d_hat": "Fetches separate (parent-only) DART financial statements by corp code and year, splitting and saving them as CSV.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "retrieving consolidated financial statements from dart",
+    "converting krw statements into usd",
+    "general korean corporate disclosure filings on dart"
+   ],
+   "phrases_kept": [
+    "converting krw statements into usd"
+   ],
+   "phrases_used": [],
+   "assembled": "Fetches separate (parent-only) DART financial statements by corp code and year, splitting and saving them as CSV.",
+   "name_conflict": true,
+   "name": "dart-parent-only-financial-statements",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "cost-of-capital": {
+   "g": "wacc-estimator",
+   "G": [
+    "wacc-estimator",
+    "stock-beta",
+    "dividend-calculator"
+   ],
+   "d_hat": "CAPM cost of equity for a KRX stock from beta vs KOSPI, risk-free rate and ERP; optional size premium. No debt.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating weighted average cost of capital",
+    "regressing stock returns for beta",
+    "computing dividend figures for korean stocks"
+   ],
+   "phrases_kept": [
+    "estimating weighted average cost of capital"
+   ],
+   "phrases_used": [],
+   "assembled": "CAPM cost of equity for a KRX stock from beta vs KOSPI, risk-free rate and ERP; optional size premium. No debt.",
+   "name_conflict": false,
+   "name": "cost-of-capital",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "portfolio-report": {
+   "g": "portfolio-rebalancing",
+   "G": [
+    "portfolio-rebalancing",
+    "ex-dividend-calendar",
+    "stock-beta"
+   ],
+   "d_hat": "Reports portfolio performance: time-weighted return, KOSPI benchmark comparison, and per-holding return contribution. No trades.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "converting target weights into share orders",
+    "looking up dividend dates for korean stocks",
+    "estimating market beta from weekly returns"
+   ],
+   "phrases_kept": [
+    "converting target weights into share orders",
+    "estimating market beta from weekly returns"
+   ],
+   "phrases_used": [],
+   "assembled": "Reports portfolio performance: time-weighted return, KOSPI benchmark comparison, and per-holding return contribution. No trades.",
+   "name_conflict": true,
+   "name": "portfolio-performance-report-kospi",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "earnings-review": {
+   "g": "ownership-analysis",
+   "G": [
+    "earnings-surprise",
+    "portfolio-report",
+    "ownership-analysis"
+   ],
+   "d_hat": "Summarizes an earnings call transcript: management guidance by business, key analyst Q&A, and tone shifts from the prior call.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "comparing quarterly results against analyst consensus estimates",
+    "analyzing korean stock portfolio holdings and performance",
+    "analyzing ownership structure of korean companies"
+   ],
+   "phrases_kept": [
+    "comparing quarterly results against analyst consensus estimates"
+   ],
+   "phrases_used": [],
+   "assembled": "Summarizes an earnings call transcript: management guidance by business, key analyst Q&A, and tone shifts from the prior call.",
+   "name_conflict": true,
+   "name": "earnings-call-transcript-review",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "finance-analysis-assistant": {
+   "g": "ownership-analysis",
+   "G": [
+    "earnings-review",
+    "operating-margin-trend",
+    "ownership-analysis"
+   ],
+   "d_hat": "Plans how to approach a financial analysis question: restates it, suggests DART/KRX/BOK ECOS sources, sanity-checks answers.",
+   "d_tries": 2,
+   "d_fallback": false,
+   "phrases_raw": [
+    "quarterly earnings analysis for korean companies",
+    "tracking operating margin over twelve quarters",
+    "ownership analysis for korean companies"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Plans how to approach a financial analysis question: restates it, suggests DART/KRX/BOK ECOS sources, sanity-checks answers.",
+   "name_conflict": false,
+   "name": "finance-analysis-assistant",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "valuation-multiples-toolkit": {
+   "g": "korean-disclosure-toolkit",
+   "G": [
+    "ev-ebitda",
+    "price-to-book",
+    "korean-disclosure-toolkit"
+   ],
+   "d_hat": "Explains valuation multiples P/E, P/B, EV/EBITDA, PSR, PEG: formulas, when each misleads, and common pitfalls.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "enterprise value and ebitda multiples",
+    "price-to-book ratio calculations",
+    "general dart corporate disclosure retrieval"
+   ],
+   "phrases_kept": [
+    "enterprise value and ebitda multiples",
+    "general dart corporate disclosure retrieval"
+   ],
+   "phrases_used": [],
+   "assembled": "Explains valuation multiples P/E, P/B, EV/EBITDA, PSR, PEG: formulas, when each misleads, and common pitfalls.",
+   "name_conflict": false,
+   "name": "valuation-multiples-toolkit",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "price-bands": {
+   "g": "dividend-calculator",
+   "G": [
+    "pe-band-chart",
+    "dividend-calculator",
+    "price-to-book"
+   ],
+   "d_hat": "Computes Bollinger Bands for a stock code: 20-day moving average, ±2 std dev bands, %b position and bandwidth.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "charting price against historical earnings multiple bands",
+    "calculating dividend figures for korean equities",
+    "computing price-to-book ratio from consolidated balance sheet"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Computes Bollinger Bands for a stock code: 20-day moving average, ±2 std dev bands, %b position and bandwidth.",
+   "name_conflict": true,
+   "name": "price-bands-bollinger-stock",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "bond-issuance-summary": {
+   "g": "share-issue-summary",
+   "G": [
+    "share-issue-summary",
+    "convertible-bond-summary",
+    "major-shareholder-changes"
+   ],
+   "d_hat": "Summarizes exchangeable bond (EB) terms: face amount, coupon, maturity, exchange target shares and exchange price/period.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing new share issuance disclosures",
+    "summarizing convertible bond issuance decisions",
+    "tracking five percent stake holding reports"
+   ],
+   "phrases_kept": [
+    "tracking five percent stake holding reports"
+   ],
+   "phrases_used": [],
+   "assembled": "Summarizes exchangeable bond (EB) terms: face amount, coupon, maturity, exchange target shares and exchange price/period.",
+   "name_conflict": true,
+   "name": "exchangeable-bond-issuance-summary",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "fcf-yield-screen": {
+   "g": "free-cash-flow",
+   "G": [
+    "free-cash-flow",
+    "bond-ytm",
+    "stock-beta"
+   ],
+   "d_hat": "Ranks index constituents (default KOSPI 200) by FCF yield, i.e. latest annual free cash flow divided by market cap, highest first.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "operating cash flow less capital expenditures",
+    "yield to maturity for bonds",
+    "regression-based equity beta estimation"
+   ],
+   "phrases_kept": [
+    "operating cash flow less capital expenditures",
+    "regression-based equity beta estimation"
+   ],
+   "phrases_used": [],
+   "assembled": "Ranks index constituents (default KOSPI 200) by FCF yield, i.e. latest annual free cash flow divided by market cap, highest first.",
+   "name_conflict": false,
+   "name": "fcf-yield-screen",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "bond-spread-monitor": {
+   "g": "margin-balance-monitor",
+   "G": [
+    "margin-balance-monitor",
+    "bond-ytm",
+    "dart-consolidated-statements"
+   ],
+   "d_hat": "Tracks corporate bond spreads over the KTB of matching tenor by credit rating, using KOFIA yield data.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking credit loan balances against shares outstanding",
+    "computing yield to maturity for bonds",
+    "fetching consolidated financial statements from dart"
+   ],
+   "phrases_kept": [
+    "tracking credit loan balances against shares outstanding"
+   ],
+   "phrases_used": [],
+   "assembled": "Tracks corporate bond spreads over the KTB of matching tenor by credit rating, using KOFIA yield data.",
+   "name_conflict": true,
+   "name": "bond-spread-monitor-kofia-ktb",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "peer-finder": {
+   "g": "finance-analysis-assistant",
+   "G": [
+    "peer-comparison-table",
+    "finance-analysis-assistant",
+    "fx-translation"
+   ],
+   "d_hat": "Finds peer companies for a stock code: same KRX industry, market cap 0.3x–3x; returns ticker list only.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "building comparable-company valuation tables for peers",
+    "answering general financial analysis questions about korean stocks",
+    "converting krw financial statements into usd"
+   ],
+   "phrases_kept": [
+    "answering general financial analysis questions about korean stocks",
+    "converting krw financial statements into usd"
+   ],
+   "phrases_used": [],
+   "assembled": "Finds peer companies for a stock code: same KRX industry, market cap 0.3x–3x; returns ticker list only.",
+   "name_conflict": true,
+   "name": "krx-peer-finder",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "free-cash-flow-fcff": {
+   "g": "free-cash-flow",
+   "G": [
+    "free-cash-flow",
+    "fcf-yield-screen",
+    "excel-modeling-best-practices"
+   ],
+   "d_hat": "Forecasts unlevered FCFF per year from EBIT, tax rate, D&A, capex and NWC change for a DCF. Not historical.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing operating cash flow minus capital expenditures",
+    "ranking stocks by free cash flow yield",
+    "general spreadsheet model design conventions"
+   ],
+   "phrases_kept": [
+    "computing operating cash flow minus capital expenditures",
+    "general spreadsheet model design conventions"
+   ],
+   "phrases_used": [],
+   "assembled": "Forecasts unlevered FCFF per year from EBIT, tax rate, D&A, capex and NWC change for a DCF. Not historical.",
+   "name_conflict": true,
+   "name": "free-cash-flow-forecast-fcff-dcf",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "rate-sensitivity": {
+   "g": "fx-sensitivity",
+   "G": [
+    "fx-sensitivity",
+    "share-issue-summary",
+    "dart-consolidated-statements"
+   ],
+   "d_hat": "Reads interest rate risk tables in filings and estimates the pre-tax profit effect of +/-100bp rate moves.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating krw/usd sensitivity of pre-tax profit",
+    "summarizing new share issuance disclosures",
+    "downloading consolidated financial statements from dart"
+   ],
+   "phrases_kept": [
+    "estimating krw/usd sensitivity of pre-tax profit"
+   ],
+   "phrases_used": [],
+   "assembled": "Reads interest rate risk tables in filings and estimates the pre-tax profit effect of +/-100bp rate moves.",
+   "name_conflict": false,
+   "name": "rate-sensitivity",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "retail-sentiment": {
+   "g": "margin-balance-monitor",
+   "G": [
+    "margin-balance-monitor",
+    "foreign-investor-flows",
+    "price-to-book"
+   ],
+   "d_hat": "Market-wide retail sentiment indicators: investor deposits (KOFIA) and total credit balance, with trend over a date range.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracks credit loan margin balance ratios",
+    "reports foreign and institutional net trading flows",
+    "computes price-to-book valuation ratios"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Market-wide retail sentiment indicators: investor deposits (KOFIA) and total credit balance, with trend over a date range.",
+   "name_conflict": false,
+   "name": "retail-sentiment",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dividend-growth-screen": {
+   "g": "dividend-calculator",
+   "G": [
+    "fcf-yield-screen",
+    "dividend-calculator",
+    "dividend-yield-payout"
+   ],
+   "d_hat": "Screens KOSPI stocks that raised dividends per share for at least 5 consecutive years.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "ranking kospi 200 stocks by fcf yield",
+    "dividend calculations for korean stocks",
+    "dividend yield and payout ratio analysis"
+   ],
+   "phrases_kept": [
+    "ranking kospi 200 stocks by fcf yield"
+   ],
+   "phrases_used": [
+    "ranking kospi 200 stocks by fcf yield"
+   ],
+   "assembled": "Screens KOSPI stocks that raised dividends per share for at least 5 consecutive years. Does not cover: ranking kospi 200 stocks by fcf yield.",
+   "name_conflict": true,
+   "name": "kospi-dividend-growth-streak-screen",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "edgar-financials": {
+   "g": "dart-financial-statements",
+   "G": [
+    "dart-financial-statements",
+    "dart-consolidated-statements",
+    "dart-segment-revenue"
+   ],
+   "d_hat": "Fetches US company financials from SEC EDGAR XBRL facts by ticker or CIK, building quarterly revenue, net income and asset series.",
+   "d_tries": 2,
+   "d_fallback": false,
+   "phrases_raw": [
+    "downloading overall financial statements of korean listed companies",
+    "fetching consolidated income, balance sheet and cash flow",
+    "extracting revenue and operating profit by segment"
+   ],
+   "phrases_kept": [
+    "downloading overall financial statements of korean listed companies",
+    "fetching consolidated income, balance sheet and cash flow",
+    "extracting revenue and operating profit by segment"
+   ],
+   "phrases_used": [],
+   "assembled": "Fetches US company financials from SEC EDGAR XBRL facts by ticker or CIK, building quarterly revenue, net income and asset series.",
+   "name_conflict": false,
+   "name": "edgar-financials",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "tax-loss-harvesting": {
+   "g": "cost-of-capital",
+   "G": [
+    "cost-of-capital",
+    "dividend-calculator",
+    "historical-volatility"
+   ],
+   "d_hat": "Harvests overseas stock tax losses: finds unrealized losses to offset realized gains above the 2.5M won deduction at 22%.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating discount rates for korean equities",
+    "computing dividend yields and payouts for korean stocks",
+    "measuring annualized price volatility from daily log returns"
+   ],
+   "phrases_kept": [
+    "estimating discount rates for korean equities",
+    "measuring annualized price volatility from daily log returns"
+   ],
+   "phrases_used": [],
+   "assembled": "Harvests overseas stock tax losses: finds unrealized losses to offset realized gains above the 2.5M won deduction at 22%.",
+   "name_conflict": false,
+   "name": "tax-loss-harvesting",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "shareholder-meeting-calendar": {
+   "g": "ex-dividend-calendar",
+   "G": [
+    "ex-dividend-calendar",
+    "dividend-calculator",
+    "forward-pe"
+   ],
+   "d_hat": "Lists AGM and EGM dates for a stock: meeting date, time, venue and e-voting period from the shareholder meeting notice.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "looking up dividend record, ex-dividend, and payment dates",
+    "computing dividend amounts and yields for korean stocks",
+    "calculating forward price-to-earnings ratios for korean companies"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Lists AGM and EGM dates for a stock: meeting date, time, venue and e-voting period from the shareholder meeting notice.",
+   "name_conflict": true,
+   "name": "shareholder-meeting-calendar-agm-egm-kr",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "earnings-surprise-us": {
+   "g": "earnings-surprise",
+   "G": [
+    "earnings-surprise",
+    "earnings-review",
+    "ev-ebitda-us"
+   ],
+   "d_hat": "Computes US company adjusted EPS surprise versus consensus EPS, plus the after-hours price reaction to the earnings release.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "comparing reported revenue against analyst consensus",
+    "quarterly earnings analysis for korean companies",
+    "ev/ebitda valuation using adjusted ebitda"
+   ],
+   "phrases_kept": [
+    "comparing reported revenue against analyst consensus",
+    "ev/ebitda valuation using adjusted ebitda"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes US company adjusted EPS surprise versus consensus EPS, plus the after-hours price reaction to the earnings release.",
+   "name_conflict": true,
+   "name": "us-earnings-surprise",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "wacc-estimator-us": {
+   "g": "wacc-estimator",
+   "G": [
+    "wacc-estimator",
+    "cost-of-capital",
+    "free-cash-flow-fcff"
+   ],
+   "d_hat": "Estimates US company WACC from a ticker using 10Y Treasury, Damodaran ERP, S&P 500 beta, and market-value weights.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating korean company weighted average cost of capital",
+    "estimating cost of capital for korean stocks",
+    "calculating free cash flow for valuation"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Estimates US company WACC from a ticker using 10Y Treasury, Damodaran ERP, S&P 500 beta, and market-value weights.",
+   "name_conflict": true,
+   "name": "wacc-estimator-us-market",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "risk-adjusted-return": {
+   "g": "peer-finder",
+   "G": [
+    "cost-of-capital",
+    "peer-finder",
+    "ev-ebitda"
+   ],
+   "d_hat": "Computes a stock's Sharpe ratio: annualized excess return over the CD 91-day rate divided by annualized volatility.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating discount rates and wacc for korean equities",
+    "identifying comparable companies for korean stock peer analysis",
+    "computing ev/ebitda multiples for krx-listed stocks"
+   ],
+   "phrases_kept": [
+    "estimating discount rates and wacc for korean equities",
+    "computing ev/ebitda multiples for krx-listed stocks"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes a stock's Sharpe ratio: annualized excess return over the CD 91-day rate divided by annualized volatility.",
+   "name_conflict": false,
+   "name": "risk-adjusted-return",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "duration-estimator": {
+   "g": "wacc-estimator-us",
+   "G": [
+    "wacc-estimator-us",
+    "earnings-surprise-us",
+    "share-issue-summary"
+   ],
+   "d_hat": "Estimates task durations from optimistic, likely and pessimistic inputs using PERT and finds the critical path.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing weighted average cost of capital",
+    "calculating earnings surprise versus consensus estimates",
+    "summarizing new share issuance disclosures"
+   ],
+   "phrases_kept": [
+    "computing weighted average cost of capital"
+   ],
+   "phrases_used": [],
+   "assembled": "Estimates task durations from optimistic, likely and pessimistic inputs using PERT and finds the critical path.",
+   "name_conflict": false,
+   "name": "duration-estimator",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "korean-market-glossary": {
+   "g": "cost-of-capital",
+   "G": [
+    "wacc-estimator-us",
+    "wacc-estimator",
+    "cost-of-capital"
+   ],
+   "d_hat": "Looks up Korean market terms: gives each Korean term's English equivalent and a short definition.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing a generic weighted cost of capital",
+    "estimating korean company wacc from market inputs",
+    "estimating cost of capital for korean stocks"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Looks up Korean market terms: gives each Korean term's English equivalent and a short definition.",
+   "name_conflict": true,
+   "name": "korean-market-term-glossary",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "agm-agenda-review": {
+   "g": "dividend-calculator",
+   "G": [
+    "ex-dividend-calendar",
+    "shareholder-meeting-calendar",
+    "dividend-calculator"
+   ],
+   "d_hat": "Summarizes shareholder meeting agendas from a meeting notice: agenda items, director and auditor candidates, articles amendments.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "looking up dividend record and payment dates",
+    "scheduling and tracking shareholder meeting dates",
+    "computing dividend amounts and yields"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Summarizes shareholder meeting agendas from a meeting notice: agenda items, director and auditor candidates, articles amendments.",
+   "name_conflict": false,
+   "name": "agm-agenda-review",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "solvency-check": {
+   "g": "coverage-tracker",
+   "G": [
+    "coverage-tracker",
+    "bond-ytm",
+    "risk-adjusted-return"
+   ],
+   "d_hat": "Computes balance sheet leverage ratios for a stock: debt ratio and net debt ratio from liabilities, equity and borrowings.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking broker coverage changes for korean stocks",
+    "computing yield to maturity for korean bonds",
+    "measuring risk for korean stocks"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Computes balance sheet leverage ratios for a stock: debt ratio and net debt ratio from liabilities, equity and borrowings.",
+   "name_conflict": false,
+   "name": "solvency-check",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "ebitda-margin-trend": {
+   "g": "ownership-analysis",
+   "G": [
+    "ev-ebitda",
+    "ownership-analysis",
+    "free-cash-flow"
+   ],
+   "d_hat": "Charts quarterly EBITDA margin trend for a stock from operating profit, depreciation and amortization over revenue. No valuation.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "enterprise value and ebitda multiples",
+    "shareholder structure and ownership stakes",
+    "free cash flow from cash flow statements"
+   ],
+   "phrases_kept": [
+    "enterprise value and ebitda multiples"
+   ],
+   "phrases_used": [],
+   "assembled": "Charts quarterly EBITDA margin trend for a stock from operating profit, depreciation and amortization over revenue. No valuation.",
+   "name_conflict": true,
+   "name": "quarterly-ebitda-margin-trend",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "operating-margin-trend-global": {
+   "g": "operating-margin-trend",
+   "G": [
+    "operating-margin-trend",
+    "peer-comparison-table",
+    "ebitda-margin-trend"
+   ],
+   "d_hat": "Charts annual adjusted EBIT margins from Capital IQ exports to compare several global peer companies on one axis.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking quarterly operating profit margins over time",
+    "building peer valuation and profitability comparison tables",
+    "analyzing ebitda margins across korean company periods"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Charts annual adjusted EBIT margins from Capital IQ exports to compare several global peer companies on one axis.",
+   "name_conflict": true,
+   "name": "operating-margin-trend-capital-iq-global-peers",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "chart-style-guide": {
+   "g": "rate-sensitivity",
+   "G": [
+    "korean-disclosure-toolkit",
+    "rights-offering-summary",
+    "rate-sensitivity"
+   ],
+   "d_hat": "Checklist for styling charts: palette and fonts, axis and label rules, and source line formatting.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "general korean dart corporate disclosure filings",
+    "summarizing rights offering capital increase disclosures",
+    "sensitivity analysis from financial statement notes"
+   ],
+   "phrases_kept": [
+    "sensitivity analysis from financial statement notes"
+   ],
+   "phrases_used": [],
+   "assembled": "Checklist for styling charts: palette and fonts, axis and label rules, and source line formatting.",
+   "name_conflict": false,
+   "name": "chart-style-guide",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "bw-summary": {
+   "g": "bond-issuance-summary",
+   "G": [
+    "share-issue-summary",
+    "bond-issuance-summary",
+    "portfolio-report"
+   ],
+   "d_hat": "Summarizes bond with warrant (신주인수권부사채) terms: exercise price and period, detachability, and shares issuable on exercise.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing new share issuance disclosures",
+    "summarizing equity-linked bond disclosures on dart",
+    "analyzing portfolios for korean stock investors"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Summarizes bond with warrant (신주인수권부사채) terms: exercise price and period, detachability, and shares issuable on exercise.",
+   "name_conflict": false,
+   "name": "bw-summary",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "rights-offering-calendar": {
+   "g": "rights-offering-summary",
+   "G": [
+    "rights-offering-summary",
+    "ex-dividend-calendar",
+    "share-issue-summary"
+   ],
+   "d_hat": "Builds a timeline table of a rights offering's key dates: record, trading, subscription, payment, and new share listing.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing rights offering capital increase disclosures",
+    "finding dividend record and payment dates",
+    "summarizing new share issuance disclosures"
+   ],
+   "phrases_kept": [
+    "finding dividend record and payment dates"
+   ],
+   "phrases_used": [],
+   "assembled": "Builds a timeline table of a rights offering's key dates: record, trading, subscription, payment, and new share listing.",
+   "name_conflict": true,
+   "name": "rights-offering-calendar-timeline",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "rsi-indicator": {
+   "g": "price-bands",
+   "G": [
+    "price-bands",
+    "ebitda-margin-trend",
+    "stock-beta"
+   ],
+   "d_hat": "Computes the 14-day RSI momentum oscillator for a stock code using Wilder smoothing, with overbought/oversold flags.",
+   "d_tries": 2,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing technical price band indicators for korean stocks",
+    "analyzing ebitda margin changes over time for korean companies",
+    "estimating korean stock beta against kospi via weekly returns"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Computes the 14-day RSI momentum oscillator for a stock code using Wilder smoothing, with overbought/oversold flags.",
+   "name_conflict": false,
+   "name": "rsi-indicator",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "bond-ytm-us": {
+   "g": "bond-ytm",
+   "G": [
+    "bond-ytm",
+    "bond-duration",
+    "dividend-calculator"
+   ],
+   "d_hat": "Computes US Treasury yield to maturity from a 32nds-quoted price, coupon and maturity, using actual/actual accrual.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing yield to maturity from bond prices",
+    "duration, convexity, and yield-shift price sensitivity",
+    "calculating dividends for korean stocks"
+   ],
+   "phrases_kept": [
+    "duration, convexity, and yield-shift price sensitivity"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes US Treasury yield to maturity from a 32nds-quoted price, coupon and maturity, using actual/actual accrual.",
+   "name_conflict": true,
+   "name": "bond-ytm-us-treasury",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "book-value-history": {
+   "g": "peer-finder",
+   "G": [
+    "price-to-book",
+    "peer-finder",
+    "edgar-financials"
+   ],
+   "d_hat": "Book value analysis for Korean stocks.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "computing price-to-book ratios for korean listed companies",
+    "identifying comparable peer companies for korean stocks",
+    "downloading us company financials from sec edgar"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Book value analysis for Korean stocks.",
+   "name_conflict": false,
+   "name": "book-value-history",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "trailing-pe-us": {
+   "g": "trailing-pe",
+   "G": [
+    "trailing-pe",
+    "ev-ebitda",
+    "pe-band-chart"
+   ],
+   "d_hat": "Trailing P/E for US-listed stocks (NYSE/Nasdaq) using diluted GAAP EPS from SEC 10-Q and 10-K filings, in USD.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing trailing price-to-earnings ratios",
+    "calculating enterprise value to ebitda multiples",
+    "drawing historical p/e band charts"
+   ],
+   "phrases_kept": [
+    "calculating enterprise value to ebitda multiples",
+    "drawing historical p/e band charts"
+   ],
+   "phrases_used": [],
+   "assembled": "Trailing P/E for US-listed stocks (NYSE/Nasdaq) using diluted GAAP EPS from SEC 10-Q and 10-K filings, in USD.",
+   "name_conflict": true,
+   "name": "trailing-pe-us-sec-filings",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "equity-research-kit": {
+   "g": "valuation-multiples-toolkit",
+   "G": [
+    "valuation-multiples-toolkit",
+    "korean-market-glossary",
+    "korean-disclosure-toolkit"
+   ],
+   "d_hat": "Step-by-step checklist for an equity initiation report: data sources, steps, and report outline.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing equity valuation multiples for stocks",
+    "translating korean capital market terminology to english",
+    "retrieving and parsing korean dart corporate filings"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Step-by-step checklist for an equity initiation report: data sources, steps, and report outline.",
+   "name_conflict": false,
+   "name": "equity-research-kit",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "stock-beta-us": {
+   "g": "stock-beta",
+   "G": [
+    "stock-beta",
+    "book-value-history",
+    "cost-of-capital"
+   ],
+   "d_hat": "Blume-adjusted beta for US stocks, from 5 years of monthly returns versus the S&P 500 (2/3 raw beta + 1/3).",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating beta against kospi index",
+    "historical book value analysis",
+    "estimating cost of capital"
+   ],
+   "phrases_kept": [
+    "estimating beta against kospi index"
+   ],
+   "phrases_used": [
+    "estimating beta against kospi index"
+   ],
+   "assembled": "Blume-adjusted beta for US stocks, from 5 years of monthly returns versus the S&P 500 (2/3 raw beta + 1/3). Does not cover: estimating beta against kospi index.",
+   "name_conflict": true,
+   "name": "stock-beta-us-blume-adjusted",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "pbr-band-chart": {
+   "g": "pe-band-chart",
+   "G": [
+    "pe-band-chart",
+    "operating-margin-trend",
+    "free-cash-flow"
+   ],
+   "d_hat": "Plots a KRX stock's 5-year price against book-value bands (0.5x-2.5x BVPS) to show historical P/B valuation range.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "plots monthly price against trailing earnings multiple bands",
+    "tracks quarterly operating margin trend and turning points",
+    "computes free cash flow history from cash flow statements"
+   ],
+   "phrases_kept": [
+    "plots monthly price against trailing earnings multiple bands"
+   ],
+   "phrases_used": [],
+   "assembled": "Plots a KRX stock's 5-year price against book-value bands (0.5x-2.5x BVPS) to show historical P/B valuation range.",
+   "name_conflict": true,
+   "name": "krx-pbr-band-chart",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "python-data-cleaning": {
+   "g": "excel-modeling-best-practices",
+   "G": [
+    "equity-research-kit",
+    "excel-modeling-best-practices",
+    "edgar-financials"
+   ],
+   "d_hat": "Clean pandas DataFrames: parse thousands separators, negatives in parentheses, Korean date formats, and handle missing values.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "full stock research reports for korean equities",
+    "building clean excel financial models",
+    "downloading us company financials from sec edgar"
+   ],
+   "phrases_kept": [
+    "full stock research reports for korean equities"
+   ],
+   "phrases_used": [],
+   "assembled": "Clean pandas DataFrames: parse thousands separators, negatives in parentheses, Korean date formats, and handle missing values.",
+   "name_conflict": false,
+   "name": "python-data-cleaning",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dart-quick-financials": {
+   "g": "dart-consolidated-statements",
+   "G": [
+    "dart-financial-statements",
+    "dart-consolidated-statements",
+    "dart-segment-revenue"
+   ],
+   "d_hat": "Fetch only three headline DART figures (revenue, operating profit, net income) for a company and year, not full statements.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "fetching general financial statement downloads from dart",
+    "pulling consolidated income, balance sheet, cash flow via openapi",
+    "extracting segment revenue and operating profit from notes"
+   ],
+   "phrases_kept": [
+    "pulling consolidated income, balance sheet, cash flow via openapi",
+    "extracting segment revenue and operating profit from notes"
+   ],
+   "phrases_used": [],
+   "assembled": "Fetch only three headline DART figures (revenue, operating profit, net income) for a company and year, not full statements.",
+   "name_conflict": true,
+   "name": "dart-quick-financials-headline-key-accounts",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "investment-memo-writer": {
+   "g": "rate-sensitivity",
+   "G": [
+    "ownership-analysis",
+    "korean-market-glossary",
+    "rate-sensitivity"
+   ],
+   "d_hat": "Drafts investment memos with thesis, risks, valuation and catalysts sections plus a one-page summary.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "shareholder stake analysis for korean firms",
+    "korean capital market terminology translation",
+    "sensitivity analysis from financial statement notes"
+   ],
+   "phrases_kept": [
+    "sensitivity analysis from financial statement notes"
+   ],
+   "phrases_used": [],
+   "assembled": "Drafts investment memos with thesis, risks, valuation and catalysts sections plus a one-page summary.",
+   "name_conflict": false,
+   "name": "investment-memo-writer",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "credit-health-snapshot": {
+   "g": "interest-coverage",
+   "G": [
+    "interest-coverage",
+    "risk-adjusted-return",
+    "debt-maturity-profile"
+   ],
+   "d_hat": "Computes a company's current ratio from latest-quarter current assets and current liabilities for a stock code.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "calculating interest coverage ratios from financial statements",
+    "computing volatility and risk-adjusted return metrics",
+    "mapping borrowings and bonds by maturity year"
+   ],
+   "phrases_kept": [
+    "mapping borrowings and bonds by maturity year"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes a company's current ratio from latest-quarter current assets and current liabilities for a stock code.",
+   "name_conflict": false,
+   "name": "credit-health-snapshot",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "segment-chart": {
+   "g": "dart-segment-revenue",
+   "G": [
+    "dart-segment-revenue",
+    "operating-margin-trend-global",
+    "earnings-review"
+   ],
+   "d_hat": "Draws stacked bar and line charts of revenue and margins from a user-supplied segment CSV table; does not extract data.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "extracting segment revenue from dart filings",
+    "charting operating margin trends over time",
+    "analyzing quarterly earnings for korean companies"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Draws stacked bar and line charts of revenue and margins from a user-supplied segment CSV table; does not extract data.",
+   "name_conflict": true,
+   "name": "segment-chart-user-data",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "fixed-income-quick": {
+   "g": "bond-duration",
+   "G": [
+    "bond-duration",
+    "bond-ytm-us",
+    "bond-ytm"
+   ],
+   "d_hat": "Quick current yield of a bond from its annual coupon and price. No duration or convexity calculations.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "bond price sensitivity and convexity analysis",
+    "generic bond yield to maturity calculation",
+    "yield to maturity for korean bonds"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Quick current yield of a bond from its annual coupon and price. No duration or convexity calculations.",
+   "name_conflict": false,
+   "name": "fixed-income-quick",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "convertible-bond-summary-us": {
+   "g": "convertible-bond-summary",
+   "G": [
+    "convertible-bond-summary",
+    "bond-issuance-summary",
+    "bw-summary"
+   ],
+   "d_hat": "Summarizes US convertible notes from 8-K and 424B filings: conversion rate, capped calls, settlement method.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing convertible bond issuance terms and dilution",
+    "summarizing equity-linked bond disclosures",
+    "summarizing bonds with warrant exercise terms"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Summarizes US convertible notes from 8-K and 424B filings: conversion rate, capped calls, settlement method.",
+   "name_conflict": true,
+   "name": "us-convertible-bond-term-summary",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "roe-ranking": {
+   "g": "ownership-analysis",
+   "G": [
+    "investment-memo-writer",
+    "ownership-analysis",
+    "debt-maturity-profile"
+   ],
+   "d_hat": "Ranks all companies in a KRX industry by latest annual return on equity, with the industry median.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "drafting structured investment memos from analysis notes",
+    "analyzing ownership structures of korean companies",
+    "bucketing borrowings and bonds by maturity year"
+   ],
+   "phrases_kept": [
+    "bucketing borrowings and bonds by maturity year"
+   ],
+   "phrases_used": [],
+   "assembled": "Ranks all companies in a KRX industry by latest annual return on equity, with the industry median.",
+   "name_conflict": false,
+   "name": "roe-ranking",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "margin-call-calculator": {
+   "g": "dividend-calculator",
+   "G": [
+    "dividend-calculator",
+    "forward-pe",
+    "ebitda-margin-trend"
+   ],
+   "d_hat": "Computes margin call prices and forced liquidation prices from collateral value, loan amount, and maintenance ratio.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing dividend yields for korean equities",
+    "calculating forward price-to-earnings ratios for korean companies",
+    "tracking ebitda margin changes over time"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Computes margin call prices and forced liquidation prices from collateral value, loan amount, and maintenance ratio.",
+   "name_conflict": true,
+   "name": "margin-call-calculator-brokerage-margin-account",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "cash-flow-reader": {
+   "g": "free-cash-flow",
+   "G": [
+    "free-cash-flow",
+    "dart-financial-statements",
+    "operating-margin-trend"
+   ],
+   "d_hat": "Reads cash flow statements of Korean companies.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "computing free cash flow from cash statements",
+    "downloading korean listed company financial statements",
+    "tracking quarterly operating margin turning points"
+   ],
+   "phrases_kept": [
+    "downloading korean listed company financial statements"
+   ],
+   "phrases_used": [
+    "downloading korean listed company financial statements"
+   ],
+   "assembled": "Reads cash flow statements of Korean companies. Does not cover: downloading korean listed company financial statements.",
+   "name_conflict": false,
+   "name": "cash-flow-reader",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "technical-analysis-toolkit": {
+   "g": "price-bands",
+   "G": [
+    "price-bands",
+    "historical-volatility",
+    "finance-analysis-assistant"
+   ],
+   "d_hat": "Complete technical analysis for any stock: trends, moving averages, momentum, volatility, support and resistance.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "computing technical price band indicators for korean stocks",
+    "annualized volatility from daily log returns over multiple windows",
+    "general financial analysis questions for korean stocks"
+   ],
+   "phrases_kept": [
+    "annualized volatility from daily log returns over multiple windows",
+    "general financial analysis questions for korean stocks"
+   ],
+   "phrases_used": [],
+   "assembled": "Complete technical analysis for any stock: trends, moving averages, momentum, volatility, support and resistance.",
+   "name_conflict": false,
+   "name": "technical-analysis-toolkit",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "consensus-tracker": {
+   "g": "earnings-surprise",
+   "G": [
+    "earnings-surprise",
+    "earnings-surprise-us",
+    "ebitda-margin-trend"
+   ],
+   "d_hat": "Tracks weekly revisions to consensus operating profit forecasts over 1 and 3 months for a Korean stock code.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "comparing reported revenue and profit to consensus",
+    "calculating earnings surprise percentages",
+    "analyzing korean company ebitda margins over time"
+   ],
+   "phrases_kept": [
+    "comparing reported revenue and profit to consensus"
+   ],
+   "phrases_used": [],
+   "assembled": "Tracks weekly revisions to consensus operating profit forecasts over 1 and 3 months for a Korean stock code.",
+   "name_conflict": false,
+   "name": "consensus-tracker",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dividend-yield-payout-us": {
+   "g": "dividend-yield-payout",
+   "G": [
+    "dividend-yield-payout",
+    "stock-beta-us",
+    "dividend-calculator"
+   ],
+   "d_hat": "Forward dividend yield and payout ratio for US-listed stocks, using latest quarterly dividend annualized and GAAP EPS.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing dividend yield and payout ratio for korean stocks",
+    "calculating stock beta against a market index",
+    "general dividend calculations for korean stocks"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Forward dividend yield and payout ratio for US-listed stocks, using latest quarterly dividend annualized and GAAP EPS.",
+   "name_conflict": true,
+   "name": "us-dividend-forward-yield-payout",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "portfolio-toolkit": {
+   "g": "portfolio-report",
+   "G": [
+    "portfolio-report",
+    "valuation-multiples-toolkit",
+    "portfolio-rebalancing"
+   ],
+   "d_hat": "Everything for portfolio management: allocation, rebalancing, performance, risk and tax.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "summarizing holdings and performance for korean investors",
+    "computing equity valuation multiples for individual stocks",
+    "generating buy and sell orders toward target weights"
+   ],
+   "phrases_kept": [
+    "summarizing holdings and performance for korean investors",
+    "generating buy and sell orders toward target weights"
+   ],
+   "phrases_used": [],
+   "assembled": "Everything for portfolio management: allocation, rebalancing, performance, risk and tax.",
+   "name_conflict": true,
+   "name": "portfolio-allocation-primer",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "low-pe-screener": {
+   "g": "dividend-growth-screen",
+   "G": [
+    "dividend-growth-screen",
+    "trailing-pe-us",
+    "fcf-yield-screen"
+   ],
+   "d_hat": "Screens all KRX stocks by P/E ratio, filtering by P/E ceiling and minimum market cap, ranked lowest P/E first.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "screening kospi stocks for consecutive dividend increases",
+    "computing trailing price-to-earnings from quarterly diluted eps",
+    "ranking kospi 200 stocks by free cash flow yield"
+   ],
+   "phrases_kept": [
+    "ranking kospi 200 stocks by free cash flow yield"
+   ],
+   "phrases_used": [],
+   "assembled": "Screens all KRX stocks by P/E ratio, filtering by P/E ceiling and minimum market cap, ranked lowest P/E first.",
+   "name_conflict": false,
+   "name": "low-pe-screener",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "capital-raise-digest": {
+   "g": "rights-offering-summary",
+   "G": [
+    "rights-offering-summary",
+    "korean-disclosure-toolkit",
+    "bw-summary"
+   ],
+   "d_hat": "Lists daily DART filings for capital increases, CB and BW issues in a date range; titles and links only, no reading.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing paid-in capital increase disclosures",
+    "general korean corporate disclosure filings on dart",
+    "summarizing bonds with warrants terms"
+   ],
+   "phrases_kept": [
+    "summarizing paid-in capital increase disclosures",
+    "summarizing bonds with warrants terms"
+   ],
+   "phrases_used": [],
+   "assembled": "Lists daily DART filings for capital increases, CB and BW issues in a date range; titles and links only, no reading.",
+   "name_conflict": false,
+   "name": "capital-raise-digest",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "fx-hedge-review": {
+   "g": "earnings-review",
+   "G": [
+    "interest-coverage",
+    "portfolio-report",
+    "earnings-review"
+   ],
+   "d_hat": "Reviews FX forwards and swaps by currency: notional, fair value, and hedge accounting designation, output as a derivatives table.",
+   "d_tries": 4,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing interest coverage ratios and trends",
+    "analyzing portfolios for korean stock investors",
+    "reviewing quarterly earnings for korean companies"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Reviews FX forwards and swaps by currency: notional, fair value, and hedge accounting designation, output as a derivatives table.",
+   "name_conflict": false,
+   "name": "fx-hedge-review",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "ownership-watch": {
+   "g": "major-shareholder-changes",
+   "G": [
+    "major-shareholder-changes",
+    "korean-disclosure-toolkit",
+    "debt-maturity-profile"
+   ],
+   "d_hat": "Lists the ten largest shareholders and their stakes from the latest annual report's shareholders section.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking 5% stake changes and holder intent",
+    "general korean dart filing and disclosure analysis",
+    "bucketing borrowings and bonds by maturity year"
+   ],
+   "phrases_kept": [
+    "tracking 5% stake changes and holder intent",
+    "bucketing borrowings and bonds by maturity year"
+   ],
+   "phrases_used": [],
+   "assembled": "Lists the ten largest shareholders and their stakes from the latest annual report's shareholders section.",
+   "name_conflict": true,
+   "name": "ownership-watch-annual-report-top-holders",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "debt-maturity-profile-us": {
+   "g": "debt-maturity-profile",
+   "G": [
+    "debt-maturity-profile",
+    "bond-ytm",
+    "bond-ytm-us"
+   ],
+   "d_hat": "Charts principal due by year from a US company's 10-K contractual obligations table, from its ticker.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "bucketing debt by maturity year",
+    "yield to maturity for korean bonds",
+    "general bond yield to maturity calculation"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Charts principal due by year from a US company's 10-K contractual obligations table, from its ticker.",
+   "name_conflict": true,
+   "name": "us-10k-debt-maturity-profile",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "ev-sales": {
+   "g": "valuation-multiples-toolkit",
+   "G": [
+    "valuation-multiples-toolkit",
+    "ev-ebitda-us",
+    "ev-ebitda"
+   ],
+   "d_hat": "Computes a stock's EV/Sales ratio from market cap, net debt and TTM revenue, and compares it with revenue growth.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing a full set of valuation multiples",
+    "computing ev/ebitda using adjusted ebitda",
+    "computing ev/ebitda for krx stocks"
+   ],
+   "phrases_kept": [
+    "computing ev/ebitda using adjusted ebitda",
+    "computing ev/ebitda for krx stocks"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes a stock's EV/Sales ratio from market cap, net debt and TTM revenue, and compares it with revenue growth.",
+   "name_conflict": false,
+   "name": "ev-sales",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "volatility-check": {
+   "g": "historical-volatility",
+   "G": [
+    "historical-volatility",
+    "portfolio-report",
+    "technical-analysis-toolkit"
+   ],
+   "d_hat": "Market-wide implied volatility: VKOSPI level, its one-year range, and KOSPI 200 at-the-money implied vol readings.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "calculating annualized volatility from daily log returns",
+    "analyzing portfolios for korean stock investors",
+    "charting trends, moving averages, momentum, and support levels"
+   ],
+   "phrases_kept": [
+    "calculating annualized volatility from daily log returns",
+    "charting trends, moving averages, momentum, and support levels"
+   ],
+   "phrases_used": [],
+   "assembled": "Market-wide implied volatility: VKOSPI level, its one-year range, and KOSPI 200 at-the-money implied vol readings.",
+   "name_conflict": false,
+   "name": "volatility-check",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "market-flow-board": {
+   "g": "foreign-investor-flows",
+   "G": [
+    "trading-flows",
+    "foreign-investor-flows",
+    "volatility-check"
+   ],
+   "d_hat": "Market-wide KRX index level, change, turnover, and advancing vs declining issue counts for a given date.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "korean stock investor flow data",
+    "daily foreign and institutional net trading",
+    "volatility analysis of korean market"
+   ],
+   "phrases_kept": [
+    "korean stock investor flow data"
+   ],
+   "phrases_used": [
+    "korean stock investor flow data"
+   ],
+   "assembled": "Market-wide KRX index level, change, turnover, and advancing vs declining issue counts for a given date. Does not cover: korean stock investor flow data.",
+   "name_conflict": false,
+   "name": "market-flow-board",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "mezzanine-market-stats": {
+   "g": "volatility-check",
+   "G": [
+    "capital-raise-digest",
+    "volatility-check",
+    "convertible-bond-summary-us"
+   ],
+   "d_hat": "Monthly market-wide CB, BW and EB issuance statistics: filing counts and amounts totaled by month and instrument.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "analyzing capital increase disclosures and dilution",
+    "korean market volatility analysis",
+    "summarizing convertible bond terms"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Monthly market-wide CB, BW and EB issuance statistics: filing counts and amounts totaled by month and instrument.",
+   "name_conflict": true,
+   "name": "mezzanine-market-stats-monthly-issuance",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "volatility-of-earnings": {
+   "g": "volatility-check",
+   "G": [
+    "historical-volatility",
+    "volatility-check",
+    "earnings-review"
+   ],
+   "d_hat": "Computes a stock's earnings volatility from 10 years of annual EPS growth, via the standard deviation of that growth.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing annualized volatility from historical log returns",
+    "analyzing volatility specifically for korean market",
+    "reviewing quarterly earnings of korean companies"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Computes a stock's earnings volatility from 10 years of annual EPS growth, via the standard deviation of that growth.",
+   "name_conflict": true,
+   "name": "volatility-of-earnings-eps-growth",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "financial-news-search": {
+   "g": "dart-financial-statements",
+   "G": [
+    "dart-financial-statements",
+    "korean-disclosure-toolkit",
+    "roe-ranking"
+   ],
+   "d_hat": "Searches major Korean economic newspapers for news by query, returning headlines, dates, and article links.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "fetching official financial statements from dart filings",
+    "broad multi-type korean corporate disclosure handling",
+    "ranking companies by return on equity"
+   ],
+   "phrases_kept": [
+    "ranking companies by return on equity"
+   ],
+   "phrases_used": [],
+   "assembled": "Searches major Korean economic newspapers for news by query, returning headlines, dates, and article links.",
+   "name_conflict": false,
+   "name": "financial-news-search",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "earnings-alert": {
+   "g": "earnings-review",
+   "G": [
+    "preliminary-earnings-reader",
+    "earnings-review",
+    "insider-trading-filings"
+   ],
+   "d_hat": "Polls DART for new preliminary earnings filings and sends the title and time to Slack. Does not read figures.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing revenue and profit changes from preliminary announcements",
+    "quarterly earnings analysis for korean companies",
+    "listing executive and shareholder share trades"
+   ],
+   "phrases_kept": [
+    "listing executive and shareholder share trades"
+   ],
+   "phrases_used": [],
+   "assembled": "Polls DART for new preliminary earnings filings and sends the title and time to Slack. Does not read figures.",
+   "name_conflict": true,
+   "name": "earnings-alert-dart-prelim",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "cost-analysis": {
+   "g": "rate-sensitivity",
+   "G": [
+    "finance-analysis-assistant",
+    "rate-sensitivity",
+    "risk-adjusted-return"
+   ],
+   "d_hat": "Breaks down a company's costs by nature (materials, employee benefits, depreciation) as % of revenue, from the expenses note.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "general financial analysis questions for korean stocks",
+    "sensitivity analysis drawn from financial statement notes",
+    "risk measures and risk-adjusted return metrics for korean stocks"
+   ],
+   "phrases_kept": [
+    "general financial analysis questions for korean stocks",
+    "sensitivity analysis drawn from financial statement notes"
+   ],
+   "phrases_used": [],
+   "assembled": "Breaks down a company's costs by nature (materials, employee benefits, depreciation) as % of revenue, from the expenses note.",
+   "name_conflict": true,
+   "name": "cost-structure-by-nature",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "insider-trading-filings-us": {
+   "g": "insider-trading-filings",
+   "G": [
+    "insider-trading-filings",
+    "trading-flows",
+    "portfolio-report"
+   ],
+   "d_hat": "Retrieves US SEC Form 4 insider filings for a ticker, with transaction codes, share counts and prices.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "executive and major shareholder trade listings from dart filings",
+    "trading flow data for korean stocks",
+    "portfolio analysis for korean stock investors"
+   ],
+   "phrases_kept": [
+    "executive and major shareholder trade listings from dart filings"
+   ],
+   "phrases_used": [],
+   "assembled": "Retrieves US SEC Form 4 insider filings for a ticker, with transaction codes, share counts and prices.",
+   "name_conflict": true,
+   "name": "us-sec-form-4-insider-trading-filings",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "pe-band-chart-us": {
+   "g": "pe-band-chart",
+   "G": [
+    "pe-band-chart",
+    "pbr-band-chart",
+    "price-bands"
+   ],
+   "d_hat": "Forward P/E band chart for US stocks, using analyst forward EPS with 10x-30x bands and the current forward P/E marked.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "monthly price versus trailing eps multiple bands",
+    "price-to-book valuation band charts over years",
+    "korean stock technical indicator bands"
+   ],
+   "phrases_kept": [
+    "korean stock technical indicator bands"
+   ],
+   "phrases_used": [],
+   "assembled": "Forward P/E band chart for US stocks, using analyst forward EPS with 10x-30x bands and the current forward P/E marked.",
+   "name_conflict": true,
+   "name": "us-forward-pe-band-chart",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "earnings-calendar": {
+   "g": "earnings-review",
+   "G": [
+    "earnings-review",
+    "earnings-surprise-us",
+    "roe-ranking"
+   ],
+   "d_hat": "Builds an expected earnings release-date calendar per company for a quarter, using fair disclosure notices and prior-year dates.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "analyzing quarterly financial results for korean firms",
+    "calculating differences between expected and actual earnings",
+    "comparing return on equity across korean companies"
+   ],
+   "phrases_kept": [
+    "analyzing quarterly financial results for korean firms",
+    "comparing return on equity across korean companies"
+   ],
+   "phrases_used": [],
+   "assembled": "Builds an expected earnings release-date calendar per company for a quarter, using fair disclosure notices and prior-year dates.",
+   "name_conflict": true,
+   "name": "earnings-date-calendar",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "dart-search": {
+   "g": "financial-news-search",
+   "G": [
+    "financial-news-search",
+    "equity-research-kit",
+    "major-shareholder-changes"
+   ],
+   "d_hat": "Searches Korean DART regulatory disclosures by company, date range and report type; returns receipt numbers, titles and URLs.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "searching korean financial news articles",
+    "full equity research reports on stocks",
+    "tracking 5% stake disclosure changes on dart"
+   ],
+   "phrases_kept": [
+    "tracking 5% stake disclosure changes on dart"
+   ],
+   "phrases_used": [],
+   "assembled": "Searches Korean DART regulatory disclosures by company, date range and report type; returns receipt numbers, titles and URLs.",
+   "name_conflict": true,
+   "name": "dart-filing-search",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "margin-trend": {
+   "g": "operating-margin-trend-global",
+   "G": [
+    "ebitda-margin-trend",
+    "operating-margin-trend-global",
+    "operating-margin-trend"
+   ],
+   "d_hat": "Quarterly net profit margin for a stock: owner-attributable net income over revenue, charted across 8 quarters.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "ebitda analysis for korean companies",
+    "operating margin trend charting",
+    "quarterly operating profit margin tracking and turning points"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Quarterly net profit margin for a stock: owner-attributable net income over revenue, charted across 8 quarters.",
+   "name_conflict": true,
+   "name": "net-profit-margin-trend",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "price-to-book-insurer": {
+   "g": "price-to-book",
+   "G": [
+    "price-to-book",
+    "valuation-multiples-toolkit",
+    "dupont-roe"
+   ],
+   "d_hat": "Insurer P/B adjusted for after-tax contractual service margin (CSM) from the insurance contract note, reported and adjusted.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing p/b ratio from book value",
+    "calculating multiple valuation ratios broadly",
+    "decomposing return on equity drivers"
+   ],
+   "phrases_kept": [
+    "computing p/b ratio from book value",
+    "decomposing return on equity drivers"
+   ],
+   "phrases_used": [],
+   "assembled": "Insurer P/B adjusted for after-tax contractual service margin (CSM) from the insurance contract note, reported and adjusted.",
+   "name_conflict": true,
+   "name": "insurance-price-to-book-csm-adjusted",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "coverage-review": {
+   "g": "fx-hedge-review",
+   "G": [
+    "dart-segment-revenue",
+    "portfolio-report",
+    "fx-hedge-review"
+   ],
+   "d_hat": "Summarises a company's insurance cover from its notes: property, business interruption and D&O amounts vs. book value of assets.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "extracting segment revenue and operating profit from dart reports",
+    "analyzing portfolios for korean stock investors",
+    "reviewing fx forwards and hedge accounting notes"
+   ],
+   "phrases_kept": [
+    "reviewing fx forwards and hedge accounting notes"
+   ],
+   "phrases_used": [],
+   "assembled": "Summarises a company's insurance cover from its notes: property, business interruption and D&O amounts vs. book value of assets.",
+   "name_conflict": true,
+   "name": "insurance-coverage-review",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "country-risk-premium": {
+   "g": "wacc-estimator",
+   "G": [
+    "wacc-estimator",
+    "cost-of-capital",
+    "fx-sensitivity"
+   ],
+   "d_hat": "Looks up country risk premium by sovereign rating and CDS spread, scaled by relative equity volatility.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "estimating wacc for korean companies",
+    "estimating cost of capital for korean stocks",
+    "estimating krw/usd sensitivity of pre-tax profit"
+   ],
+   "phrases_kept": [
+    "estimating krw/usd sensitivity of pre-tax profit"
+   ],
+   "phrases_used": [],
+   "assembled": "Looks up country risk premium by sovereign rating and CDS spread, scaled by relative equity volatility.",
+   "name_conflict": true,
+   "name": "country-risk-premium-sovereign-cds-spread",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "risk-dashboard": {
+   "g": "market-flow-board",
+   "G": [
+    "beta-release",
+    "market-flow-board",
+    "ev-sales"
+   ],
+   "d_hat": "Plots a stock's drawdown from its running price peak for a given stock code, as a drawdown chart.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "planning and running beta program checklists",
+    "tracking investor and program trading flows",
+    "calculating enterprise value to sales multiples"
+   ],
+   "phrases_kept": [
+    "tracking investor and program trading flows",
+    "calculating enterprise value to sales multiples"
+   ],
+   "phrases_used": [
+    "tracking investor and program trading flows"
+   ],
+   "assembled": "Plots a stock's drawdown from its running price peak for a given stock code, as a drawdown chart. Does not cover: tracking investor and program trading flows.",
+   "name_conflict": true,
+   "name": "risk-dashboard-drawdown-plot",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "moving-average-signals-crypto": {
+   "g": "moving-average-signals",
+   "G": [
+    "technical-analysis-toolkit",
+    "moving-average-signals",
+    "rsi-indicator"
+   ],
+   "d_hat": "EMA 12/26 crossover signals on hourly crypto candles from Upbit, running 24/7 for crypto pairs.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "full multi-indicator technical analysis reports",
+    "moving average crossover signal detection",
+    "relative strength index overbought oversold flags"
+   ],
+   "phrases_kept": [
+    "relative strength index overbought oversold flags"
+   ],
+   "phrases_used": [],
+   "assembled": "EMA 12/26 crossover signals on hourly crypto candles from Upbit, running 24/7 for crypto pairs.",
+   "name_conflict": true,
+   "name": "moving-average-signals-crypto-upbit",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "roe-analyzer": {
+   "g": "dupont-roe",
+   "G": [
+    "ebitda-margin-trend",
+    "dupont-roe",
+    "roe-ranking"
+   ],
+   "d_hat": "Computes single-year return on equity (ROE) for a Korean stock from net income and average owners' equity.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking ebitda margin changes over time",
+    "decomposing return on equity into components",
+    "ranking korean companies by return on equity"
+   ],
+   "phrases_kept": [
+    "decomposing return on equity into components",
+    "ranking korean companies by return on equity"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes single-year return on equity (ROE) for a Korean stock from net income and average owners' equity.",
+   "name_conflict": false,
+   "name": "roe-analyzer",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "ex-dividend-calendar-us": {
+   "g": "ex-dividend-calendar",
+   "G": [
+    "ex-dividend-calendar",
+    "dividend-yield-payout",
+    "dividend-calculator"
+   ],
+   "d_hat": "Lists upcoming US ex-dividend, record and pay dates from Nasdaq declared dividends, with ex-date equal to record date under T+1.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "looking up dividend dates and calendars",
+    "computing dividend yield and payout ratio",
+    "general dividend calculations for korean stocks"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Lists upcoming US ex-dividend, record and pay dates from Nasdaq declared dividends, with ex-date equal to record date under T+1.",
+   "name_conflict": true,
+   "name": "us-ex-dividend-calendar-nasdaq",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "peer-comparison-table-global": {
+   "g": "peer-comparison-table",
+   "G": [
+    "peer-finder",
+    "peer-comparison-table",
+    "dart-segment-revenue"
+   ],
+   "d_hat": "Builds global comps tables in USD from FactSet exports, calendarized to December year-end, with median rows.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "identifying which listed companies are peers",
+    "assembling side-by-side valuation and profitability metrics table",
+    "pulling segment revenue and profit from dart filings"
+   ],
+   "phrases_kept": [
+    "assembling side-by-side valuation and profitability metrics table"
+   ],
+   "phrases_used": [],
+   "assembled": "Builds global comps tables in USD from FactSet exports, calendarized to December year-end, with median rows.",
+   "name_conflict": true,
+   "name": "peer-comparison-table-factset-global-usd",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "data-quality-checklist": {
+   "g": "beta-release",
+   "G": [
+    "beta-release",
+    "dart-quick-financials",
+    "chart-style-guide"
+   ],
+   "d_hat": "Checklist for validating a dataset: units and currency consistency, restatements, fiscal year ends, outliers, and duplicates.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "beta program release checklist tasks",
+    "retrieving full consolidated financial statements for listed companies",
+    "house styling rules for financial charts"
+   ],
+   "phrases_kept": [
+    "retrieving full consolidated financial statements for listed companies"
+   ],
+   "phrases_used": [],
+   "assembled": "Checklist for validating a dataset: units and currency consistency, restatements, fiscal year ends, outliers, and duplicates.",
+   "name_conflict": false,
+   "name": "data-quality-checklist",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dcf-sensitivity": {
+   "g": "rate-sensitivity",
+   "G": [
+    "rate-sensitivity",
+    "free-cash-flow-fcff",
+    "dcf-valuation"
+   ],
+   "d_hat": "Builds a 5x5 WACC vs terminal-growth grid of value per share for a finished DCF, highlighting the base case.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "interest rate exposure from financial note disclosures",
+    "computing cash generated after capital expenditures",
+    "multi-year intrinsic value via discounted forecasts"
+   ],
+   "phrases_kept": [
+    "multi-year intrinsic value via discounted forecasts"
+   ],
+   "phrases_used": [],
+   "assembled": "Builds a 5x5 WACC vs terminal-growth grid of value per share for a finished DCF, highlighting the base case.",
+   "name_conflict": false,
+   "name": "dcf-sensitivity",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "fund-flows": {
+   "g": "trading-flows",
+   "G": [
+    "trading-flows",
+    "consensus-tracker",
+    "debt-maturity-profile"
+   ],
+   "d_hat": "Weekly ETF creation and redemption units and net flow in won, tabulated per ETF.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "foreign and institutional investor trading flows",
+    "analyst consensus and earnings surprise tracking",
+    "borrowings and bonds maturity year bucketing"
+   ],
+   "phrases_kept": [
+    "borrowings and bonds maturity year bucketing"
+   ],
+   "phrases_used": [
+    "borrowings and bonds maturity year bucketing"
+   ],
+   "assembled": "Weekly ETF creation and redemption units and net flow in won, tabulated per ETF. Does not cover: borrowings and bonds maturity year bucketing.",
+   "name_conflict": false,
+   "name": "fund-flows",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "portfolio-rebalancing-pension": {
+   "g": "portfolio-rebalancing",
+   "G": [
+    "portfolio-toolkit",
+    "portfolio-rebalancing",
+    "cost-of-capital"
+   ],
+   "d_hat": "Glide-path fund-switch plan for retirement DC/IRP accounts by age, capping risky assets at 70%. Fund-level, not stocks.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "allocation, performance, risk, and tax work",
+    "turning target weights into orders",
+    "estimating cost of capital"
+   ],
+   "phrases_kept": [
+    "allocation, performance, risk, and tax work",
+    "turning target weights into orders"
+   ],
+   "phrases_used": [],
+   "assembled": "Glide-path fund-switch plan for retirement DC/IRP accounts by age, capping risky assets at 70%. Fund-level, not stocks.",
+   "name_conflict": true,
+   "name": "retirement-pension-glide-path-rebalancing",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "key-rate-duration": {
+   "g": "bond-duration",
+   "G": [
+    "bond-duration",
+    "rate-sensitivity",
+    "duration-estimator"
+   ],
+   "d_hat": "Portfolio key rate durations: bumps each curve key rate 1bp and reports duration contribution per point.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "bond price sensitivity to yield changes",
+    "interest rate exposure from financial statement notes",
+    "project duration and timeline estimation"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Portfolio key rate durations: bumps each curve key rate 1bp and reports duration contribution per point.",
+   "name_conflict": true,
+   "name": "key-rate-duration-bond-portfolio-shift-revaluation",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "var-backtest": {
+   "g": "excel-modeling-best-practices",
+   "G": [
+    "value-at-risk",
+    "excel-modeling-best-practices",
+    "moving-average-signals-crypto"
+   ],
+   "d_hat": "Backtests Value-at-Risk models: counts VaR exceptions and runs the Kupiec proportion-of-failures test.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "one-day historical simulation risk measurement for korean stock portfolios",
+    "spreadsheet model structure and formatting conventions",
+    "moving average crossover trading signal generation"
+   ],
+   "phrases_kept": [
+    "one-day historical simulation risk measurement for korean stock portfolios",
+    "spreadsheet model structure and formatting conventions"
+   ],
+   "phrases_used": [],
+   "assembled": "Backtests Value-at-Risk models: counts VaR exceptions and runs the Kupiec proportion-of-failures test.",
+   "name_conflict": false,
+   "name": "var-backtest",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "buyback-screen": {
+   "g": "fcf-yield-screen",
+   "G": [
+    "treasury-share-buyback",
+    "fcf-yield-screen",
+    "roe-ranking"
+   ],
+   "d_hat": "Ranks all companies market-wide by total share buyback amount this year relative to market cap.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing treasury share buyback decisions",
+    "ranking kospi 200 stocks by fcf yield",
+    "roe analysis across korean companies"
+   ],
+   "phrases_kept": [
+    "ranking kospi 200 stocks by fcf yield",
+    "roe analysis across korean companies"
+   ],
+   "phrases_used": [
+    "ranking kospi 200 stocks by fcf yield"
+   ],
+   "assembled": "Ranks all companies market-wide by total share buyback amount this year relative to market cap. Does not cover: ranking kospi 200 stocks by fcf yield.",
+   "name_conflict": false,
+   "name": "buyback-screen",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "fx-translation-consolidation": {
+   "g": "fx-translation",
+   "G": [
+    "fx-translation",
+    "dart-financial-statements",
+    "dividend-calculator"
+   ],
+   "d_hat": "Computes exchange differences on translating foreign operations and movements in the translation reserve within OCI.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "converting krw financials to usd rates",
+    "downloading korean listed company financial statements",
+    "calculating dividends for korean stocks"
+   ],
+   "phrases_kept": [
+    "converting krw financials to usd rates",
+    "downloading korean listed company financial statements"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes exchange differences on translating foreign operations and movements in the translation reserve within OCI.",
+   "name_conflict": false,
+   "name": "fx-translation",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "portfolio-stress-test": {
+   "g": "portfolio-report",
+   "G": [
+    "value-at-risk",
+    "risk-contribution",
+    "portfolio-report"
+   ],
+   "d_hat": "Replays fixed historical crash episodes (2008, March 2020, 2022) on holdings to compute scenario losses.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing one-day value-at-risk thresholds",
+    "decomposing volatility into holding contributions",
+    "producing general portfolio analysis summaries"
+   ],
+   "phrases_kept": [
+    "decomposing volatility into holding contributions"
+   ],
+   "phrases_used": [],
+   "assembled": "Replays fixed historical crash episodes (2008, March 2020, 2022) on holdings to compute scenario losses.",
+   "name_conflict": true,
+   "name": "portfolio-historical-scenario-stress-test",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "treasury-shares": {
+   "g": "treasury-share-buyback",
+   "G": [
+    "treasury-share-buyback",
+    "share-issue-summary",
+    "bond-issuance-summary"
+   ],
+   "d_hat": "Summarizes treasury share cancellations from 자기주식소각결정 filings: shares cancelled, % of outstanding, and EPS accretion.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "summarizing treasury share buyback decisions",
+    "summarizing new share issuance disclosures",
+    "summarizing equity-linked bond disclosures on dart"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Summarizes treasury share cancellations from 자기주식소각결정 filings: shares cancelled, % of outstanding, and EPS accretion.",
+   "name_conflict": true,
+   "name": "treasury-shares-cancellation-korea",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "report-reader": {
+   "g": "cash-flow-reader",
+   "G": [
+    "cash-flow-reader",
+    "trailing-pe",
+    "debt-maturity-profile"
+   ],
+   "d_hat": "Reads the 사업의 내용 (business overview) section of an annual report: products, market share, raw materials, capacity.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "reading cash flow statements for korean firms",
+    "computing trailing price-to-earnings from quarterly parent net income",
+    "bucketing borrowings and bonds by maturity year"
+   ],
+   "phrases_kept": [
+    "bucketing borrowings and bonds by maturity year"
+   ],
+   "phrases_used": [],
+   "assembled": "Reads the 사업의 내용 (business overview) section of an annual report: products, market share, raw materials, capacity.",
+   "name_conflict": false,
+   "name": "report-reader",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "refinancing-risk": {
+   "g": "treasury-shares",
+   "G": [
+    "debt-maturity-profile-us",
+    "fcf-yield-screen",
+    "treasury-shares"
+   ],
+   "d_hat": "Market-wide screen flagging listed companies whose short-term borrowings exceed cash, ranked by shortfall.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "debt maturity schedules from annual reports",
+    "ranking kospi 200 stocks by fcf yield",
+    "treasury share analysis for korean companies"
+   ],
+   "phrases_kept": [
+    "ranking kospi 200 stocks by fcf yield"
+   ],
+   "phrases_used": [],
+   "assembled": "Market-wide screen flagging listed companies whose short-term borrowings exceed cash, ranked by shortfall.",
+   "name_conflict": true,
+   "name": "refinancing-risk-market-screen",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "rating-watch-screen": {
+   "g": "credit-rating-history",
+   "G": [
+    "credit-rating-history",
+    "debt-maturity-profile",
+    "bond-spread-monitor"
+   ],
+   "d_hat": "Lists Korean issuers now on negative outlook or downgrade watch at any domestic agency, grouped by industry.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking korean issuer credit ratings and outlook changes",
+    "bucketing borrowings and bonds by maturity year",
+    "analyzing bond market spreads for korean fixed income"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Lists Korean issuers now on negative outlook or downgrade watch at any domestic agency, grouped by industry.",
+   "name_conflict": false,
+   "name": "rating-watch-screen",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "capex-tracker": {
+   "g": "ownership-analysis",
+   "G": [
+    "investment-memo-writer",
+    "ownership-analysis",
+    "dart-search"
+   ],
+   "d_hat": "Lists new facility investment filings (신규시설투자) with amount, period, purpose, and amount as % of equity for a company.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "drafting structured investment memos from analysis notes",
+    "analyzing ownership structures of korean companies",
+    "searching dart for korean company filings and information"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Lists new facility investment filings (신규시설투자) with amount, period, purpose, and amount as % of equity for a company.",
+   "name_conflict": false,
+   "name": "capex-tracker",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "executive-disclosures": {
+   "g": "report-reader",
+   "G": [
+    "report-reader",
+    "insider-trading-filings-us",
+    "dart-quick-financials"
+   ],
+   "d_hat": "Executive information for Korean companies.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "extracting key facts from korean company reports",
+    "tracking insider transaction filings",
+    "retrieving full consolidated financial statements quickly"
+   ],
+   "phrases_kept": [
+    "retrieving full consolidated financial statements quickly"
+   ],
+   "phrases_used": [
+    "retrieving full consolidated financial statements quickly"
+   ],
+   "assembled": "Executive information for Korean companies. Does not cover: retrieving full consolidated financial statements quickly.",
+   "name_conflict": false,
+   "name": "executive-disclosures",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "spreadsheet-formula-helper": {
+   "g": "dividend-calculator",
+   "G": [
+    "excel-modeling-best-practices",
+    "dividend-calculator",
+    "fx-translation"
+   ],
+   "d_hat": "Writes spreadsheet formulas for Excel or Google Sheets and explains each argument's role in the formula.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "structuring and formatting spreadsheet financial models",
+    "computing dividend yields and payouts for korean stocks",
+    "converting krw financial statements into usd"
+   ],
+   "phrases_kept": [
+    "structuring and formatting spreadsheet financial models",
+    "converting krw financial statements into usd"
+   ],
+   "phrases_used": [],
+   "assembled": "Writes spreadsheet formulas for Excel or Google Sheets and explains each argument's role in the formula.",
+   "name_conflict": false,
+   "name": "spreadsheet-formula-helper",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "credit-ratings": {
+   "g": "credit-rating-history",
+   "G": [
+    "credit-rating-history",
+    "rating-watch-screen",
+    "retail-sentiment"
+   ],
+   "d_hat": "Credit rating information for Korean issuers.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "gathering korean issuer rating history and outlook changes",
+    "credit analysis for korean bond issuers",
+    "tracking retail investor sentiment from deposits and margin loans"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Credit rating information for Korean issuers.",
+   "name_conflict": true,
+   "name": "credit-ratings-scales-methodology",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "ebitda-adjustments-review": {
+   "g": "ev-ebitda-us",
+   "G": [
+    "ev-ebitda-us",
+    "valuation-multiples-toolkit",
+    "roe-analyzer"
+   ],
+   "d_hat": "Reviews one-off items (impairments, gains on disposal) to compute normalized EBITDA.",
+   "d_tries": 5,
+   "d_fallback": true,
+   "phrases_raw": [
+    "ev/ebitda multiple using adjusted ebitda",
+    "multi-metric valuation across p/e, p/b, psr, peg, yield",
+    "dupont roe decomposition and five-year trends"
+   ],
+   "phrases_kept": [
+    "ev/ebitda multiple using adjusted ebitda",
+    "dupont roe decomposition and five-year trends"
+   ],
+   "phrases_used": [
+    "ev/ebitda multiple using adjusted ebitda"
+   ],
+   "assembled": "Reviews one-off items (impairments, gains on disposal) to compute normalized EBITDA. Does not cover: ev/ebitda multiple using adjusted ebitda.",
+   "name_conflict": true,
+   "name": "ebitda-non-recurring-adjustments-review",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "price-volume-mix": {
+   "g": "gross-margin-bridge",
+   "G": [
+    "gross-margin-bridge",
+    "dart-segment-revenue",
+    "segment-chart"
+   ],
+   "d_hat": "Decomposes revenue change between two periods into price, volume and mix effects, with a waterfall. Excludes costs.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "explaining gross margin changes via price, volume, unit-cost",
+    "extracting segment revenue and profit from dart reports",
+    "producing segment analysis visuals and charts"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Decomposes revenue change between two periods into price, volume and mix effects, with a waterfall. Excludes costs.",
+   "name_conflict": true,
+   "name": "revenue-price-volume-mix",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "working-capital-analysis": {
+   "g": "ownership-analysis",
+   "G": [
+    "trailing-pe",
+    "cash-conversion-cycle",
+    "ownership-analysis"
+   ],
+   "d_hat": "Computes net working capital (receivables + inventories - payables) in won and its quarterly change; no days metrics.",
+   "d_tries": 5,
+   "d_fallback": false,
+   "phrases_raw": [
+    "calculating trailing price-to-earnings ratios for krx stocks",
+    "computing working capital cycle day metrics over eight quarters",
+    "analyzing shareholder and ownership structure of korean companies"
+   ],
+   "phrases_kept": [
+    "computing working capital cycle day metrics over eight quarters"
+   ],
+   "phrases_used": [],
+   "assembled": "Computes net working capital (receivables + inventories - payables) in won and its quarterly change; no days metrics.",
+   "name_conflict": true,
+   "name": "working-capital-analysis-nwc-won",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "quick-dcf": {
+   "g": "dcf-valuation",
+   "G": [
+    "dcf-valuation",
+    "ex-dividend-calendar-us",
+    "dcf-sensitivity"
+   ],
+   "d_hat": "Single-stage Gordon growth DDM: values a stock from next year's dividend, required return and growth rate.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "forecasting unlevered free cash flows over five years",
+    "tracking upcoming ex-dividend dates",
+    "sensitivity analysis of dcf inputs"
+   ],
+   "phrases_kept": [
+    "forecasting unlevered free cash flows over five years",
+    "tracking upcoming ex-dividend dates",
+    "sensitivity analysis of dcf inputs"
+   ],
+   "phrases_used": [],
+   "assembled": "Single-stage Gordon growth DDM: values a stock from next year's dividend, required return and growth rate.",
+   "name_conflict": false,
+   "name": "quick-dcf",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "dart-consolidated-statements-audit": {
+   "g": "dart-consolidated-statements",
+   "G": [
+    "dart-consolidated-statements",
+    "dart-financial-statements",
+    "free-cash-flow"
+   ],
+   "d_hat": "Parses consolidated statement tables from unlisted companies' audit reports (감사보고서) on DART; annual only.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "fetching consolidated statements from dart openapi",
+    "downloading korean listed company financial statements",
+    "computing free cash flow from cash flow statements"
+   ],
+   "phrases_kept": [
+    "downloading korean listed company financial statements"
+   ],
+   "phrases_used": [],
+   "assembled": "Parses consolidated statement tables from unlisted companies' audit reports (감사보고서) on DART; annual only.",
+   "name_conflict": true,
+   "name": "dart-consolidated-statements-unlisted-audit-reports",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "report-formatting-helper": {
+   "g": "report-reader",
+   "G": [
+    "equity-research-kit",
+    "investment-memo-writer",
+    "report-reader"
+   ],
+   "d_hat": "Formats a draft report: heading levels and numbering, table and footnote style, and a standard disclaimer.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "full equity research from financials through report writing",
+    "drafting structured investment memos from analysis notes",
+    "extracting key facts from korean company reports"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Formats a draft report: heading levels and numbering, table and footnote style, and a standard disclaimer.",
+   "name_conflict": true,
+   "name": "report-formatting-helper-headings-tables-disclaimer",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "revenue-by-region": {
+   "g": "dart-segment-revenue",
+   "G": [
+    "dart-segment-revenue",
+    "segment-chart",
+    "cost-analysis"
+   ],
+   "d_hat": "Splits a company's revenue by geographic region from entity-wide disclosures, with each region's share of total.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "extracting segment revenue and operating profit from dart filings",
+    "creating visuals for segment analysis",
+    "analyzing cost structure from financial statements"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Splits a company's revenue by geographic region from entity-wide disclosures, with each region's share of total.",
+   "name_conflict": false,
+   "name": "revenue-by-region",
+   "n_tries": 0,
+   "name_fallback": false
+  },
+  "major-shareholder-changes-us": {
+   "g": "major-shareholder-changes",
+   "G": [
+    "major-shareholder-changes",
+    "korean-disclosure-toolkit",
+    "ownership-watch"
+   ],
+   "d_hat": "Lists US Schedule 13D/13G beneficial ownership filings for a ticker, with filer, stake and date.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "tracking 5% bulk-holding stake reports on dart",
+    "general korean corporate disclosure filings on dart",
+    "real-time monitoring of major shareholding changes"
+   ],
+   "phrases_kept": [
+    "tracking 5% bulk-holding stake reports on dart"
+   ],
+   "phrases_used": [
+    "tracking 5% bulk-holding stake reports on dart"
+   ],
+   "assembled": "Lists US Schedule 13D/13G beneficial ownership filings for a ticker, with filer, stake and date. Does not cover: tracking 5% bulk-holding stake reports on dart.",
+   "name_conflict": true,
+   "name": "major-shareholder-changes-us-edgar-13d-13g",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "dividend-reinvestment": {
+   "g": "dividend-calculator",
+   "G": [
+    "dividend-yield-payout-us",
+    "dividend-calculator",
+    "credit-ratings"
+   ],
+   "d_hat": "Simulates dividend reinvestment (DRIP) for a stock, tracking share count and comparing ending value to no reinvestment.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "computing dividend yield and payout ratios",
+    "calculating dividends for korean stocks",
+    "retrieving credit ratings for korean issuers"
+   ],
+   "phrases_kept": [],
+   "phrases_used": [],
+   "assembled": "Simulates dividend reinvestment (DRIP) for a stock, tracking share count and comparing ending value to no reinvestment.",
+   "name_conflict": true,
+   "name": "dividend-reinvestment-drip-simulation",
+   "n_tries": 1,
+   "name_fallback": false
+  },
+  "yield-curve-plot": {
+   "g": "pe-band-chart-us",
+   "G": [
+    "key-rate-duration",
+    "pe-band-chart-us",
+    "dividend-yield-payout-us"
+   ],
+   "d_hat": "Plots Korean Treasury Bond (KTB) yield curves by tenor from 3 months to 30 years, overlaying curves for chosen dates.",
+   "d_tries": 1,
+   "d_fallback": false,
+   "phrases_raw": [
+    "bucketed interest rate sensitivity across curve tenors",
+    "stock valuation charts from historical price bands",
+    "dividend yield and payout ratio calculation"
+   ],
+   "phrases_kept": [
+    "bucketed interest rate sensitivity across curve tenors",
+    "stock valuation charts from historical price bands"
+   ],
+   "phrases_used": [],
+   "assembled": "Plots Korean Treasury Bond (KTB) yield curves by tenor from 3 months to 30 years, overlaying curves for chosen dates.",
+   "name_conflict": false,
+   "name": "yield-curve-plot",
+   "n_tries": 0,
+   "name_fallback": false
+  }
+ },
+ "calls": [
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 751,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.55,
+   "what": "differentiate_short",
+   "key": "ownership-analysis",
+   "attempt": 0,
+   "passed": true,
+   "chars": 124,
+   "text": "Maps cross-holding ownership among a business group's affiliates from the annual report and draws the group structure chart."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 708,
+    "output_tokens": 43,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.28,
+   "what": "differentiate_short",
+   "key": "fx-rates",
+   "attempt": 0,
+   "passed": true,
+   "chars": 97,
+   "text": "Look up daily foreign exchange rates for a currency pair on a given date from Bank of Korea ECOS."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 740,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.24,
+   "what": "differentiate_short",
+   "key": "excel-modeling-best-practices",
+   "attempt": 0,
+   "passed": false,
+   "chars": 132,
+   "text": "Spreadsheet modeling conventions: separate inputs, calculations and outputs, color-code cells, avoid hard-coded numbers, add checks."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 770,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.27,
+   "what": "differentiate_short",
+   "key": "excel-modeling-best-practices",
+   "attempt": 1,
+   "passed": true,
+   "chars": 120,
+   "text": "Spreadsheet model structure: separate inputs, calcs and outputs, color-code cells, avoid hard-coded numbers, add checks."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 778,
+    "output_tokens": 64,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.22,
+   "what": "differentiate_short",
+   "key": "margin-balance-monitor",
+   "attempt": 0,
+   "passed": false,
+   "chars": 146,
+   "text": "Tracks Korean retail margin loan (신용융자) balances per stock from KOFIA data and flags stocks where credit-bought shares exceed 8% of listed shares."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 808,
+    "output_tokens": 56,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "margin-balance-monitor",
+   "attempt": 1,
+   "passed": false,
+   "chars": 137,
+   "text": "Tracks daily margin loan (credit financing) balance per stock, computes credit balance ratio vs listed shares, and flags stocks above 8%."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 808,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.29,
+   "what": "differentiate_short",
+   "key": "margin-balance-monitor",
+   "attempt": 2,
+   "passed": true,
+   "chars": 126,
+   "text": "Tracks daily margin loan (신용융자) balances per stock, computes credit balance ratio to listed shares, and flags stocks above 8%."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 670,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.31,
+   "what": "differentiate_short",
+   "key": "korean-disclosure-toolkit",
+   "attempt": 0,
+   "passed": false,
+   "chars": 134,
+   "text": "Orientation guide to DART filings: Korean report type names, where information sits in a filing, and OpenAPI endpoint groups overview."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 700,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "korean-disclosure-toolkit",
+   "attempt": 1,
+   "passed": false,
+   "chars": 134,
+   "text": "Orientation to DART filings: Korean report type names, where information sits in a filing, and OpenAPI endpoint groups. Guidance only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 700,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "korean-disclosure-toolkit",
+   "attempt": 2,
+   "passed": true,
+   "chars": 127,
+   "text": "Orientation to DART: Korean report types, where information sits in filings, and OpenAPI endpoint groups. No specific analysis."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 734,
+    "output_tokens": 64,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.42,
+   "what": "differentiate_short",
+   "key": "forward-pe",
+   "attempt": 0,
+   "passed": false,
+   "chars": 143,
+   "text": "Computes forward P/E for KRX stocks by blending FY1 and FY2 broker consensus EPS into 12-month forward EPS, with estimate count and dispersion."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 764,
+    "output_tokens": 62,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "forward-pe",
+   "attempt": 1,
+   "passed": false,
+   "chars": 136,
+   "text": "Computes forward P/E for KRX stocks by blending FY1 and FY2 consensus EPS into 12-month forward EPS, with estimate count and dispersion."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 764,
+    "output_tokens": 62,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.37,
+   "what": "differentiate_short",
+   "key": "forward-pe",
+   "attempt": 2,
+   "passed": true,
+   "chars": 127,
+   "text": "Forward P/E for KRX stocks: blends FY1/FY2 analyst consensus EPS into 12-month forward EPS, with estimate count and dispersion."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 792,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "dividend-calculator",
+   "attempt": 0,
+   "passed": true,
+   "chars": 112,
+   "text": "Computes after-tax dividend income in Korea: 15.4% withholding tax and the 20M won comprehensive taxation check."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 703,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "trading-flows",
+   "attempt": 0,
+   "passed": true,
+   "chars": 124,
+   "text": "Market-wide KOSPI program trading net buying from arbitrage and non-arbitrage flows, daily and cumulative, for a given date."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 887,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "ev-ebitda-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 105,
+   "text": "EV/adjusted EBITDA for US-listed companies using press-release adjusted EBITDA and 10-Q net debt, in USD."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 795,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "bank-ptbv",
+   "attempt": 0,
+   "passed": true,
+   "chars": 126,
+   "text": "P/TBV for bank holding companies: tangible book per share, excluding hybrid perpetual capital from equity. Inputs: stock code."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 766,
+    "output_tokens": 79,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.44,
+   "what": "differentiate_short",
+   "key": "share-issue-summary",
+   "attempt": 0,
+   "passed": true,
+   "chars": 77,
+   "text": "무상증자(bonus issue) 공시 요약: 주당 신주 배정 비율, 기준일·신주 상장일, 재원(자본잉여금)을 정리합니다. 현금 유입 없음."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 727,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.14,
+   "what": "differentiate_short",
+   "key": "coverage-tracker",
+   "attempt": 0,
+   "passed": false,
+   "chars": 134,
+   "text": "Tracks sell-side analyst coverage of a stock: brokers publishing, initiations, dropped coverage, and covering analyst count over time."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 757,
+    "output_tokens": 48,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.2,
+   "what": "differentiate_short",
+   "key": "coverage-tracker",
+   "attempt": 1,
+   "passed": true,
+   "chars": 124,
+   "text": "Lists brokers covering a stock over the past 12 months, tracking initiations, dropped coverage, and analyst count over time."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 715,
+    "output_tokens": 48,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "beta-release",
+   "attempt": 0,
+   "passed": true,
+   "chars": 117,
+   "text": "Builds a software beta release checklist: feature freeze, test plan, feedback and crash reporting, go/no-go criteria."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 787,
+    "output_tokens": 44,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.37,
+   "what": "differentiate_short",
+   "key": "dart-financial-statements",
+   "attempt": 0,
+   "passed": true,
+   "chars": 113,
+   "text": "Fetches separate (parent-only) DART financial statements by corp code and year, splitting and saving them as CSV."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 873,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.43,
+   "what": "differentiate_short",
+   "key": "cost-of-capital",
+   "attempt": 0,
+   "passed": true,
+   "chars": 111,
+   "text": "CAPM cost of equity for a KRX stock from beta vs KOSPI, risk-free rate and ERP; optional size premium. No debt."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 761,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.42,
+   "what": "differentiate_short",
+   "key": "portfolio-report",
+   "attempt": 0,
+   "passed": true,
+   "chars": 128,
+   "text": "Reports portfolio performance: time-weighted return, KOSPI benchmark comparison, and per-holding return contribution. No trades."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 643,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "earnings-review",
+   "attempt": 0,
+   "passed": true,
+   "chars": 126,
+   "text": "Summarizes an earnings call transcript: management guidance by business, key analyst Q&A, and tone shifts from the prior call."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 662,
+    "output_tokens": 58,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.42,
+   "what": "differentiate_short",
+   "key": "finance-analysis-assistant",
+   "attempt": 0,
+   "passed": false,
+   "chars": 137,
+   "text": "Plans how to approach a financial analysis question: restates it, suggests DART, KRX, and BOK ECOS sources, and sanity-checks the answer."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 692,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.17,
+   "what": "differentiate_short",
+   "key": "finance-analysis-assistant",
+   "attempt": 1,
+   "passed": true,
+   "chars": 124,
+   "text": "Plans how to approach a financial analysis question: restates it, suggests DART/KRX/BOK ECOS sources, sanity-checks answers."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 745,
+    "output_tokens": 59,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.37,
+   "what": "differentiate_short",
+   "key": "valuation-multiples-toolkit",
+   "attempt": 0,
+   "passed": true,
+   "chars": 110,
+   "text": "Explains valuation multiples P/E, P/B, EV/EBITDA, PSR, PEG: formulas, when each misleads, and common pitfalls."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 666,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.38,
+   "what": "differentiate_short",
+   "key": "price-bands",
+   "attempt": 0,
+   "passed": true,
+   "chars": 110,
+   "text": "Computes Bollinger Bands for a stock code: 20-day moving average, ±2 std dev bands, %b position and bandwidth."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 665,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "bond-issuance-summary",
+   "attempt": 0,
+   "passed": true,
+   "chars": 121,
+   "text": "Summarizes exchangeable bond (EB) terms: face amount, coupon, maturity, exchange target shares and exchange price/period."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 747,
+    "output_tokens": 56,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.26,
+   "what": "differentiate_short",
+   "key": "fcf-yield-screen",
+   "attempt": 0,
+   "passed": true,
+   "chars": 130,
+   "text": "Ranks index constituents (default KOSPI 200) by FCF yield, i.e. latest annual free cash flow divided by market cap, highest first."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 666,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.34,
+   "what": "differentiate_short",
+   "key": "bond-spread-monitor",
+   "attempt": 0,
+   "passed": true,
+   "chars": 102,
+   "text": "Tracks corporate bond spreads over the KTB of matching tenor by credit rating, using KOFIA yield data."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 653,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "peer-finder",
+   "attempt": 0,
+   "passed": true,
+   "chars": 103,
+   "text": "Finds peer companies for a stock code: same KRX industry, market cap 0.3x–3x; returns ticker list only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 785,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "free-cash-flow-fcff",
+   "attempt": 0,
+   "passed": true,
+   "chars": 107,
+   "text": "Forecasts unlevered FCFF per year from EBIT, tax rate, D&A, capex and NWC change for a DCF. Not historical."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 722,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.29,
+   "what": "differentiate_short",
+   "key": "rate-sensitivity",
+   "attempt": 0,
+   "passed": true,
+   "chars": 106,
+   "text": "Reads interest rate risk tables in filings and estimates the pre-tax profit effect of +/-100bp rate moves."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 668,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "retail-sentiment",
+   "attempt": 0,
+   "passed": true,
+   "chars": 122,
+   "text": "Market-wide retail sentiment indicators: investor deposits (KOFIA) and total credit balance, with trend over a date range."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 699,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "dividend-growth-screen",
+   "attempt": 0,
+   "passed": false,
+   "chars": 138,
+   "text": "Screens all KOSPI companies for dividend growth streaks, listing those with consecutive annual DPS increases meeting a minimum year count."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 729,
+    "output_tokens": 62,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "dividend-growth-screen",
+   "attempt": 1,
+   "passed": false,
+   "chars": 160,
+   "text": "Screens all KOSPI companies for dividend growth streaks, counting consecutive annual DPS increases and listing those meeting a minimum streak (default 5 years)."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 729,
+    "output_tokens": 62,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "dividend-growth-screen",
+   "attempt": 2,
+   "passed": false,
+   "chars": 156,
+   "text": "Screens every KOSPI company for dividend growth streaks: counts consecutive annual DPS increases and lists firms meeting a minimum streak (default 5 years)."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 729,
+    "output_tokens": 63,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.31,
+   "what": "differentiate_short",
+   "key": "dividend-growth-screen",
+   "attempt": 3,
+   "passed": false,
+   "chars": 160,
+   "text": "Screens all KOSPI companies for dividend growth streaks, counting consecutive annual DPS increases and listing firms meeting a minimum streak (default 5 years)."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 729,
+    "output_tokens": 63,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.49,
+   "what": "differentiate_short",
+   "key": "dividend-growth-screen",
+   "attempt": 4,
+   "passed": false,
+   "chars": 156,
+   "text": "Screens all KOSPI companies for dividend growth streaks: counts consecutive annual DPS increases and lists firms meeting a minimum streak (default 5 years)."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 670,
+    "output_tokens": 56,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.37,
+   "what": "differentiate_short",
+   "key": "edgar-financials",
+   "attempt": 0,
+   "passed": false,
+   "chars": 131,
+   "text": "Fetches US company financials from SEC EDGAR XBRL facts by ticker or CIK, building quarterly revenue, net income, and asset series."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 700,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.41,
+   "what": "differentiate_short",
+   "key": "edgar-financials",
+   "attempt": 1,
+   "passed": true,
+   "chars": 130,
+   "text": "Fetches US company financials from SEC EDGAR XBRL facts by ticker or CIK, building quarterly revenue, net income and asset series."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 726,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "tax-loss-harvesting",
+   "attempt": 0,
+   "passed": true,
+   "chars": 121,
+   "text": "Harvests overseas stock tax losses: finds unrealized losses to offset realized gains above the 2.5M won deduction at 22%."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 764,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "shareholder-meeting-calendar",
+   "attempt": 0,
+   "passed": true,
+   "chars": 119,
+   "text": "Lists AGM and EGM dates for a stock: meeting date, time, venue and e-voting period from the shareholder meeting notice."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 727,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "earnings-surprise-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 124,
+   "text": "Computes US company adjusted EPS surprise versus consensus EPS, plus the after-hours price reaction to the earnings release."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 873,
+    "output_tokens": 56,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "wacc-estimator-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 114,
+   "text": "Estimates US company WACC from a ticker using 10Y Treasury, Damodaran ERP, S&P 500 beta, and market-value weights."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 644,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "risk-adjusted-return",
+   "attempt": 0,
+   "passed": true,
+   "chars": 115,
+   "text": "Computes a stock's Sharpe ratio: annualized excess return over the CD 91-day rate divided by annualized volatility."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 683,
+    "output_tokens": 43,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "duration-estimator",
+   "attempt": 0,
+   "passed": true,
+   "chars": 111,
+   "text": "Estimates task durations from optimistic, likely and pessimistic inputs using PERT and finds the critical path."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 651,
+    "output_tokens": 37,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.24,
+   "what": "differentiate_short",
+   "key": "korean-market-glossary",
+   "attempt": 0,
+   "passed": true,
+   "chars": 97,
+   "text": "Looks up Korean market terms: gives each Korean term's English equivalent and a short definition."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 682,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.26,
+   "what": "differentiate_short",
+   "key": "agm-agenda-review",
+   "attempt": 0,
+   "passed": true,
+   "chars": 129,
+   "text": "Summarizes shareholder meeting agendas from a meeting notice: agenda items, director and auditor candidates, articles amendments."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 652,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "solvency-check",
+   "attempt": 0,
+   "passed": true,
+   "chars": 122,
+   "text": "Computes balance sheet leverage ratios for a stock: debt ratio and net debt ratio from liabilities, equity and borrowings."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 689,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.37,
+   "what": "differentiate_short",
+   "key": "ebitda-margin-trend",
+   "attempt": 0,
+   "passed": true,
+   "chars": 129,
+   "text": "Charts quarterly EBITDA margin trend for a stock from operating profit, depreciation and amortization over revenue. No valuation."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 766,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.19,
+   "what": "differentiate_short",
+   "key": "operating-margin-trend-global",
+   "attempt": 0,
+   "passed": true,
+   "chars": 113,
+   "text": "Charts annual adjusted EBIT margins from Capital IQ exports to compare several global peer companies on one axis."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 616,
+    "output_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.1,
+   "what": "differentiate_short",
+   "key": "chart-style-guide",
+   "attempt": 0,
+   "passed": true,
+   "chars": 98,
+   "text": "Checklist for styling charts: palette and fonts, axis and label rules, and source line formatting."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 644,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "bw-summary",
+   "attempt": 0,
+   "passed": true,
+   "chars": 121,
+   "text": "Summarizes bond with warrant (신주인수권부사채) terms: exercise price and period, detachability, and shares issuable on exercise."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 758,
+    "output_tokens": 44,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.26,
+   "what": "differentiate_short",
+   "key": "rights-offering-calendar",
+   "attempt": 0,
+   "passed": true,
+   "chars": 120,
+   "text": "Builds a timeline table of a rights offering's key dates: record, trading, subscription, payment, and new share listing."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 618,
+    "output_tokens": 61,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.45,
+   "what": "differentiate_short",
+   "key": "rsi-indicator",
+   "attempt": 0,
+   "passed": false,
+   "chars": 140,
+   "text": "Computes the 14-day Relative Strength Index (RSI) momentum oscillator for a stock code, with Wilder smoothing and overbought/oversold flags."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 648,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "rsi-indicator",
+   "attempt": 1,
+   "passed": true,
+   "chars": 116,
+   "text": "Computes the 14-day RSI momentum oscillator for a stock code using Wilder smoothing, with overbought/oversold flags."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 790,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "bond-ytm-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 115,
+   "text": "Computes US Treasury yield to maturity from a 32nds-quoted price, coupon and maturity, using actual/actual accrual."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 676,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.24,
+   "what": "differentiate_short",
+   "key": "book-value-history",
+   "attempt": 0,
+   "passed": false,
+   "chars": 131,
+   "text": "Computes a company's book value per share history, annual growth, and 10-year CAGR, adding back dividends for total value creation."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 706,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "book-value-history",
+   "attempt": 1,
+   "passed": false,
+   "chars": 145,
+   "text": "Computes per-share book value history, annual and 10-year CAGR of BVPS, with dividends added back for total value creation. No market price used."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 706,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.2,
+   "what": "differentiate_short",
+   "key": "book-value-history",
+   "attempt": 2,
+   "passed": false,
+   "chars": 143,
+   "text": "Per-share book value history and its 10-year CAGR from fiscal year-end equity, split-adjusted, with dividends added back. No market price used."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 706,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.31,
+   "what": "differentiate_short",
+   "key": "book-value-history",
+   "attempt": 3,
+   "passed": false,
+   "chars": 137,
+   "text": "Historical book value per share over N years, split-adjusted, with annual growth and 10-year CAGR; dividends added back. No market price."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 706,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "book-value-history",
+   "attempt": 4,
+   "passed": false,
+   "chars": 150,
+   "text": "Computes per-share book value history and its annual and 10-year CAGR, adding back dividends to show total book value creation. Excludes market price."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 935,
+    "output_tokens": 67,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.29,
+   "what": "differentiate_short",
+   "key": "trailing-pe-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 110,
+   "text": "Trailing P/E for US-listed stocks (NYSE/Nasdaq) using diluted GAAP EPS from SEC 10-Q and 10-K filings, in USD."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 696,
+    "output_tokens": 37,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.09,
+   "what": "differentiate_short",
+   "key": "equity-research-kit",
+   "attempt": 0,
+   "passed": true,
+   "chars": 96,
+   "text": "Step-by-step checklist for an equity initiation report: data sources, steps, and report outline."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 719,
+    "output_tokens": 59,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "stock-beta-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 107,
+   "text": "Blume-adjusted beta for US stocks, from 5 years of monthly returns versus the S&P 500 (2/3 raw beta + 1/3)."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 777,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 0.97,
+   "what": "differentiate_short",
+   "key": "pbr-band-chart",
+   "attempt": 0,
+   "passed": true,
+   "chars": 114,
+   "text": "Plots a KRX stock's 5-year price against book-value bands (0.5x-2.5x BVPS) to show historical P/B valuation range."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 660,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.27,
+   "what": "differentiate_short",
+   "key": "python-data-cleaning",
+   "attempt": 0,
+   "passed": true,
+   "chars": 126,
+   "text": "Clean pandas DataFrames: parse thousands separators, negatives in parentheses, Korean date formats, and handle missing values."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 790,
+    "output_tokens": 43,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.14,
+   "what": "differentiate_short",
+   "key": "dart-quick-financials",
+   "attempt": 0,
+   "passed": true,
+   "chars": 123,
+   "text": "Fetch only three headline DART figures (revenue, operating profit, net income) for a company and year, not full statements."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 622,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "investment-memo-writer",
+   "attempt": 0,
+   "passed": true,
+   "chars": 101,
+   "text": "Drafts investment memos with thesis, risks, valuation and catalysts sections plus a one-page summary."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 719,
+    "output_tokens": 39,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "credit-health-snapshot",
+   "attempt": 0,
+   "passed": true,
+   "chars": 111,
+   "text": "Computes a company's current ratio from latest-quarter current assets and current liabilities for a stock code."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 705,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "segment-chart",
+   "attempt": 0,
+   "passed": true,
+   "chars": 119,
+   "text": "Draws stacked bar and line charts of revenue and margins from a user-supplied segment CSV table; does not extract data."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 699,
+    "output_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "fixed-income-quick",
+   "attempt": 0,
+   "passed": true,
+   "chars": 102,
+   "text": "Quick current yield of a bond from its annual coupon and price. No duration or convexity calculations."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 771,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "convertible-bond-summary-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 108,
+   "text": "Summarizes US convertible notes from 8-K and 424B filings: conversion rate, capped calls, settlement method."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 658,
+    "output_tokens": 37,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "roe-ranking",
+   "attempt": 0,
+   "passed": true,
+   "chars": 98,
+   "text": "Ranks all companies in a KRX industry by latest annual return on equity, with the industry median."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 711,
+    "output_tokens": 44,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.17,
+   "what": "differentiate_short",
+   "key": "margin-call-calculator",
+   "attempt": 0,
+   "passed": true,
+   "chars": 116,
+   "text": "Computes margin call prices and forced liquidation prices from collateral value, loan amount, and maintenance ratio."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 759,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.27,
+   "what": "differentiate_short",
+   "key": "cash-flow-reader",
+   "attempt": 0,
+   "passed": false,
+   "chars": 149,
+   "text": "Explains cash flow statement presentation: section totals, interest/dividend classification choices, and direct vs indirect method, for a stock code."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 789,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.28,
+   "what": "differentiate_short",
+   "key": "cash-flow-reader",
+   "attempt": 1,
+   "passed": false,
+   "chars": 137,
+   "text": "Explains how cash flow statements are presented: section totals, interest/dividend classification choices, and direct vs indirect method."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 789,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "cash-flow-reader",
+   "attempt": 2,
+   "passed": false,
+   "chars": 148,
+   "text": "Explains how a company's cash flow statement is presented: section totals, interest/dividend classification choices, and direct vs. indirect method."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 789,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "cash-flow-reader",
+   "attempt": 3,
+   "passed": false,
+   "chars": 148,
+   "text": "Explains how a company's cash flow statement is presented: section totals, interest/dividend classification choices, and direct vs. indirect method."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 789,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.36,
+   "what": "differentiate_short",
+   "key": "cash-flow-reader",
+   "attempt": 4,
+   "passed": false,
+   "chars": 147,
+   "text": "Explains how a company's cash flow statement is presented: section totals, interest/dividend classification choices, and direct vs indirect method."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 629,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.29,
+   "what": "differentiate_short",
+   "key": "technical-analysis-toolkit",
+   "attempt": 0,
+   "passed": false,
+   "chars": 135,
+   "text": "Explains trend, momentum, volatility indicators, support/resistance and false signals; conceptual chart-reading primer, no computation."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 659,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.22,
+   "what": "differentiate_short",
+   "key": "technical-analysis-toolkit",
+   "attempt": 1,
+   "passed": false,
+   "chars": 147,
+   "text": "Explains trend, momentum and volatility indicators, support/resistance reading, and common false signals. Conceptual primer only; computes nothing."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 659,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "technical-analysis-toolkit",
+   "attempt": 2,
+   "passed": false,
+   "chars": 153,
+   "text": "Explains trend, momentum and volatility indicators, support/resistance reading, and common false signals. Conceptual primer only; computes no indicators."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 659,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "technical-analysis-toolkit",
+   "attempt": 3,
+   "passed": false,
+   "chars": 153,
+   "text": "Explains trend, momentum and volatility indicators, support/resistance reading, and common false signals. Conceptual primer only; computes no indicators."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 659,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.19,
+   "what": "differentiate_short",
+   "key": "technical-analysis-toolkit",
+   "attempt": 4,
+   "passed": false,
+   "chars": 144,
+   "text": "Explains trend, momentum and volatility indicators, support/resistance reading, and common false signals. Conceptual primer; computes no values."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 729,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "consensus-tracker",
+   "attempt": 0,
+   "passed": true,
+   "chars": 108,
+   "text": "Tracks weekly revisions to consensus operating profit forecasts over 1 and 3 months for a Korean stock code."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 803,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.22,
+   "what": "differentiate_short",
+   "key": "dividend-yield-payout-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 118,
+   "text": "Forward dividend yield and payout ratio for US-listed stocks, using latest quarterly dividend annualized and GAAP EPS."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 637,
+    "output_tokens": 58,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "portfolio-toolkit",
+   "attempt": 0,
+   "passed": false,
+   "chars": 141,
+   "text": "Explains portfolio concepts: strategic vs tactical allocation, rebalancing rules of thumb, and performance and risk basics. No inputs needed."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 667,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.31,
+   "what": "differentiate_short",
+   "key": "portfolio-toolkit",
+   "attempt": 1,
+   "passed": false,
+   "chars": 142,
+   "text": "Explains portfolio concepts: strategic vs tactical allocation, rebalancing rules of thumb, and performance and risk basics. Explanations only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 667,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "portfolio-toolkit",
+   "attempt": 2,
+   "passed": false,
+   "chars": 142,
+   "text": "Explains portfolio concepts: strategic vs tactical allocation, rebalancing rules of thumb, and performance and risk basics. Explanations only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 667,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.44,
+   "what": "differentiate_short",
+   "key": "portfolio-toolkit",
+   "attempt": 3,
+   "passed": false,
+   "chars": 142,
+   "text": "Explains portfolio concepts: strategic vs tactical allocation, rebalancing rules of thumb, and performance and risk basics. Explanations only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 667,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.38,
+   "what": "differentiate_short",
+   "key": "portfolio-toolkit",
+   "attempt": 4,
+   "passed": false,
+   "chars": 142,
+   "text": "Explains portfolio concepts: strategic vs tactical allocation, rebalancing rules of thumb, and performance and risk basics. Explanations only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 733,
+    "output_tokens": 55,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.44,
+   "what": "differentiate_short",
+   "key": "low-pe-screener",
+   "attempt": 0,
+   "passed": true,
+   "chars": 110,
+   "text": "Screens all KRX stocks by P/E ratio, filtering by P/E ceiling and minimum market cap, ranked lowest P/E first."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 760,
+    "output_tokens": 44,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "capital-raise-digest",
+   "attempt": 0,
+   "passed": true,
+   "chars": 116,
+   "text": "Lists daily DART filings for capital increases, CB and BW issues in a date range; titles and links only, no reading."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 639,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "fx-hedge-review",
+   "attempt": 0,
+   "passed": false,
+   "chars": 137,
+   "text": "Reviews FX forwards and swaps by currency, with notional, fair value, and hedge accounting designation from a company's derivatives note."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 669,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "fx-hedge-review",
+   "attempt": 1,
+   "passed": false,
+   "chars": 132,
+   "text": "Reviews FX forwards and swaps by currency from a company's derivatives note: notional, fair value, and hedge accounting designation."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 669,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "fx-hedge-review",
+   "attempt": 2,
+   "passed": false,
+   "chars": 134,
+   "text": "Reviews FX forwards and swaps by currency, with notional, fair value, and hedge accounting designation, output as a derivatives table."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 669,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "fx-hedge-review",
+   "attempt": 3,
+   "passed": true,
+   "chars": 129,
+   "text": "Reviews FX forwards and swaps by currency: notional, fair value, and hedge accounting designation, output as a derivatives table."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 725,
+    "output_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.29,
+   "what": "differentiate_short",
+   "key": "ownership-watch",
+   "attempt": 0,
+   "passed": true,
+   "chars": 105,
+   "text": "Lists the ten largest shareholders and their stakes from the latest annual report's shareholders section."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 743,
+    "output_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.35,
+   "what": "differentiate_short",
+   "key": "debt-maturity-profile-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 101,
+   "text": "Charts principal due by year from a US company's 10-K contractual obligations table, from its ticker."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 744,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.36,
+   "what": "differentiate_short",
+   "key": "ev-sales",
+   "attempt": 0,
+   "passed": true,
+   "chars": 113,
+   "text": "Computes a stock's EV/Sales ratio from market cap, net debt and TTM revenue, and compares it with revenue growth."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 687,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "volatility-check",
+   "attempt": 0,
+   "passed": true,
+   "chars": 114,
+   "text": "Market-wide implied volatility: VKOSPI level, its one-year range, and KOSPI 200 at-the-money implied vol readings."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 704,
+    "output_tokens": 41,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "market-flow-board",
+   "attempt": 0,
+   "passed": true,
+   "chars": 104,
+   "text": "Market-wide KRX index level, change, turnover, and advancing vs declining issue counts for a given date."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 643,
+    "output_tokens": 48,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.37,
+   "what": "differentiate_short",
+   "key": "mezzanine-market-stats",
+   "attempt": 0,
+   "passed": true,
+   "chars": 113,
+   "text": "Monthly market-wide CB, BW and EB issuance statistics: filing counts and amounts totaled by month and instrument."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 631,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "volatility-of-earnings",
+   "attempt": 0,
+   "passed": true,
+   "chars": 117,
+   "text": "Computes a stock's earnings volatility from 10 years of annual EPS growth, via the standard deviation of that growth."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 631,
+    "output_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.54,
+   "what": "differentiate_short",
+   "key": "financial-news-search",
+   "attempt": 0,
+   "passed": true,
+   "chars": 107,
+   "text": "Searches major Korean economic newspapers for news by query, returning headlines, dates, and article links."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 629,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.24,
+   "what": "differentiate_short",
+   "key": "earnings-alert",
+   "attempt": 0,
+   "passed": true,
+   "chars": 109,
+   "text": "Polls DART for new preliminary earnings filings and sends the title and time to Slack. Does not read figures."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 635,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "cost-analysis",
+   "attempt": 0,
+   "passed": true,
+   "chars": 125,
+   "text": "Breaks down a company's costs by nature (materials, employee benefits, depreciation) as % of revenue, from the expenses note."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 703,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.2,
+   "what": "differentiate_short",
+   "key": "insider-trading-filings-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 102,
+   "text": "Retrieves US SEC Form 4 insider filings for a ticker, with transaction codes, share counts and prices."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 744,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.22,
+   "what": "differentiate_short",
+   "key": "pe-band-chart-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 118,
+   "text": "Forward P/E band chart for US stocks, using analyst forward EPS with 10x-30x bands and the current forward P/E marked."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 621,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "earnings-calendar",
+   "attempt": 0,
+   "passed": true,
+   "chars": 128,
+   "text": "Builds an expected earnings release-date calendar per company for a quarter, using fair disclosure notices and prior-year dates."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 594,
+    "output_tokens": 48,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.24,
+   "what": "differentiate_short",
+   "key": "dart-search",
+   "attempt": 0,
+   "passed": true,
+   "chars": 125,
+   "text": "Searches Korean DART regulatory disclosures by company, date range and report type; returns receipt numbers, titles and URLs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 661,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.31,
+   "what": "differentiate_short",
+   "key": "margin-trend",
+   "attempt": 0,
+   "passed": true,
+   "chars": 111,
+   "text": "Quarterly net profit margin for a stock: owner-attributable net income over revenue, charted across 8 quarters."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 797,
+    "output_tokens": 51,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "price-to-book-insurer",
+   "attempt": 0,
+   "passed": true,
+   "chars": 124,
+   "text": "Insurer P/B adjusted for after-tax contractual service margin (CSM) from the insurance contract note, reported and adjusted."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 646,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "coverage-review",
+   "attempt": 0,
+   "passed": true,
+   "chars": 128,
+   "text": "Summarises a company's insurance cover from its notes: property, business interruption and D&O amounts vs. book value of assets."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 843,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.17,
+   "what": "differentiate_short",
+   "key": "country-risk-premium",
+   "attempt": 0,
+   "passed": true,
+   "chars": 103,
+   "text": "Looks up country risk premium by sovereign rating and CDS spread, scaled by relative equity volatility."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 616,
+    "output_tokens": 40,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "risk-dashboard",
+   "attempt": 0,
+   "passed": true,
+   "chars": 97,
+   "text": "Plots a stock's drawdown from its running price peak for a given stock code, as a drawdown chart."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 734,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "moving-average-signals-crypto",
+   "attempt": 0,
+   "passed": true,
+   "chars": 95,
+   "text": "EMA 12/26 crossover signals on hourly crypto candles from Upbit, running 24/7 for crypto pairs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 730,
+    "output_tokens": 40,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.27,
+   "what": "differentiate_short",
+   "key": "roe-analyzer",
+   "attempt": 0,
+   "passed": true,
+   "chars": 106,
+   "text": "Computes single-year return on equity (ROE) for a Korean stock from net income and average owners' equity."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 782,
+    "output_tokens": 56,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "ex-dividend-calendar-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 128,
+   "text": "Lists upcoming US ex-dividend, record and pay dates from Nasdaq declared dividends, with ex-date equal to record date under T+1."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 721,
+    "output_tokens": 41,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 0.88,
+   "what": "differentiate_short",
+   "key": "peer-comparison-table-global",
+   "attempt": 0,
+   "passed": true,
+   "chars": 108,
+   "text": "Builds global comps tables in USD from FactSet exports, calendarized to December year-end, with median rows."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 633,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "data-quality-checklist",
+   "attempt": 0,
+   "passed": true,
+   "chars": 125,
+   "text": "Checklist for validating a dataset: units and currency consistency, restatements, fiscal year ends, outliers, and duplicates."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 681,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.41,
+   "what": "differentiate_short",
+   "key": "dcf-sensitivity",
+   "attempt": 0,
+   "passed": true,
+   "chars": 108,
+   "text": "Builds a 5x5 WACC vs terminal-growth grid of value per share for a finished DCF, highlighting the base case."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 604,
+    "output_tokens": 37,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 2.03,
+   "what": "differentiate_short",
+   "key": "fund-flows",
+   "attempt": 0,
+   "passed": true,
+   "chars": 80,
+   "text": "Weekly ETF creation and redemption units and net flow in won, tabulated per ETF."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 802,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "portfolio-rebalancing-pension",
+   "attempt": 0,
+   "passed": true,
+   "chars": 119,
+   "text": "Glide-path fund-switch plan for retirement DC/IRP accounts by age, capping risky assets at 70%. Fund-level, not stocks."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 730,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.31,
+   "what": "differentiate_short",
+   "key": "key-rate-duration",
+   "attempt": 0,
+   "passed": true,
+   "chars": 104,
+   "text": "Portfolio key rate durations: bumps each curve key rate 1bp and reports duration contribution per point."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 648,
+    "output_tokens": 49,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.26,
+   "what": "differentiate_short",
+   "key": "var-backtest",
+   "attempt": 0,
+   "passed": true,
+   "chars": 102,
+   "text": "Backtests Value-at-Risk models: counts VaR exceptions and runs the Kupiec proportion-of-failures test."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 632,
+    "output_tokens": 35,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.22,
+   "what": "differentiate_short",
+   "key": "buyback-screen",
+   "attempt": 0,
+   "passed": true,
+   "chars": 95,
+   "text": "Ranks all companies market-wide by total share buyback amount this year relative to market cap."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 711,
+    "output_tokens": 38,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.28,
+   "what": "differentiate_short",
+   "key": "fx-translation-consolidation",
+   "attempt": 0,
+   "passed": true,
+   "chars": 116,
+   "text": "Computes exchange differences on translating foreign operations and movements in the translation reserve within OCI."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 650,
+    "output_tokens": 46,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "portfolio-stress-test",
+   "attempt": 0,
+   "passed": true,
+   "chars": 104,
+   "text": "Replays fixed historical crash episodes (2008, March 2020, 2022) on holdings to compute scenario losses."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 713,
+    "output_tokens": 56,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.67,
+   "what": "differentiate_short",
+   "key": "treasury-shares",
+   "attempt": 0,
+   "passed": true,
+   "chars": 117,
+   "text": "Summarizes treasury share cancellations from 자기주식소각결정 filings: shares cancelled, % of outstanding, and EPS accretion."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 632,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "report-reader",
+   "attempt": 0,
+   "passed": true,
+   "chars": 114,
+   "text": "Reads the 사업의 내용 (business overview) section of an annual report: products, market share, raw materials, capacity."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 665,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "refinancing-risk",
+   "attempt": 0,
+   "passed": true,
+   "chars": 106,
+   "text": "Market-wide screen flagging listed companies whose short-term borrowings exceed cash, ranked by shortfall."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 720,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.17,
+   "what": "differentiate_short",
+   "key": "rating-watch-screen",
+   "attempt": 0,
+   "passed": true,
+   "chars": 108,
+   "text": "Lists Korean issuers now on negative outlook or downgrade watch at any domestic agency, grouped by industry."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 631,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "capex-tracker",
+   "attempt": 0,
+   "passed": true,
+   "chars": 117,
+   "text": "Lists new facility investment filings (신규시설투자) with amount, period, purpose, and amount as % of equity for a company."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 605,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "executive-disclosures",
+   "attempt": 0,
+   "passed": false,
+   "chars": 141,
+   "text": "Extracts individual executive pay from the annual report's disclosure of pay of 500 million won or more: salary, bonus, other pay per person."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 635,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.36,
+   "what": "differentiate_short",
+   "key": "executive-disclosures",
+   "attempt": 1,
+   "passed": false,
+   "chars": 150,
+   "text": "Extracts individual executive pay from the annual report (disclosures of 500 million won or more): salary, bonus and other pay per person, as a table."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 635,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.2,
+   "what": "differentiate_short",
+   "key": "executive-disclosures",
+   "attempt": 2,
+   "passed": false,
+   "chars": 134,
+   "text": "Extracts executive pay from the annual report: salary, bonus and other pay per person for individuals earning 500 million won or more."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 635,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "executive-disclosures",
+   "attempt": 3,
+   "passed": false,
+   "chars": 141,
+   "text": "Extracts individual executive pay from the annual report: salary, bonus, and other pay per person for disclosures of 500 million won or more."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 635,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.22,
+   "what": "differentiate_short",
+   "key": "executive-disclosures",
+   "attempt": 4,
+   "passed": false,
+   "chars": 151,
+   "text": "Extracts individual executive pay from the annual report (disclosures of 500 million won or more): salary, bonus, and other pay per person, as a table."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 679,
+    "output_tokens": 43,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "spreadsheet-formula-helper",
+   "attempt": 0,
+   "passed": true,
+   "chars": 104,
+   "text": "Writes spreadsheet formulas for Excel or Google Sheets and explains each argument's role in the formula."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 722,
+    "output_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "credit-ratings",
+   "attempt": 0,
+   "passed": false,
+   "chars": 138,
+   "text": "Explains Korean domestic bond and CP rating scales, maps them roughly to global agency scales, and summarizes rating methodology criteria."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 752,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.29,
+   "what": "differentiate_short",
+   "key": "credit-ratings",
+   "attempt": 1,
+   "passed": false,
+   "chars": 131,
+   "text": "Explains domestic bond and CP rating scales, maps them roughly to global agency scales, and summarizes rating methodology criteria."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 752,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 2.27,
+   "what": "differentiate_short",
+   "key": "credit-ratings",
+   "attempt": 2,
+   "passed": false,
+   "chars": 131,
+   "text": "Explains domestic bond and CP rating scales, maps them roughly to global agency scales, and summarizes rating methodology criteria."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 752,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.39,
+   "what": "differentiate_short",
+   "key": "credit-ratings",
+   "attempt": 3,
+   "passed": false,
+   "chars": 131,
+   "text": "Explains domestic bond and CP rating scales, maps them roughly to global agency scales, and summarizes rating methodology criteria."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 752,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.51,
+   "what": "differentiate_short",
+   "key": "credit-ratings",
+   "attempt": 4,
+   "passed": false,
+   "chars": 131,
+   "text": "Explains domestic bond and CP rating scales, maps them roughly to global agency scales, and summarizes rating methodology criteria."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 778,
+    "output_tokens": 52,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.23,
+   "what": "differentiate_short",
+   "key": "ebitda-adjustments-review",
+   "attempt": 0,
+   "passed": false,
+   "chars": 131,
+   "text": "Normalizes EBITDA by identifying and removing non-recurring items like impairments, disposal gains/losses, and restructuring costs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 808,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.4,
+   "what": "differentiate_short",
+   "key": "ebitda-adjustments-review",
+   "attempt": 1,
+   "passed": false,
+   "chars": 132,
+   "text": "Normalizes EBITDA by identifying and adjusting non-recurring items like impairments, disposal gains/losses, and restructuring costs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 808,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.25,
+   "what": "differentiate_short",
+   "key": "ebitda-adjustments-review",
+   "attempt": 2,
+   "passed": false,
+   "chars": 132,
+   "text": "Normalizes EBITDA by identifying and adjusting non-recurring items like impairments, disposal gains/losses, and restructuring costs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 808,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "ebitda-adjustments-review",
+   "attempt": 3,
+   "passed": false,
+   "chars": 132,
+   "text": "Normalizes EBITDA by identifying and adjusting non-recurring items like impairments, disposal gains/losses, and restructuring costs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 808,
+    "output_tokens": 54,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "ebitda-adjustments-review",
+   "attempt": 4,
+   "passed": false,
+   "chars": 132,
+   "text": "Normalizes EBITDA by identifying and adjusting non-recurring items like impairments, disposal gains/losses, and restructuring costs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 736,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.32,
+   "what": "differentiate_short",
+   "key": "price-volume-mix",
+   "attempt": 0,
+   "passed": true,
+   "chars": 115,
+   "text": "Decomposes revenue change between two periods into price, volume and mix effects, with a waterfall. Excludes costs."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 642,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "working-capital-analysis",
+   "attempt": 0,
+   "passed": false,
+   "chars": 142,
+   "text": "Computes net working capital levels and quarterly changes from receivables, inventories, and payables for a stock code. Excludes days metrics."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 672,
+    "output_tokens": 47,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.21,
+   "what": "differentiate_short",
+   "key": "working-capital-analysis",
+   "attempt": 1,
+   "passed": false,
+   "chars": 134,
+   "text": "Computes net working capital (receivables + inventories - payables) in won and its quarterly change for a stock code; no days metrics."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 672,
+    "output_tokens": 48,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.27,
+   "what": "differentiate_short",
+   "key": "working-capital-analysis",
+   "attempt": 2,
+   "passed": false,
+   "chars": 136,
+   "text": "Computes net working capital (receivables + inventories - payables) in won and its quarterly change, from a stock code. No days metrics."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 672,
+    "output_tokens": 48,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.38,
+   "what": "differentiate_short",
+   "key": "working-capital-analysis",
+   "attempt": 3,
+   "passed": false,
+   "chars": 136,
+   "text": "Computes net working capital (receivables + inventories - payables) in won and its quarterly change, from a stock code. No days metrics."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 672,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.3,
+   "what": "differentiate_short",
+   "key": "working-capital-analysis",
+   "attempt": 4,
+   "passed": true,
+   "chars": 117,
+   "text": "Computes net working capital (receivables + inventories - payables) in won and its quarterly change; no days metrics."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 783,
+    "output_tokens": 42,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "quick-dcf",
+   "attempt": 0,
+   "passed": true,
+   "chars": 106,
+   "text": "Single-stage Gordon growth DDM: values a stock from next year's dividend, required return and growth rate."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 789,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.19,
+   "what": "differentiate_short",
+   "key": "dart-consolidated-statements-audit",
+   "attempt": 0,
+   "passed": true,
+   "chars": 105,
+   "text": "Parses consolidated statement tables from unlisted companies' audit reports (감사보고서) on DART; annual only."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 601,
+    "output_tokens": 41,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.36,
+   "what": "differentiate_short",
+   "key": "report-formatting-helper",
+   "attempt": 0,
+   "passed": true,
+   "chars": 106,
+   "text": "Formats a draft report: heading levels and numbering, table and footnote style, and a standard disclaimer."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 700,
+    "output_tokens": 40,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.33,
+   "what": "differentiate_short",
+   "key": "revenue-by-region",
+   "attempt": 0,
+   "passed": true,
+   "chars": 112,
+   "text": "Splits a company's revenue by geographic region from entity-wide disclosures, with each region's share of total."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 726,
+    "output_tokens": 45,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.18,
+   "what": "differentiate_short",
+   "key": "major-shareholder-changes-us",
+   "attempt": 0,
+   "passed": true,
+   "chars": 96,
+   "text": "Lists US Schedule 13D/13G beneficial ownership filings for a ticker, with filer, stake and date."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 714,
+    "output_tokens": 50,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.14,
+   "what": "differentiate_short",
+   "key": "dividend-reinvestment",
+   "attempt": 0,
+   "passed": true,
+   "chars": 119,
+   "text": "Simulates dividend reinvestment (DRIP) for a stock, tracking share count and comparing ending value to no reinvestment."
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "usage": {
+    "input_tokens": 651,
+    "output_tokens": 57,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+   },
+   "seconds": 1.41,
+   "what": "differentiate_short",
+   "key": "yield-curve-plot",
+   "attempt": 0,
+   "passed": true,
+   "chars": 117,
+   "text": "Plots Korean Treasury Bond (KTB) yield curves by tenor from 3 months to 30 years, overlaying curves for chosen dates."
+  }
+ ],
+ "seconds_total": 218.4
+}

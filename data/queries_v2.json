@@ -1,0 +1,1317 @@
+[
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "earnings-surprise",
+   "operating-margin-trend",
+   "trailing-pe"
+  ],
+  "text": "Using CJ CheilJedang's reported net profit for the past four quarters, what P/E does today's price imply? Also, track its operating profit margin quarter by quarter for three years. Also, by how much did its operating profit beat or miss consensus last quarter?",
+  "needs_new": false,
+  "qid": "v000"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "foreign-investor-flows",
+   "price-to-book"
+  ],
+  "text": "What multiple of book value per share does Orion trade at today? On top of that, what have foreigners done in the company over the past month: how much net buying or selling?",
+  "needs_new": false,
+  "qid": "v001"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "dividend-yield-payout",
+   "ev-ebitda"
+  ],
+  "text": "What percentage of last year's profit did Hyundai Mobis hand back as cash dividends? Then including net debt and minority interests, what is the company worth relative to its last-twelve-month EBITDA?",
+  "needs_new": false,
+  "qid": "v002"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "free-cash-flow",
+   "wacc-estimator"
+  ],
+  "text": "What was KT's operating cash flow minus capital spending in each of the past three years? Also, what blended cost of equity and debt should I discount its cash flows at?",
+  "needs_new": false,
+  "qid": "v003"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "dividend-yield-payout"
+  ],
+  "text": "Calculate Korean Air's dividend yield on today's price from its declared DPS.",
+  "needs_new": false,
+  "qid": "v004"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "fx-translation",
+   "moving-average-signals",
+   "rights-offering-summary"
+  ],
+  "text": "Samsung Electronics filed a paid-in capital increase; summarize the issue price, discount and new share count. Next, has the company had a golden cross between its 20-day and 60-day averages this year? Next, restate its income statement and balance sheet in US dollars.",
+  "needs_new": false,
+  "qid": "v005"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "convertible-bond-summary",
+   "interest-coverage"
+  ],
+  "text": "How comfortably does LG Electronics's EBIT cover its interest expense? Also, summarize the terms of the CB the company just issued: coupon, maturity and conversion price.",
+  "needs_new": false,
+  "qid": "v006"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "operating-margin-trend"
+  ],
+  "text": "Is Korean Air's operating margin trending up or down since 2023?",
+  "needs_new": false,
+  "qid": "v007"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "interest-coverage",
+   "stock-beta"
+  ],
+  "text": "Regress S-Oil's weekly returns on the KOSPI over two years and give me the beta. Then give me its operating profit to interest expense ratio for the last three years.",
+  "needs_new": false,
+  "qid": "v008"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "dart-consolidated-statements",
+   "free-cash-flow"
+  ],
+  "text": "Pull SK hynix's full consolidated statements for the latest annual report from DART. Next, compute its historical free cash flow from the cash flow statement.",
+  "needs_new": false,
+  "qid": "v009"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "major-shareholder-changes",
+   "moving-average-signals",
+   "portfolio-rebalancing"
+  ],
+  "text": "Which investors reported crossing 5% in Samsung SDI this year? Next, where is the company trading relative to its 20, 60 and 120-day moving averages? Next, my account has drifted; generate whole-share trades to return to my target weights, including the company.",
+  "needs_new": false,
+  "qid": "v010"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "bond-ytm",
+   "peer-comparison-table",
+   "stock-beta"
+  ],
+  "text": "At a clean price of 9,720 won, what yield to maturity does SK Telecom's corporate bond offer? And how much does the company tend to move when the KOSPI moves 1%? Next, compare the company with three listed rivals on P/E, P/B, EV/EBITDA and ROE.",
+  "needs_new": false,
+  "qid": "v011"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "foreign-investor-flows",
+   "portfolio-rebalancing"
+  ],
+  "text": "I want to cut my position in LG H&H to 20% of the portfolio; what orders bring all holdings back to target? Then give me daily net buying of the company by foreign investors and institutions.",
+  "needs_new": false,
+  "qid": "v012"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "bond-ytm",
+   "peer-comparison-table"
+  ],
+  "text": "Work out the YTM of a 10-year KTB with a 2.75% coupon priced at 96.4. Then put together a comparable company table for LG Chem with peer medians.",
+  "needs_new": false,
+  "qid": "v013"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "major-shareholder-changes",
+   "price-to-book"
+  ],
+  "text": "Show me the bulk-holding report history for LG Electronics and the stated purposes. Also, using the newest quarterly balance sheet, how does its share price compare with its equity per share?",
+  "needs_new": false,
+  "qid": "v014"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "foreign-investor-flows",
+   "fx-translation",
+   "rights-offering-summary"
+  ],
+  "text": "What do SK hynix's revenue and total assets look like in USD at the proper exchange rates? Also, are foreign investors still accumulating shares of the company? On top of that, what will the company spend the proceeds of its rights offering on, and how much does it raise?",
+  "needs_new": false,
+  "qid": "v015"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "earnings-surprise",
+   "peer-comparison-table"
+  ],
+  "text": "How expensive is CJ CheilJedang against the median of the peers I give you? Then how did its reported revenue compare with the analyst consensus?",
+  "needs_new": false,
+  "qid": "v016"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "fx-translation",
+   "wacc-estimator"
+  ],
+  "text": "Convert LG Chem's latest financials from won into dollars for a comparison with US companies. Also, work out its weighted average cost of capital using a KOSPI beta and the 10-year KTB yield.",
+  "needs_new": false,
+  "qid": "v017"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "convertible-bond-summary",
+   "dart-consolidated-statements",
+   "trailing-pe"
+  ],
+  "text": "What is the refixing floor on NCSoft's new convertible bonds? On top of that, give me its price-to-earnings ratio on a trailing twelve-month basis from its filings. Next, I need every line of its consolidated cash flow statement for 2024 from the DART API.",
+  "needs_new": false,
+  "qid": "v018"
+ },
+ {
+  "split": "test2",
+  "session": 0,
+  "required": [
+   "earnings-surprise"
+  ],
+  "text": "Was LG Electronics's latest quarter a positive or negative earnings surprise?",
+  "needs_new": false,
+  "qid": "v019"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ex-dividend-calendar",
+   "fx-sensitivity",
+   "pe-band-chart"
+  ],
+  "text": "Plot HD Hyundai Heavy Industries's share price against P/E bands of 5x to 25x trailing earnings over five years. Next, by when must I buy shares of the company to receive the upcoming dividend? Also, according to its notes, how much would its pre-tax profit change if the won fell 10% against the dollar?",
+  "needs_new": true,
+  "qid": "v020"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ex-dividend-calendar"
+  ],
+  "text": "What are the record date, ex-date and pay date of POSCO Holdings's next dividend?",
+  "needs_new": true,
+  "qid": "v021"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "bond-duration",
+   "fx-sensitivity"
+  ],
+  "text": "What is the modified duration of KT&G's 7-year bond at a 3.8% yield? And what does its financial risk note say about FX sensitivity?",
+  "needs_new": true,
+  "qid": "v022"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "fx-sensitivity"
+  ],
+  "text": "Estimate the profit impact on Hyundai Motor of a 5% stronger dollar from its currency risk table.",
+  "needs_new": true,
+  "qid": "v023"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "pe-band-chart"
+  ],
+  "text": "Is Hanmi Pharm near the top or bottom of its historical P/E band?",
+  "needs_new": true,
+  "qid": "v024"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda",
+   "ex-dividend-calendar"
+  ],
+  "text": "SK hynix sets its dividend record date after the board decision; when is it this year? Next, give me its enterprise value divided by trailing EBITDA.",
+  "needs_new": true,
+  "qid": "v025"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "bond-duration"
+  ],
+  "text": "How much would this KTB lose if yields rose 100bp, using duration and convexity?",
+  "needs_new": true,
+  "qid": "v026"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "fx-sensitivity",
+   "stock-beta"
+  ],
+  "text": "What is LG Energy Solution's market beta and R-squared against the KOSPI? And how exposed is its pre-tax income to KRW/USD moves?",
+  "needs_new": true,
+  "qid": "v027"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "interest-coverage",
+   "pe-band-chart"
+  ],
+  "text": "Make a five-year P/E band chart for POSCO Holdings. And did its interest coverage fall below 1x in any recent year?",
+  "needs_new": true,
+  "qid": "v028"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ex-dividend-calendar"
+  ],
+  "text": "Find the ex-dividend date for E-mart's year-end payout.",
+  "needs_new": true,
+  "qid": "v029"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "bond-duration",
+   "portfolio-rebalancing",
+   "wacc-estimator"
+  ],
+  "text": "Turn these target allocations into buy and sell orders for my KRX holdings. And compute Macaulay duration and convexity for a 4% coupon bond due in 2033. On top of that, estimate Hanmi Pharm's WACC with market-value weights and an after-tax cost of debt.",
+  "needs_new": true,
+  "qid": "v030"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "dart-consolidated-statements",
+   "dividend-yield-payout",
+   "fx-sensitivity"
+  ],
+  "text": "Give me Hanwha Aerospace's payout ratio and current dividend yield. Then according to its notes, how much would its pre-tax profit change if the won fell 10% against the dollar? Then download its consolidated balance sheet and income statement for the second quarter.",
+  "needs_new": true,
+  "qid": "v031"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda",
+   "major-shareholder-changes"
+  ],
+  "text": "Did any 5% holder of Kia change its holding purpose recently? Next, how does its EV compare with its EBITDA over the past four quarters?",
+  "needs_new": false,
+  "qid": "v032"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda"
+  ],
+  "text": "Compute Orion's EV/EBITDA multiple with lease liabilities in net debt.",
+  "needs_new": false,
+  "qid": "v033"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "convertible-bond-summary",
+   "ev-ebitda"
+  ],
+  "text": "Including net debt and minority interests, what is E-mart worth relative to its last-twelve-month EBITDA? Then how many shares could its latest convertible bond issue convert into?",
+  "needs_new": false,
+  "qid": "v034"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda"
+  ],
+  "text": "Give me Hanwha Aerospace's enterprise value divided by trailing EBITDA.",
+  "needs_new": false,
+  "qid": "v035"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda",
+   "rights-offering-summary"
+  ],
+  "text": "How does HD Hyundai Heavy Industries's EV compare with its EBITDA over the past four quarters? Next, how much will the new share issue dilute existing shareholders of the company?",
+  "needs_new": false,
+  "qid": "v036"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "bond-ytm",
+   "ev-ebitda"
+  ],
+  "text": "Compute Hanmi Pharm's EV/EBITDA multiple with lease liabilities in net debt. Then what yield does this KRW bond trade at, given its coupon schedule and price?",
+  "needs_new": false,
+  "qid": "v037"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda",
+   "free-cash-flow"
+  ],
+  "text": "Including net debt and minority interests, what is Kakao worth relative to its last-twelve-month EBITDA? Next, has the company generated positive free cash flow after capex recently?",
+  "needs_new": false,
+  "qid": "v038"
+ },
+ {
+  "split": "test2",
+  "session": 1,
+  "required": [
+   "ev-ebitda",
+   "moving-average-signals"
+  ],
+  "text": "Give me S-Oil's enterprise value divided by trailing EBITDA. Then flag any dead cross in its chart over the last twelve months.",
+  "needs_new": false,
+  "qid": "v039"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dart-segment-revenue",
+   "dupont-roe"
+  ],
+  "text": "Split Kakao's return on equity into net margin, asset turnover and leverage for five years. On top of that, how much revenue and operating profit did each of its business segments report?",
+  "needs_new": true,
+  "qid": "v040"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dart-segment-revenue",
+   "debt-maturity-profile",
+   "historical-volatility"
+  ],
+  "text": "Pull Samsung C&T's operating segment figures from the notes of its latest DART filing. Also, what is its 20-day realized volatility, annualized? Also, how much of its borrowings come due in the next 12 months compared with its cash?",
+  "needs_new": true,
+  "qid": "v041"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "debt-maturity-profile"
+  ],
+  "text": "Build a maturity ladder of HD Hyundai Heavy Industries's loans and bonds.",
+  "needs_new": true,
+  "qid": "v042"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "historical-volatility"
+  ],
+  "text": "Compute CJ CheilJedang's historical volatility over 60 and 252 trading days.",
+  "needs_new": true,
+  "qid": "v043"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dupont-roe"
+  ],
+  "text": "Why did Samsung SDI's ROE change: margins, asset turnover or financial leverage?",
+  "needs_new": true,
+  "qid": "v044"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dart-segment-revenue",
+   "historical-volatility"
+  ],
+  "text": "Which segment of Samsung Electronics contributes the most sales? Next, is its daily return volatility higher this month than over the past year?",
+  "needs_new": true,
+  "qid": "v045"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "debt-maturity-profile",
+   "dupont-roe",
+   "trailing-pe"
+  ],
+  "text": "How many times its last year of actual EPS is KT&G priced at today? Then give me a three-factor DuPont breakdown of its ROE. Then when do its debts mature over the next five years?",
+  "needs_new": true,
+  "qid": "v046"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "historical-volatility",
+   "operating-margin-trend",
+   "price-to-book"
+  ],
+  "text": "Give me Samsung Biologics's annualized volatility from daily log returns. Then show its operating profit as a percent of sales for each of the last 12 quarters. Also, calculate its P/B ratio as of yesterday's close.",
+  "needs_new": true,
+  "qid": "v047"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dupont-roe"
+  ],
+  "text": "Which DuPont factor explains KT&G's ROE improvement?",
+  "needs_new": true,
+  "qid": "v048"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dart-segment-revenue"
+  ],
+  "text": "Show S-Oil's results by reportable segment and reconcile them to group revenue.",
+  "needs_new": true,
+  "qid": "v049"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "debt-maturity-profile"
+  ],
+  "text": "Bucket NAVER's borrowings by maturity year from the borrowings note.",
+  "needs_new": true,
+  "qid": "v050"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "historical-volatility",
+   "moving-average-signals"
+  ],
+  "text": "Is Hyundai Mobis still above its 120-day moving average line? Next, what is its 20-day realized volatility, annualized?",
+  "needs_new": true,
+  "qid": "v051"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "convertible-bond-summary",
+   "fx-translation",
+   "operating-margin-trend"
+  ],
+  "text": "Translate POSCO Holdings's KRW statements to USD using average and period-end rates. Also, when can holders of its new CBs put them back, and at what yield? Also, find the quarters where its operating margin changed direction.",
+  "needs_new": false,
+  "qid": "v052"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "earnings-surprise",
+   "rights-offering-summary",
+   "trailing-pe"
+  ],
+  "text": "Recompute Hyundai Mobis's TTM P/E after its latest quarterly report came out. Next, measure the gap between its reported quarterly profit and street estimates. Next, break down its capital increase decision: allocation method, size and pricing.",
+  "needs_new": false,
+  "qid": "v053"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "trailing-pe"
+  ],
+  "text": "Using Hanmi Pharm's reported net profit for the past four quarters, what P/E does today's price imply?",
+  "needs_new": false,
+  "qid": "v054"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "dart-consolidated-statements",
+   "price-to-book"
+  ],
+  "text": "Fetch SK Telecom's consolidated financial statements via the DART OpenAPI and save them as CSV. On top of that, is the company valued above 1x book on its latest consolidated equity?",
+  "needs_new": false,
+  "qid": "v055"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "operating-margin-trend"
+  ],
+  "text": "Track KT&G's operating profit margin quarter by quarter for three years.",
+  "needs_new": false,
+  "qid": "v056"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "operating-margin-trend",
+   "wacc-estimator"
+  ],
+  "text": "Is SK Telecom's operating margin trending up or down since 2023? Then I need the discount rate for valuing the company: combine its cost of equity and borrowing cost.",
+  "needs_new": false,
+  "qid": "v057"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "price-to-book"
+  ],
+  "text": "What multiple of book value per share does Samsung Biologics trade at today?",
+  "needs_new": false,
+  "qid": "v058"
+ },
+ {
+  "split": "test2",
+  "session": 2,
+  "required": [
+   "price-to-book"
+  ],
+  "text": "Using the newest quarterly balance sheet, how does E-mart's share price compare with its equity per share?",
+  "needs_new": false,
+  "qid": "v059"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "dcf-valuation"
+  ],
+  "text": "What is Korean Air worth per share on a five-year discounted cash flow model?",
+  "needs_new": true,
+  "qid": "v060"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "gross-margin-bridge",
+   "insider-trading-filings",
+   "preliminary-earnings-reader"
+  ],
+  "text": "S-Oil released preliminary quarterly results; what are the YoY and QoQ changes? And why did its gross margin improve this year: higher prices, more volume or cheaper inputs? On top of that, which of its executives sold shares in the last three months?",
+  "needs_new": true,
+  "qid": "v061"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "insider-trading-filings"
+  ],
+  "text": "Show the share trades reported by NCSoft's officers and major shareholders this year.",
+  "needs_new": true,
+  "qid": "v062"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "dcf-valuation",
+   "gross-margin-bridge"
+  ],
+  "text": "Discount Samsung C&T's forecast unlevered free cash flows at 8.5% with 1.5% terminal growth. And bridge its gross margin from last year to this year.",
+  "needs_new": true,
+  "qid": "v063"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "dcf-valuation",
+   "insider-trading-filings",
+   "preliminary-earnings-reader"
+  ],
+  "text": "From S-Oil's preliminary earnings filing, how much did operating profit grow versus a year ago? And build a DCF for the company from my growth and margin assumptions and bridge to equity value. Also, is there net insider buying or selling at the company lately?",
+  "needs_new": true,
+  "qid": "v064"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "preliminary-earnings-reader"
+  ],
+  "text": "Did LG H&H's preliminary results show a turnaround to profit?",
+  "needs_new": true,
+  "qid": "v065"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "gross-margin-bridge",
+   "insider-trading-filings",
+   "pe-band-chart"
+  ],
+  "text": "Show where Yuhan's price sits relative to fixed multiples of its trailing EPS over time. On top of that, how much of its gross margin change came from unit costs? And did any insider at the company trade shares shortly before an earnings release?",
+  "needs_new": true,
+  "qid": "v066"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "gross-margin-bridge"
+  ],
+  "text": "Make a gross margin waterfall for Samsung Electronics with price, volume and cost effects.",
+  "needs_new": true,
+  "qid": "v067"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "dcf-valuation",
+   "stock-beta"
+  ],
+  "text": "Estimate CJ CheilJedang's intrinsic value with a DCF and give me value per share. Then is the company more or less volatile than the market, measured by beta?",
+  "needs_new": true,
+  "qid": "v068"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "preliminary-earnings-reader"
+  ],
+  "text": "Read Samsung C&T's preliminary results announcement and tabulate the changes in revenue and net income.",
+  "needs_new": true,
+  "qid": "v069"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "dividend-yield-payout",
+   "insider-trading-filings"
+  ],
+  "text": "How generous is Samsung SDI's dividend relative to its share price and earnings? On top of that, which of its executives sold shares in the last three months?",
+  "needs_new": true,
+  "qid": "v070"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "gross-margin-bridge",
+   "interest-coverage"
+  ],
+  "text": "Why did E-mart's gross margin improve this year: higher prices, more volume or cheaper inputs? On top of that, check its ability to service its debt interest from operating profit.",
+  "needs_new": true,
+  "qid": "v071"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "foreign-investor-flows",
+   "peer-comparison-table",
+   "portfolio-rebalancing"
+  ],
+  "text": "Rebalance my five-stock portfolio, which includes Samsung SDI, while keeping a small cash buffer. Also, show cumulative foreign net purchases of the company since the start of the quarter. And line up the company and its domestic competitors on valuation and profitability multiples.",
+  "needs_new": false,
+  "qid": "v072"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "bond-ytm",
+   "free-cash-flow",
+   "major-shareholder-changes"
+  ],
+  "text": "Show me Kia's FCF, operating cash flow and capex side by side for three years. Also, turn the quoted price of its 2029 bond into a yield to maturity. Then list changes in its large shareholdings from 5% reports over the past year.",
+  "needs_new": false,
+  "qid": "v073"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "bond-ytm",
+   "dart-segment-revenue"
+  ],
+  "text": "At a clean price of 9,720 won, what yield to maturity does KT&G's corporate bond offer? Then how much revenue and operating profit did each of its business segments report?",
+  "needs_new": false,
+  "qid": "v074"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "bond-duration",
+   "foreign-investor-flows",
+   "rights-offering-summary"
+  ],
+  "text": "What have foreigners done in KT over the past month: how much net buying or selling? Also, the company filed a paid-in capital increase; summarize the issue price, discount and new share count. And how sensitive is its bond price to interest rate changes?",
+  "needs_new": false,
+  "qid": "v075"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "earnings-surprise",
+   "stock-beta"
+  ],
+  "text": "By how much did Hanmi Pharm's operating profit beat or miss consensus last quarter? Also, regress its weekly returns on the KOSPI over two years and give me the beta.",
+  "needs_new": false,
+  "qid": "v076"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "portfolio-rebalancing"
+  ],
+  "text": "My account has drifted; generate whole-share trades to return to my target weights, including Hanwha Aerospace.",
+  "needs_new": false,
+  "qid": "v077"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "dart-consolidated-statements",
+   "dividend-yield-payout",
+   "moving-average-signals"
+  ],
+  "text": "Has Samsung Electronics had a golden cross between its 20-day and 60-day averages this year? Also, what percentage of last year's profit did the company hand back as cash dividends? Next, pull its full consolidated statements for the latest annual report from DART.",
+  "needs_new": false,
+  "qid": "v078"
+ },
+ {
+  "split": "test2",
+  "session": 3,
+  "required": [
+   "bond-duration",
+   "debt-maturity-profile",
+   "dupont-roe"
+  ],
+  "text": "How much of Samsung SDI's borrowings come due in the next 12 months compared with its cash? And what is the modified duration of its 7-year bond at a 3.8% yield? Next, split its return on equity into net margin, asset turnover and leverage for five years.",
+  "needs_new": false,
+  "qid": "v079"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "cash-conversion-cycle",
+   "credit-rating-history"
+  ],
+  "text": "Show the rating actions on Amorepacific's bonds by Korean agencies over five years. Also, how long does the company take to turn inventory and receivables into cash?",
+  "needs_new": true,
+  "qid": "v080"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "value-at-risk"
+  ],
+  "text": "What is the 95% one-day historical VaR of my stock portfolio, which includes Samsung SDI?",
+  "needs_new": true,
+  "qid": "v081"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "cash-conversion-cycle",
+   "credit-rating-history",
+   "treasury-share-buyback"
+  ],
+  "text": "Compute Hanmi Pharm's cash conversion cycle for the last eight quarters. And how large is its treasury share purchase plan relative to its free float? Then has any domestic agency changed its rating outlook recently?",
+  "needs_new": true,
+  "qid": "v082"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "treasury-share-buyback",
+   "value-at-risk"
+  ],
+  "text": "Did HD Hyundai Heavy Industries buy back the shares it said it would, and through a trust or directly? Next, how much could my holdings lose on a bad day at 99% confidence?",
+  "needs_new": true,
+  "qid": "v083"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "cash-conversion-cycle",
+   "treasury-share-buyback"
+  ],
+  "text": "Summarize Hanmi Pharm's share repurchase decisions over the past two years. And are its days sales outstanding and inventory days rising?",
+  "needs_new": true,
+  "qid": "v084"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "credit-rating-history",
+   "value-at-risk"
+  ],
+  "text": "Run historical simulation VaR on my portfolio with 500 days of returns. On top of that, what credit ratings do KIS, NICE and Korea Ratings assign to Samsung C&T, and how have they moved?",
+  "needs_new": true,
+  "qid": "v085"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "credit-rating-history",
+   "treasury-share-buyback",
+   "value-at-risk"
+  ],
+  "text": "What period and amount did Doosan Enerbility set for its latest buyback? Then when was the company last downgraded by a Korean rating agency? And give me my portfolio's daily value at risk in won.",
+  "needs_new": true,
+  "qid": "v086"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "treasury-share-buyback"
+  ],
+  "text": "How large is Krafton's treasury share purchase plan relative to its free float?",
+  "needs_new": true,
+  "qid": "v087"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "cash-conversion-cycle",
+   "fx-translation",
+   "preliminary-earnings-reader"
+  ],
+  "text": "Give me Hanwha Aerospace's DSO, DIO, DPO and CCC trend. Also, restate its income statement and balance sheet in US dollars. Next, the company released preliminary quarterly results; what are the YoY and QoQ changes?",
+  "needs_new": true,
+  "qid": "v088"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "pe-band-chart",
+   "value-at-risk"
+  ],
+  "text": "What is the 95% one-day historical VaR of my stock portfolio, which includes Samsung C&T? Then plot its share price against P/E bands of 5x to 25x trailing earnings over five years.",
+  "needs_new": true,
+  "qid": "v089"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "convertible-bond-summary",
+   "credit-rating-history",
+   "free-cash-flow"
+  ],
+  "text": "Show the rating actions on Doosan Enerbility's bonds by Korean agencies over five years. And what was its operating cash flow minus capital spending in each of the past three years? And summarize the terms of the CB the company just issued: coupon, maturity and conversion price.",
+  "needs_new": true,
+  "qid": "v090"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "cash-conversion-cycle",
+   "treasury-share-buyback"
+  ],
+  "text": "How long does LG Energy Solution take to turn inventory and receivables into cash? Also, did the company buy back the shares it said it would, and through a trust or directly?",
+  "needs_new": true,
+  "qid": "v091"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "ex-dividend-calendar",
+   "major-shareholder-changes",
+   "peer-comparison-table"
+  ],
+  "text": "By when must I buy shares of NCSoft to receive the upcoming dividend? Next, compare the company with three listed rivals on P/E, P/B, EV/EBITDA and ROE. Then which investors reported crossing 5% in the company this year?",
+  "needs_new": false,
+  "qid": "v092"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "dcf-valuation",
+   "ex-dividend-calendar"
+  ],
+  "text": "What is KT&G worth per share on a five-year discounted cash flow model? Next, what are the record date, ex-date and pay date of its next dividend?",
+  "needs_new": false,
+  "qid": "v093"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "major-shareholder-changes"
+  ],
+  "text": "Show me the bulk-holding report history for LG H&H and the stated purposes.",
+  "needs_new": false,
+  "qid": "v094"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "ex-dividend-calendar",
+   "wacc-estimator"
+  ],
+  "text": "Yuhan sets its dividend record date after the board decision; when is it this year? Next, what blended cost of equity and debt should I discount its cash flows at?",
+  "needs_new": false,
+  "qid": "v095"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "dcf-valuation"
+  ],
+  "text": "Discount Samsung Electronics's forecast unlevered free cash flows at 8.5% with 1.5% terminal growth.",
+  "needs_new": false,
+  "qid": "v096"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "interest-coverage",
+   "major-shareholder-changes"
+  ],
+  "text": "Did any 5% holder of KT change its holding purpose recently? Next, how comfortably does its EBIT cover its interest expense?",
+  "needs_new": false,
+  "qid": "v097"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "interest-coverage"
+  ],
+  "text": "Give me Kakao's operating profit to interest expense ratio for the last three years.",
+  "needs_new": false,
+  "qid": "v098"
+ },
+ {
+  "split": "test2",
+  "session": 4,
+  "required": [
+   "dart-consolidated-statements",
+   "major-shareholder-changes"
+  ],
+  "text": "List changes in S-Oil's large shareholdings from 5% reports over the past year. Then I need every line of its consolidated cash flow statement for 2024 from the DART API.",
+  "needs_new": false,
+  "qid": "v099"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "cb-overhang-tracker",
+   "risk-contribution"
+  ],
+  "text": "How much of my portfolio's volatility comes from Doosan Enerbility? Next, how much potential dilution is left from its unconverted convertible bonds?",
+  "needs_new": true,
+  "qid": "v100"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "ipo-lockup-expiry",
+   "risk-contribution"
+  ],
+  "text": "Break my portfolio risk down by holding using the covariance matrix. Next, which recent KOSDAQ listings have lock-ups ending next month?",
+  "needs_new": true,
+  "qid": "v101"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "cb-overhang-tracker",
+   "short-selling-balance"
+  ],
+  "text": "What share of Krafton's outstanding shares is currently sold short? And which of its CB series can be converted now, and into how many shares?",
+  "needs_new": true,
+  "qid": "v102"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "ipo-lockup-expiry"
+  ],
+  "text": "How many of E-mart's shares become free to sell when the IPO lock-up ends?",
+  "needs_new": true,
+  "qid": "v103"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "cb-overhang-tracker"
+  ],
+  "text": "Estimate the new shares LG H&H could issue if its remaining CBs convert at current prices.",
+  "needs_new": true,
+  "qid": "v104"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "risk-contribution",
+   "short-selling-balance"
+  ],
+  "text": "Which stock in my portfolio contributes the most to total risk? Next, how has the short-selling balance on Samsung Electronics changed this month?",
+  "needs_new": true,
+  "qid": "v105"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "cb-overhang-tracker",
+   "short-selling-balance"
+  ],
+  "text": "Track Amorepacific's outstanding convertible bond overhang. Also, show its short balance in won and as a percent of shares.",
+  "needs_new": true,
+  "qid": "v106"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "ipo-lockup-expiry",
+   "risk-contribution"
+  ],
+  "text": "Compute percentage risk contributions for my holdings, including Kakao. Next, list lock-up release dates and unlocked share counts for this year's IPOs.",
+  "needs_new": true,
+  "qid": "v107"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "cb-overhang-tracker",
+   "risk-contribution",
+   "short-selling-balance"
+  ],
+  "text": "How much of my portfolio's volatility comes from Coway? Then is short interest in the company near its one-year high? On top of that, how much potential dilution is left from its unconverted convertible bonds?",
+  "needs_new": true,
+  "qid": "v108"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "risk-contribution"
+  ],
+  "text": "Break my portfolio risk down by holding using the covariance matrix.",
+  "needs_new": true,
+  "qid": "v109"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "short-selling-balance"
+  ],
+  "text": "What share of Lotte Chemical's outstanding shares is currently sold short?",
+  "needs_new": true,
+  "qid": "v110"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "ipo-lockup-expiry"
+  ],
+  "text": "When can the venture capital investors in Kia sell after its listing?",
+  "needs_new": true,
+  "qid": "v111"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "bond-ytm",
+   "debt-maturity-profile",
+   "moving-average-signals"
+  ],
+  "text": "Work out the YTM of a 10-year KTB with a 2.75% coupon priced at 96.4. And build a maturity ladder of Samsung Electronics's loans and bonds. Then where is the company trading relative to its 20, 60 and 120-day moving averages?",
+  "needs_new": false,
+  "qid": "v112"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "fx-translation",
+   "wacc-estimator"
+  ],
+  "text": "What do Coway's revenue and total assets look like in USD at the proper exchange rates? On top of that, work out its weighted average cost of capital using a KOSPI beta and the 10-year KTB yield.",
+  "needs_new": false,
+  "qid": "v113"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "bond-duration",
+   "dart-segment-revenue",
+   "earnings-surprise"
+  ],
+  "text": "How did Yuhan's reported revenue compare with the analyst consensus? On top of that, pull its operating segment figures from the notes of its latest DART filing. Also, how much would this KTB lose if yields rose 100bp, using duration and convexity?",
+  "needs_new": false,
+  "qid": "v114"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "bond-ytm",
+   "preliminary-earnings-reader"
+  ],
+  "text": "What yield does this KRW bond trade at, given its coupon schedule and price? And from SK Telecom's preliminary earnings filing, how much did operating profit grow versus a year ago?",
+  "needs_new": false,
+  "qid": "v115"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "foreign-investor-flows",
+   "peer-comparison-table"
+  ],
+  "text": "Put together a comparable company table for LG H&H with peer medians. On top of that, give me daily net buying of the company by foreign investors and institutions.",
+  "needs_new": false,
+  "qid": "v116"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "convertible-bond-summary",
+   "foreign-investor-flows"
+  ],
+  "text": "What is the refixing floor on Kakao's new convertible bonds? On top of that, are foreign investors still accumulating shares of the company?",
+  "needs_new": false,
+  "qid": "v117"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "free-cash-flow",
+   "insider-trading-filings"
+  ],
+  "text": "Compute Hyundai Mobis's historical free cash flow from the cash flow statement. And show the share trades reported by its officers and major shareholders this year.",
+  "needs_new": false,
+  "qid": "v118"
+ },
+ {
+  "split": "test2",
+  "session": 5,
+  "required": [
+   "portfolio-rebalancing",
+   "rights-offering-summary",
+   "trailing-pe"
+  ],
+  "text": "I want to cut my position in LG H&H to 20% of the portfolio; what orders bring all holdings back to target? And give me its price-to-earnings ratio on a trailing twelve-month basis from its filings. Next, what will the company spend the proceeds of its rights offering on, and how much does it raise?",
+  "needs_new": false,
+  "qid": "v119"
+ }
+]
