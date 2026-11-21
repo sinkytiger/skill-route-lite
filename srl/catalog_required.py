@@ -1,4 +1,4 @@
-"""The 40 required skills: the skills that evaluation queries need. Hand-written for this study (synthetic).
+"""The 40 required skills: the skills that evaluation queries need. Written for this study with Claude Code (synthetic).
 
 Each entry: key, install session, family, original name and description (what the router reads), body (what the
 rewriters read), four test phrasings and two dev phrasings of the work. A phrasing is one sentence a user might write;

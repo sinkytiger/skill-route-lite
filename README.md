@@ -115,7 +115,9 @@ one. As in the paper's Table A3, "other" is counted apart from crowding.
 
 The paper reports that Skill++ cut substitution from 46.0% to 6.5% of the Vanilla errors, crowding from 41.5% to
 20.0% and others from 12.5% to 4.5%. Here Skill++ (Haiku) cut crowding from 38 to 23 missing skills (52% to 32% of the
-Vanilla errors, close to the paper's halving), left substitution at 16 and more than doubled "other" (19 to 41).
+Vanilla errors, a 39% cut against the paper's 52%), left substitution at 16 and more than doubled "other" (19 to 41).
+The two "other" columns are not the same category: the paper's Others first takes possible substitutes found by its
+judges, while "other" here is what is left when no look-alike or generic skill was picked.
 
 Full tables, dev results and every statistic: [reports/results_test.md](reports/results_test.md),
 [reports/results_dev.md](reports/results_dev.md). Every routing decision: `reports/routing_test.csv` and
@@ -142,7 +144,7 @@ explain it (none of them tested separately):
   characters) and did better.
 - **Router.** One call returning 5 IDs from a 3-4B model, instead of the paper's two-call harness (shortlist 10,
   rerank) on API models.
-- **Library and queries.** 157 hand-written skills and 120 queries joined from hand-written phrasings, against 731
+- **Library and queries.** 157 skills and 120 queries joined from phrasings, all written for this study, against 731
   web-collected skills and 198 real coding tasks.
 - **Reference choice.** Similarity is character n-gram TF-IDF instead of MiniLM and Qwen3-Embedding. The nearest
   earlier skill was the one an incoming skill was written to resemble for 52 of 107 Haiku rewrites (51 for
@@ -154,7 +156,8 @@ More detail: [docs/paper_notes.md](docs/paper_notes.md).
 
 ## What was built
 
-**Skills.** 157 hand-written synthetic skills for financial analysis in a Korean-market setting (English text).
+**Skills.** 157 synthetic skills for financial analysis in a Korean-market setting (English text), written one by one
+for this study with Claude Code (not generated from templates).
 40 *required* skills are the ones evaluation queries need (trailing P/E, P/B, EV/EBITDA, WACC, dividend yield, rights
 offerings, convertible bonds, margins, interest coverage, free cash flow, moving averages, beta, rebalancing, bond
 YTM, 5% stake reports, foreign flows, peer tables, FX translation, DART statements, earnings surprise and others).
@@ -174,7 +177,7 @@ router reads) and a body (what a rewriter reads). Incoming skills come in six ki
 skills, giving 20, 48, 76, 104, 131 and 157 skills. Within a session the required skills come first, then the
 incoming skills in a seeded order. Each addition is one Skill++ step that sees all earlier skills.
 
-**Queries.** Each session releases 20 test and 6 dev queries, built by joining one to three hand-written phrasings of
+**Queries.** Each session releases 20 test and 6 dev queries, built by joining one to three phrasings of
 required skills (four test and two dev phrasings per skill, never shared) with a company name. From S1 on, 12 of the
 20 test queries need one of the session's new skills. Each incoming skill also has one probe request of its own
 (88 test, 29 dev), to check that a rewrite does not hide it from its own work.
@@ -226,8 +229,8 @@ has a character n-gram cosine of 0.80 (Haiku) and 0.87 (qwen3:4b); two per write
 
 ## Limitations
 
-- Synthetic skills and queries, written by the same author as the pipeline. Rewrites never saw evaluation queries,
-  and nothing was tuned on test queries, but the skill set reflects one person's idea of what is confusable.
+- Synthetic skills and queries, written with Claude Code in the same work as the pipeline. Rewrites never saw
+  evaluation queries, and nothing was tuned on test queries, but the skill set reflects one view of what is confusable.
 - 120 test queries. Differences of about 5 pp are inside the noise, and display order alone moved Vanilla at S5 by
   13.3 pp (55 to 71 of 120 queries).
 - The bootstrap treats queries as independent, but test queries reuse phrasings (232 uses of 160 phrasings, up to 4
@@ -266,7 +269,7 @@ by `SRL_BUDGET`, default $3). `python -m srl build` rebuilds `data/*.json` from 
 
 | Path | What |
 |---|---|
-| `srl/catalog_required.py`, `srl/catalog_incoming.py` | The hand-written skills, phrasings and probes |
+| `srl/catalog_required.py`, `srl/catalog_incoming.py` | The skills, phrasings and probes written for this study |
 | `srl/build.py` | Sessions, display IDs, queries, probes -> `data/*.json` |
 | `srl/rewrite.py` | Skill++ and Body-distilled |
 | `srl/route.py` | The router call |

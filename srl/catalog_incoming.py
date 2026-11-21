@@ -1,4 +1,4 @@
-"""Incoming skills: skills that arrive from S1 on and that no evaluation query needs. Hand-written (synthetic).
+"""Incoming skills: skills that arrive from S1 on and that no evaluation query needs. Written for this study with Claude Code (synthetic).
 
 Kinds follow the paper's error types (Appendix C.2) so that errors can be typed by code:
   similar   - same kind of work as its target required skill but not a substitute (style 'vague' or 'specific'

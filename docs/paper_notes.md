@@ -36,15 +36,15 @@ numbers were taken from the tables and text.
 
 | | Paper | Here |
 |---|---|---|
-| Domain, skills | Web-collected coding skills (SRA-Bench), 731 at S9 | Hand-written synthetic finance-analysis skills (Korean market context, English text), 157 at S5 |
+| Domain, skills | Web-collected coding skills (SRA-Bench), 731 at S9 | Synthetic finance-analysis skills written for this study with Claude Code (Korean market context, English text), 157 at S5 |
 | Sessions | S0-S9, checkpoints S1-S9 | S0-S5, checkpoints S1-S5 |
 | Incoming skills | Selected by three checks (similar, confusable, not a substitute) | Written to be similar but not substitutes; kinds labelled by the generator (similar, same name, name-only, overclaiming, broad, generic) |
-| Queries | 198 real BigCodeBench tasks, 3-5 skills each | 120 test + 36 dev queries joined from 1-3 hand-written phrasings, 1-3 skills each |
+| Queries | 198 real BigCodeBench tasks, 3-5 skills each | 120 test + 36 dev queries joined from 1-3 phrasings written for this study, 1-3 skills each |
 | Router | Claude Haiku 4.5 (and four API models), two calls | qwen3:4b (thinking off) and llama3.2:3b, one call returning 5 IDs under a JSON schema, temperature 0 |
 | Display order | Fixed per query and checkpoint | Fixed per checkpoint (shared by all queries, so the prompt prefix can be cached); two extra order seeds as a check |
 | Generator | Gemini 3.5 Flash-Lite; DeepSeek-V4-Flash for synthetic queries | Claude Haiku 5.5 (if approved) and qwen3:4b for every call |
 | Similarity | MiniLM, Qwen3-Embedding-4B | Character 3-5-gram TF-IDF fitted once on the skill corpus (all skills' original metadata, bodies and synthetic queries). A dev-time check: the most similar earlier skill by name + description (Eq. 7) is the skill an incoming skill was written to resemble for 53 of 107 non-generic incoming skills with TF-IDF and 49-55 with nomic-embed-text (local, four task prefixes); TF-IDF was kept. (That check fitted TF-IDF on names, descriptions and bodies only; the final rewrites also fit each writer's synthetic queries, giving 52 of 107 for Haiku and 51 for qwen3:4b, and 5 skills got a different reference under the two writers.) |
 | Regeneration | Retries, then a stronger model | Up to 3 tries with the same model, then the original text |
 | Error typing | Model judges, verified substitutes excluded | Code, from the generator's labels (no substitutes exist by construction) |
-| Plasticity of incoming skills | 1,864 synthetic queries of 673 skills, rank-1 rate | One hand-written probe per incoming skill (88 test, 29 dev), hit@5 and hit@1 |
+| Plasticity of incoming skills | 1,864 synthetic queries of 673 skills, rank-1 rate | One probe written for each incoming skill (88 test, 29 dev), hit@5 and hit@1 |
 | Baselines | Body-distilled, Neighbor-contrastive, R&R(-CFT), Hybrid, CC-Pages | Body-distilled only; two ablations (no exclusions, no name clarification) and a qwen3:4b-written Skill++ |

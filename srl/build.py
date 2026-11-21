@@ -1,4 +1,4 @@
-"""Builds the data files from the hand-written catalog.
+"""Builds the data files from the catalog written for this study.
 
 data/skills.json   every skill with its display ID, install session, addition step, kind, target and original metadata
 data/queries.json  evaluation queries (test and dev): text, release session, required skill keys
