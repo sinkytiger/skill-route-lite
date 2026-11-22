@@ -21,10 +21,13 @@ HAIKU = "claude-haiku-5-5"
 
 
 def items_for(split: str, checkpoint: int, probes: bool, probes_only: bool) -> list[dict]:
-    qs = [] if probes_only else [{"iid": q["qid"], "text": q["text"]} for q in B.load("queries.json")
+    """v2's held-out split 'test2' has its own queries (data/queries_v2.json) and reuses v1's test probes."""
+    source = "queries_v2.json" if split == "test2" else "queries.json"
+    qs = [] if probes_only else [{"iid": q["qid"], "text": q["text"]} for q in B.load(source)
                                  if q["split"] == split and q["session"] <= checkpoint]
+    probe_split = "test" if split == "test2" else split
     if (probes or probes_only) and checkpoint == 5:
-        qs += [{"iid": p["pid"], "text": p["text"]} for p in B.load("probes.json") if p["split"] == split]
+        qs += [{"iid": p["pid"], "text": p["text"]} for p in B.load("probes.json") if p["split"] == probe_split]
     return qs
 
 
@@ -37,14 +40,14 @@ def main(argv=None) -> int:
     p.add_argument("--no-body-distilled", action="store_true")
     p = sub.add_parser("route")
     p.add_argument("--router", required=True)
-    p.add_argument("--split", required=True, choices=["dev", "test"])
+    p.add_argument("--split", required=True, choices=["dev", "test", "test2"])
     p.add_argument("--conds", required=True)
     p.add_argument("--checkpoints", default="1,2,3,4,5")
     p.add_argument("--order-seed", type=int, default=0)
     p.add_argument("--no-probes", action="store_true")
     p.add_argument("--probes-only", action="store_true")
     p = sub.add_parser("report")
-    p.add_argument("--split", required=True, choices=["dev", "test"])
+    p.add_argument("--split", required=True, choices=["dev", "test", "test2"])
     a = ap.parse_args(argv)
 
     if a.cmd == "build":

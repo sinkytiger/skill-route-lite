@@ -5,3 +5,4 @@ posts/
 logs/
 *.log
 *.tmp
+runs/emb_cache.json

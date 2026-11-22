@@ -88,16 +88,35 @@ def block_path(router: str, cond: str, split: str, checkpoint: int, order_seed: 
     return RUNS / tag(router) / cond / split / f"S{checkpoint}_o{order_seed}.json"
 
 
+def retrieval_label(cond: str, k: int, method: str) -> str:
+    return f"{cond}+r{k}{method}"
+
+
+def parse_label(label: str) -> tuple[str, int | None, str | None]:
+    """'spp_haiku+r20tfidf' -> ('spp_haiku', 20, 'tfidf'); a plain condition -> (cond, None, None)."""
+    if "+r" not in label:
+        return label, None, None
+    cond, rest = label.split("+r", 1)
+    k = int("".join(ch for ch in rest if ch.isdigit()))
+    return cond, k, rest[len(str(k)):]
+
+
 def run_block(router: str, cond: str, split: str, checkpoint: int, order_seed: int, skills: list[dict],
               items: list[dict], rw_cache: dict, claude=None) -> Path:
-    """items: [{'iid', 'text'}]. Resumes from the saved block file."""
+    """items: [{'iid', 'text'}]. Resumes from the saved block file. `cond` may carry a retrieval suffix
+    ('vanilla+r20tfidf'): then each request sees only its top-K skills, shuffled per request (v2)."""
     path = block_path(router, cond, split, checkpoint, order_seed)
+    base, k, method = parse_label(cond)
     lib = display_order(library(skills, checkpoint), checkpoint, order_seed)
-    meta = metadata(cond, skills, rw_cache)
+    meta = metadata(base, skills, rw_cache)
     head = head_text(lib, meta)
     head_digest = hashlib.sha256(head.encode()).hexdigest()[:16]
     ids = [s["id"] for s in lib]
     idset = set(ids)
+    retriever = None
+    if k is not None:
+        from .retrieve import Retriever
+        retriever = Retriever(method, library(skills, checkpoint), meta)
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {
         "router": router, "cond": cond, "split": split, "checkpoint": checkpoint, "order_seed": order_seed,
         "prompt_digest": PROMPT_DIGEST, "head_digest": head_digest, "library_size": len(lib), "items": {}}
@@ -114,19 +133,28 @@ def run_block(router: str, cond: str, split: str, checkpoint: int, order_seed: i
 
     for n, it in enumerate(todo):
         tail = TAIL.format(request=it["text"])
+        item_head, item_ids, item_idset, cands = head, ids, idset, None
+        if retriever is not None:
+            cands = retriever.top(it["text"], k)
+            random.Random(f"cand-{order_seed}-S{checkpoint}-{it['iid']}").shuffle(cands)
+            item_head = head_text(cands, meta)
+            item_ids = [s["id"] for s in cands]
+            item_idset = set(item_ids)
         t = time.time()
         if router.startswith("claude"):
-            r = claude.call(tail, schema_for(ids, exact=False), max_tokens=120, cache_prefix=head)
+            r = claude.call(tail, schema_for(item_ids, exact=False), max_tokens=120, cache_prefix=item_head)
             rec = {"content": r["content"], "model": r["model"], "usage": r["usage"], "seconds": r["seconds"]}
         else:
             nctx = NUM_CTX[router]
-            r = ollama.chat(router, head + tail, schema_for(ids), num_ctx=nctx, num_predict=120)
+            r = ollama.chat(router, item_head + tail, schema_for(item_ids), num_ctx=nctx, num_predict=120)
             if r["prompt_tokens"] >= nctx - 16:
                 raise RuntimeError(f"prompt of {r['prompt_tokens']} tokens may have been truncated (num_ctx {nctx})")
             rec = {"content": r["content"], "prompt_tokens": r["prompt_tokens"], "output_tokens": r["output_tokens"],
                    "seconds": r["seconds"]}
-        sel, ok = parse_selection(rec["content"], idset)
+        sel, ok = parse_selection(rec["content"], item_idset)
         rec.update(selected=sel, parsed=ok)
+        if cands is not None:
+            rec["candidates"] = item_ids
         state["items"][it["iid"]] = rec
         if n % 5 == 4 or n == len(todo) - 1:
             save()
