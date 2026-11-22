@@ -72,3 +72,9 @@ and the interval of (full-list fall minus narrowed fall) lies above 0. Judged on
 
 Reported without verdicts: all FC@5 tables, retrieval ceilings (share of queries whose required skills were all
 retrieved), probes hit@5/hit@1, error forms, `spp_haiku_short` conditions, llama3.2:3b, the seed table.
+
+## Note added after the test2 run (2026-11-23)
+
+The mean length of 113 characters for `spp_noexcl_haiku_short` under "What is new" is over the 109 skills that did
+not fall back to the original description; over all 117 incoming skills, the basis of the 181 for
+`spp_noexcl_haiku`, it is 110. No rule, setting or digest depends on it. Nothing else in this file was changed.
