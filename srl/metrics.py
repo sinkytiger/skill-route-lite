@@ -34,8 +34,9 @@ class Data:
     def __init__(self):
         self.skills = B.load("skills.json")
         self.queries = B.load("queries.json")
-        if (B.DATA / "queries_v2.json").exists():
-            self.queries += B.load("queries_v2.json")
+        for extra in ("queries_v2.json", "queries_v3.json"):
+            if (B.DATA / extra).exists():
+                self.queries += B.load(extra)
         self.probes = B.load("probes.json")
         self.by_key = {s["key"]: s for s in self.skills}
         self.by_id = {s["id"]: s for s in self.skills}
@@ -45,7 +46,7 @@ class Data:
         return [q for q in self.queries if q["split"] == split and (upto is None or q["session"] <= upto)]
 
     def pr(self, split: str) -> list[dict]:
-        split = "test" if split == "test2" else split      # v2 reuses v1's test probes
+        split = "test" if split in ("test2", "test3") else split      # v2 and v3 reuse v1's test probes
         return [p for p in self.probes if p["split"] == split]
 
 

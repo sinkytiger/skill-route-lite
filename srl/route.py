@@ -93,12 +93,20 @@ def retrieval_label(cond: str, k: int, method: str) -> str:
 
 
 def parse_label(label: str) -> tuple[str, int | None, str | None]:
-    """'spp_haiku+r20tfidf' -> ('spp_haiku', 20, 'tfidf'); a plain condition -> (cond, None, None)."""
+    """'spp_haiku+r20tfidf' -> ('spp_haiku', 20, 'tfidf'); a plain condition -> (cond, None, None).
+    A v3 retrieval source ('spp_haiku+r30tfidf@vanilla') is ignored here; see retrieval_source()."""
+    label = label.split("@", 1)[0]
     if "+r" not in label:
         return label, None, None
     cond, rest = label.split("+r", 1)
     k = int("".join(ch for ch in rest if ch.isdigit()))
     return cond, k, rest[len(str(k)):]
+
+
+def retrieval_source(label: str) -> str | None:
+    """v3: the condition whose metadata the retriever reads. 'spp_haiku+r30tfidf@vanilla' retrieves on the original
+    metadata and shows the router the Skill++ metadata; without '@' (v2) the retriever reads what the router reads."""
+    return label.split("@", 1)[1] if "@" in label else None
 
 
 def run_block(router: str, cond: str, split: str, checkpoint: int, order_seed: int, skills: list[dict],
@@ -116,7 +124,9 @@ def run_block(router: str, cond: str, split: str, checkpoint: int, order_seed: i
     retriever = None
     if k is not None:
         from .retrieve import Retriever
-        retriever = Retriever(method, library(skills, checkpoint), meta)
+        src = retrieval_source(cond)
+        rmeta = metadata(src, skills, rw_cache) if src else meta
+        retriever = Retriever(method, library(skills, checkpoint), rmeta)
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {
         "router": router, "cond": cond, "split": split, "checkpoint": checkpoint, "order_seed": order_seed,
         "prompt_digest": PROMPT_DIGEST, "head_digest": head_digest, "library_size": len(lib), "items": {}}
