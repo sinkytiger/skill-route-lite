@@ -423,6 +423,7 @@ file and skips skills already in it; needs the API key, as above).
 | `srl/retrieve.py` | v2 candidate narrowing (TF-IDF; nomic-embed-text was compared on dev) |
 | `srl/prereg_v2.py`, `srl/report_v2.py` | v2 pre-registered decisions and tables |
 | `srl/export.py` | Routing decisions -> `reports/routing_*.csv` |
+| `srl/dashboard_data.py` | Data files for a v2 results dashboard (`python -m srl.dashboard_data <out_dir>`), from the raw test2 runs |
 | `data/rewrites/` | Haiku- and qwen3:4b-written rewrites, with every call's usage |
 | `reports/` | Result tables, routing decisions (CSV), overlap check |
 | `runs/route/` | Raw router replies with token counts and timings (needed by `srl report`) |
