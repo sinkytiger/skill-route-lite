@@ -1,0 +1,358 @@
+{
+ "auditor": "independent_subagent",
+ "auditor_note": "general-purpose agent that did not write the v3 parts; recomputed numbers from runs/ and data/ with its own scripts (srl.stats for intervals), read the git history, logs, file times and the Windows event log",
+ "scope": "README v3 section and v3 lines elsewhere (title paragraph, Process 6, Limitations, Cost, Reproduce, Files), docs/hypotheses_v3.md, reports/results_test3.md, reports/routing_test3.csv and routing_v3dev.csv",
+ "recheck": "each problem was rechecked by the author against the raw files, the Windows event log (sleep/resume and system-time-change events) and back-computed call times before the fix; P10 needed no change",
+ "numbers_checked": {
+  "readme_v3_numbers": 165,
+  "results_test3_md_cells": 303,
+  "hypotheses_v3_numbers": 22,
+  "csv_rows": {
+   "routing_test3.csv": 5592,
+   "routing_v3dev.csv": 416
+  },
+  "mismatches": 0,
+  "not_rechecked": "v2 numbers quoted in hypotheses_v3.md 'Why a v3' (audited with v2)"
+ },
+ "claims": [
+  {
+   "text": "One call (query w013, Vanilla top 30, S4) took 10,749 s before it returned a normal reply.",
+   "where": "README Process item 6",
+   "type": "unsupported (misleading omission of cause)",
+   "certainty": "certain",
+   "source": "Windows System event log: Kernel-Power 105 power source change 2026-11-23 17:00:32, Kernel-Power 42 entering sleep 17:00:40, Kernel-General 1 time jump of 10,702,275 ms at resume 19:59:22. Raw block qwen3_4b/vanilla+r30tfidf/test3/S4_o0.json: w000-w012 took 49.6 s after the S3 block's last save (16:59:43), so w013 started about 17:00:33; 17:00:33 + 10,749 s = 19:59:42, 20 s after resume; the remaining 86 calls took 835.5 s and the S4 file was last saved 20:13:40 (matches). So about 10,702 of the 10,749 s were the laptop asleep; the run was paused, not stopped, from 17:00 to 19:59.",
+   "verdict": "fixed",
+   "fix": "\"One call (query w013, Vanilla top 30, S4) spanned a sleep of the laptop from 17:00 to 19:59 (Windows event log) and returned a normal reply after 10,749 s of wall-clock time.\"",
+   "auditor_verdict": "The number is right (10,749.36 s, a normal 5-ID reply), but the sentence reads as a slow model call; it was a laptop sleep during the call. The paragraph also presents 21:16 as the only interruption."
+  },
+  {
+   "text": "The full-list fall replicated (75.0% at S1 to 50.0% at S5, 25.0 pp, CI 10.8 to 38.9).",
+   "where": "README v3 result in short, first bullet",
+   "type": "wrong basis (basis not labelled)",
+   "certainty": "certain",
+   "source": "Recomputed: seed 0 S1 75.0, S5 50.0, fall +25.0 [10.8, 38.9] (boot_stat, seed 0). The preceding sentence uses three-seed means (full list 42.8%).",
+   "verdict": "fixed",
+   "fix": "\"The full-list fall replicated (seed 0: 75.0% at S1 to 50.0% at S5, 25.0 pp, CI 10.8 to 38.9).\"",
+   "auditor_verdict": "Numbers correct, but this is seed 0 while the sentence just before gives the three-seed full-list mean 42.8%; the next sentence labels its seed-0 numbers, this one does not."
+  },
+  {
+   "text": "Three seeds everywhere. Every qwen3:4b condition also ran at S5 with seeds 1 and 2 (...), and S5 comparisons use each query's mean over the three seeds.",
+   "where": "README v3 setup bullet",
+   "type": "overstated",
+   "certainty": "certain",
+   "source": "Blocks: seeds 1 and 2 exist only for qwen3:4b at S5; S1-S4 and all llama3.2:3b blocks are seed 0. D4 and D5 (S5 comparisons) use seed 0, and R1 uses S5 seed 0 (prereg_v3.py).",
+   "verdict": "fixed",
+   "fix": "\"Three seeds at S5 (qwen3:4b). ... and the S5 FC@5 comparisons (N1, D1-D3) use each query's mean over the three seeds.\"",
+   "auditor_verdict": "The bullet text is right; the label 'everywhere' and 'S5 comparisons' are broader than what was run."
+  },
+  {
+   "text": "... and v2's dev hint did not hold up.",
+   "where": "README 'What v3 adds'",
+   "type": "overstated / ambiguous referent",
+   "certainty": "possible",
+   "source": "Dev run on v2's test2 (seed 0): Skill++ shown on Vanilla's candidates +5.8 pp [-2.5, +14.2]; short without clause +10.0 pp [+2.5, +17.5]. v2's own exploratory hint: +7.5 pp on 106 queries. test3: D1 +1.9 [-2.8, +6.4] (interval contains +5.8), D2 +1.4 [-3.3, +6.1] (excludes +10.0).",
+   "verdict": "fixed",
+   "fix": "\"..., and the gains seen in the dev run on v2's test2 queries (+5.8 and +10.0 pp, one seed) were not confirmed (+1.9 and +1.4 pp).\"",
+   "auditor_verdict": "'v2's dev hint' can mean the v3 dev run on v2's test2 or v2's 106-query comparison. For D2 'did not hold up' is fair; for D1 the test interval still contains the dev estimate, so 'not confirmed' is the supported wording."
+  },
+  {
+   "text": "D5 holds by its rule but repeats the dev result; the pre-registration did not foresee this.",
+   "where": "README v3 result in short, probe bullet",
+   "type": "unsupported (claim about intent)",
+   "certainty": "possible",
+   "source": "docs/hypotheses_v3.md states that the probes are v1's and lists the dev D5 result (74/88 vs 85/88, 14 lost, 3 gained, p = 0.013) that test3 reproduces exactly; v2's README had already reported that identical prompts replay probe replies exactly.",
+   "verdict": "fixed",
+   "fix": "\"...; the pre-registration did not note this.\"",
+   "auditor_verdict": "The replay is verified (88/88 identical replies). Whether it was foreseen is not shown by any file; what the file shows is that the pre-registration did not mention it."
+  },
+  {
+   "text": "The per-seed and llama3.2:3b differences above were computed from the raw runs and are not in that file.",
+   "where": "README v3, after 'What v3 adds'",
+   "type": "incomplete (and the linked report mislabels llama D1-D3)",
+   "certainty": "certain",
+   "source": "reports/results_test3.md has no narrowed-Vanilla fall (0.8 pp, CI -14.2 to +14.9). It prints '- not run' for llama3.2:3b D1, D2 and D3 although all four llama conditions ran (S1-S5, seed 0); prereg_v3.seed_mean returns None without seeds 1 and 2, and the decision code prints 'not run'. The report is frozen code output (regenerated identically).",
+   "verdict": "fixed",
+   "fix": "\"The per-seed and llama3.2:3b differences and the narrowed Vanilla fall were computed from the raw runs and are not in that file; it prints 'not run' for llama3.2:3b D1-D3 because those rules need three seeds and llama3.2:3b ran seed 0 only.\"",
+   "auditor_verdict": "The narrowed fall is another README number not in that file; a reader of results_test3.md is told llama D1-D3 were not run."
+  },
+  {
+   "text": "**llama3.2:3b** on test3 (seed 0; the candidates are the same as for qwen3:4b): [table with Probe hit@5 58/88, 84/88, 76/88, 76/88]",
+   "where": "README v3 llama table (and 'not tested afresh')",
+   "type": "omission",
+   "certainty": "certain",
+   "source": "llama vanilla+r30tfidf and spp_haiku+r30tfidf probe replies on test3 equal v2's test2 llama replies (88/88 identical content); there is no llama dev run for the '@' conditions, so 76/88 and 76/88 are new. llama D5: 76/88 vs 84/88, 11 lost, 3 gained, exact McNemar p = 0.0574 (results_test3.md: 'D5 not supported').",
+   "verdict": "fixed",
+   "fix": "Add: \"As for qwen3:4b, the probe replies of the two rows without '@' repeat v2's test2 runs; the '@' rows are new: 76/88 against 84/88 (11 lost, 3 gained, p = 0.057).\"",
+   "auditor_verdict": "The qwen table explains that its probe column repeats earlier runs; the llama table does not, and the only fresh probe evidence for D5 (secondary router, same direction, p = 0.057) is not mentioned."
+  },
+  {
+   "text": "v3: the retrieval-source option and the test3 queries built; a dev run on v2's test2 queries (S5, qwen3:4b, seed 0); then the hypotheses, decision code and digests committed (52d28d9) before any test3 routing.",
+   "where": "README Process item 6",
+   "type": "ordering detail (minor)",
+   "certainty": "possible",
+   "source": "File times: srl/route.py last written 15:51:26, dev_v3.log created 15:51:52 (dev run 15:51-16:20); srl/build_v3.py 15:54:14, srl/catalog_v3.py 15:54:41, data/queries_v3.json 15:54:23-15:54:42, i.e. during the dev run, before its first block finished (16:07). Files are written atomically, so only the last write is visible.",
+   "verdict": "fixed",
+   "fix": "\"v3: the retrieval-source option built; a dev run on v2's test2 queries (S5, qwen3:4b, seed 0), during which the test3 phrasings and queries were finalised; then ...\" (or leave as is if the 15:54 write was only a re-save).",
+   "auditor_verdict": "The commit-before-test3 part holds (commit 16:22:21, test3 log 16:22:30). The order 'queries built; dev run' is not what the timestamps show: the test3 phrasings/queries were last written about 3 minutes into the dev run."
+  },
+  {
+   "text": "docs/hypotheses_v3.md: 'Three seeds for narrowed conditions. ... In v3 every condition runs at S5 with seeds 0, 1 and 2'",
+   "where": "docs/hypotheses_v3.md 'What is new' vs 'Fixed setup'",
+   "type": "internal contradiction (pre-registration text)",
+   "certainty": "certain",
+   "source": "'Fixed setup' in the same file: llama3.2:3b seed 0 only; the full-list vanilla also got three seeds (heading says narrowed). The run follows 'Fixed setup'.",
+   "verdict": "fixed",
+   "fix": "Leave the frozen file; the README's own wording (fix P3) is enough.",
+   "auditor_verdict": "The run matches the Fixed setup; the 'What is new' sentence is broader. The file is part of the pre-registration commit, so better noted than edited."
+  },
+  {
+   "text": "docs/hypotheses_v3.md: 'Reported without verdicts: ... llama3.2:3b.'",
+   "where": "docs/hypotheses_v3.md vs reports/results_test3.md",
+   "type": "minor inconsistency",
+   "certainty": "certain",
+   "source": "results_test3.md prints '**D4 holds**' and '**D5 not supported**' for llama3.2:3b under '(secondary, no verdict counted)'.",
+   "verdict": "no_change_needed",
+   "fix": "None needed beyond the label already there.",
+   "auditor_verdict": "Verdict words are printed for the secondary router, labelled as not counted. Cosmetic."
+  },
+  {
+   "text": "Intro: narrowing again helped a lot (+30.0 pp); Skill++ metadata did not clearly help the router choose (+1.9 pp, interval including 0)",
+   "type": "ok",
+   "source": "N1 +30.0 [23.6, 36.7]; D1 +1.94 [-2.78, +6.40]",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "v3 intro: 120 fresh test queries, 160 new phrasings, none repeats a v1 or v2 phrasing, largest cosine 0.739",
+   "type": "ok",
+   "source": "120 queries; 160 distinct phrasings; 0 exact repeats among 400 earlier; max 0.7389 (CharTfidf fitted on old+new as tests/test_v3.py)",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Hypotheses committed with frozen digests (52d28d9) after a dev run on test2 and before any test3 routing",
+   "type": "ok",
+   "source": "dev 15:51:52-16:20:13; commit 16:22:21; test3 log 16:22:30; digests queries_v3 9f0125629666dfb0, retrieval_source, prereg_v3, report_v3, PROMPT_DIGEST all match",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Library, routers, prompt, retriever (top 30, TF-IDF) and statistics are v2's",
+   "type": "ok",
+   "source": "prompt_digest 9bc1461c55253de1 in all 55 test3 blocks and in test2 blocks; srl/retrieve.py, textsim.py, conditions.py unchanged since e88776f; library sizes 48/76/104/131/157",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "@vanilla conditions get the same candidates in the same per-request order as vanilla+r30tfidf",
+   "type": "ok",
+   "source": "2,432/2,432 items identical lists (qwen and llama, S1-S5, seeds 0-2); dev 416/416",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Compared with vanilla+r30tfidf, only what the router reads changes",
+   "type": "ok",
+   "source": "same candidates and order; code: rmeta = metadata('vanilla'), meta = condition X",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Every qwen3:4b condition also ran at S5 with seeds 1 and 2 (display order for full list, candidate shuffle for top 30)",
+   "type": "ok",
+   "source": "10 blocks of 120 items; candidate sets identical across seeds 480/480, order differs 120/120 per condition",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Narrowing again helped a lot: 72.8% vs 42.8%, +30.0 pp (CI +23.6 to +36.7); narrowed Vanilla 72.5% S1, 71.7% S5, fall 0.8 pp (CI -14.2 to +14.9)",
+   "type": "ok",
+   "source": "recomputed",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Same candidates: 74.7% vs 72.8% (+1.9, CI -2.8 to +6.4); seed by seed +1.7, -1.7, +5.8; short +1.4 (CI -3.3 to +6.1); best dev configuration (+10.0 pp, one seed)",
+   "type": "ok",
+   "source": "recomputed; dev test2 S5 seed 0: short@vanilla 79.2% is the highest of six narrowed conditions (69.2, 71.7, 75.0, 79.2, 75.8, 71.7)",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Separating retrieval from routing did not clearly beat v2's setup: 74.7% vs 70.8% (+3.9, CI -1.4 to +9.7)",
+   "type": "ok",
+   "source": "recomputed",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Retrieval loss replicated: 108 vs 114 of 120, 6 lost, 0 gained, p = 0.031; retrieval does not depend on the router",
+   "type": "ok",
+   "source": "recomputed; llama candidates = qwen candidates 1,952/1,952; same counts for llama and at seeds 1, 2",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Probe hit@5 74/88 vs 85/88 (14 lost, 3 gained, p = 0.013); replies on test3 the same as in the dev run for all 88 probes",
+   "type": "ok",
+   "source": "recomputed; 88/88 identical content, candidates and prompt tokens",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "llama: 60.8% vs 55.0% (+5.8, CI -1.7 to +13.3); 62.5% (+7.5, CI -1.7 to +16.7)",
+   "type": "ok",
+   "source": "recomputed",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Decision table R1, N1, D1-D5 values and verdicts",
+   "type": "ok",
+   "source": "recomputed; rules match docs/hypotheses_v3.md and prereg_v3.py",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Main qwen3:4b table (S1-S5 seed 0, three-seed S5 mean, probe hit@5, all required retrieved 95.0/90.0/95.0/95.0%)",
+   "type": "ok",
+   "source": "39 cells recomputed",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Probe column repeats earlier runs: full list = v1's replies; narrowing = v2's test2 runs and the v3 dev runs",
+   "type": "ok",
+   "source": "qwen vanilla test3 probes = v1 test 88/88; vanilla+r30tfidf and spp_haiku+r30tfidf = test2 88/88; @vanilla = dev 88/88",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Display order: Vanilla S5 50.0, 45.0, 33.3; narrowed shuffles 71.7, 74.2, 72.5",
+   "type": "ok",
+   "source": "recomputed",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "llama table (FC@5, probe hit@5, fewer than 5 distinct IDs 49/71/66/67 of 488) and 'candidates are the same as for qwen3:4b'",
+   "type": "ok",
+   "source": "28 cells recomputed from raw content with an independent parser",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "What v3 adds: narrowing the largest effect measured; retriever on Skill++ misses required skills; retriever on original finds new skills less often; neither choice changed FC@5 clearly",
+   "type": "ok",
+   "source": "D4 6/0; probe target among the 30: 77/88 (original) vs 88/88 (Skill++); D3 interval includes 0",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Process 6: dev run on test2 (S5, qwen3:4b, seed 0); routed from 16:22; stopped 21:16 when the laptop logged off and went to sleep; resumed 07:50 from saved state; finished 11:54",
+   "type": "ok",
+   "source": "dev_v3.log; test3_local.log; event log 21:16:23 power source change, 21:16:49 Winlogon logoff, 21:16:51 sleep (Application API); blocks finished before the stop were not rewritten",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Limitations v3: phrasings written after v2 results, same skills and companies, 233 uses of 160 phrasings, up to 2 each; probes v1's; D2 chosen on dev; shared baseline, no correction; llama one seed",
+   "type": "ok",
+   "source": "233 uses (87 phrasings once, 73 twice); replicated build reproduces queries_v3.json exactly; companies from build.COMPANIES",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Cost: v3 made no Claude calls",
+   "type": "ok",
+   "source": "no claude-haiku-5-5 runs for test2@/test3; data/rewrites unchanged since e88776f",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Reproduce lines and 'Fixed setup' pointers; python -m srl.build_v3 rebuilds data/queries_v3.json",
+   "type": "ok",
+   "source": "CLI accepts --split test3 and '@' labels; report_v3 and export have __main__; both hypotheses files have a 'Fixed setup' heading",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "Files rows for catalog_v3/build_v3 and prereg_v3/report_v3 ('@' source in srl/route.py)",
+   "type": "ok",
+   "source": "matches the code",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "reports/routing_test3.csv and reports/routing_v3dev.csv",
+   "type": "ok",
+   "source": "5,592 and 416 rows, every field equal to the raw runs, no duplicates; routing_test2.csv still 7,064 rows without '@'",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "reports/results_test3.md",
+   "type": "ok",
+   "source": "regenerated byte-identical from the raw runs; all 303 cells also recomputed with independent code (incl. Recall@5, old/new, interference, incoming slots, error types)",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "hypotheses_v3.md dev observations (75.0/69.2/+5.8 [-2.5, +14.2]; 71.7/+3.3 [-5.8, +13.3]; 79.2/+10.0 [+2.5, +17.5]; 74/88 vs 85/88, 14/3, p = 0.013)",
+   "type": "ok",
+   "source": "recomputed from the test2 runs",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  },
+  {
+   "text": "hypotheses_v3.md: seed 20261123; < 0.75 (0.739); route.py gained only the '@' source; retriever unchanged; Fixed setup = what ran",
+   "type": "ok",
+   "source": "verified (git show 52d28d9; blocks)",
+   "verdict": "supported",
+   "fix": "",
+   "auditor_verdict": "supported"
+  }
+ ],
+ "coverage": {
+  "blocks": "55 of 55 expected: qwen3:4b 5 conditions x S1-S5 seed 0 (40/60/80/100/208 items) + S5 seeds 1, 2 (120 items each); llama3.2:3b 4 narrowed conditions x S1-S5 seed 0",
+  "items": 5592,
+  "missing_items": 0,
+  "extra_items": 0,
+  "duplicate_keys": 0,
+  "unparsed_replies": 0,
+  "selected_vs_independent_reparse_mismatch": 0,
+  "raw_reply_list_length": "5 in all 6,008 test3+v3dev replies",
+  "candidates": "30 distinct installed IDs in every narrowed item",
+  "prompt_digest": "9bc1461c55253de1 in all blocks",
+  "dev_blocks": "qwen3:4b spp_haiku+r30tfidf@vanilla and spp_noexcl_haiku_short+r30tfidf@vanilla, test2 S5 seed 0, 208 items each",
+  "not_verifiable": "how many items of the qwen3:4b spp_haiku+r30tfidf@vanilla S4 block were saved before the 21:16 stop (atomic rewrite removed the evidence)"
+ },
+ "out_of_scope_note": "v1's 15.9-hour, 36- and 69-minute calls and v2's 20:41 stop line up with laptop sleeps in the Windows event log; rechecked by the author (sleep/resume and system-time-change events, back-computed call start and end times) and added to README Process items 3 and 5"
+}

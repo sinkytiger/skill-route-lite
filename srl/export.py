@@ -1,8 +1,9 @@
 """Exports saved routing decisions to CSV files in reports/.
 
-    python -m srl.export test dev test2 v2dev
+    python -m srl.export test dev test2 v2dev test3 v3dev
 
-`test` and `dev` hold v1's six conditions (the v1 record); `test2` holds every v2 test run; `v2dev` holds the v2 dev
+`test` and `dev` hold v1's six conditions (the v1 record); `test2` holds every v2 test run; `test3` holds every
+v3 test run; `v3dev` holds the v3 dev runs (on test2, conditions with '@'); `v2dev` holds the v2 dev
 runs, which were made on v1's dev and test queries (retrieval conditions and the short Skill++ rewrites). v2 rows add
 the split, the number of candidates the router saw and whether all required skills were among them.
 """
@@ -21,10 +22,12 @@ V1_CONDS = {"vanilla", "spp_haiku", "spp_noexcl_haiku", "spp_noname_haiku", "bod
 
 
 def _blocks(name: str) -> list[tuple[str, dict]]:
-    if name in ("dev", "test", "test2"):
+    if name in ("dev", "test", "test2", "test3"):
         splits = [name]
     elif name == "v2dev":
         splits = ["dev", "test"]
+    elif name == "v3dev":
+        splits = ["test2"]
     else:
         raise ValueError(name)
     out = []
@@ -32,7 +35,9 @@ def _blocks(name: str) -> list[tuple[str, dict]]:
         for f in sorted(RUNS.glob(f"*/*/{sp}/S*_o*.json")):
             st = json.loads(f.read_text(encoding="utf-8"))
             v1 = st["cond"] in V1_CONDS
-            if (name in ("dev", "test") and v1) or name == "test2" or (name == "v2dev" and not v1):
+            v3dev = "@" in st["cond"]
+            if ((name in ("dev", "test") and v1) or (name == "test2" and not v3dev) or name == "test3"
+                    or (name == "v2dev" and not v1) or (name == "v3dev" and v3dev)):
                 out.append((sp, st))
     return out
 
@@ -42,8 +47,10 @@ def export(name: str) -> Path:
     req = {q["qid"]: q for q in B.load("queries.json")}
     if (B.DATA / "queries_v2.json").exists():
         req.update({q["qid"]: q for q in B.load("queries_v2.json")})
+    if (B.DATA / "queries_v3.json").exists():
+        req.update({q["qid"]: q for q in B.load("queries_v3.json")})
     probes = {p["pid"]: p for p in B.load("probes.json")}
-    v2 = name in ("test2", "v2dev")
+    v2 = name in ("test2", "v2dev", "test3", "v3dev")
     out = ROOT / "reports" / f"routing_{name}.csv"
     out.parent.mkdir(exist_ok=True)
     rows = []

@@ -8,7 +8,10 @@ qwen3:4b and llama3.2:3b as routers and Claude Haiku 5.5 as the rewriter (and as
 A second, separately pre-registered round on fresh queries ([v2](#v2-shorter-descriptions-and-candidate-narrowing))
 tested shorter Skill++ descriptions and a retrieval step that shows the router 30 candidates instead of the whole
 library. Narrowing the list helped the small router; shortening the descriptions did not show a clear effect either
-way, and with narrowing Skill++ was still not clearly better than the original metadata.
+way, and with narrowing Skill++ was still not clearly better than the original metadata. A third round
+([v3](#v3-retrieve-on-the-original-text-route-on-skill)) showed the router the same 30 candidates with either the
+original or the Skill++ metadata: narrowing again helped a lot (+30.0 pp), while Skill++ metadata did not clearly help
+the router choose (+1.9 pp, interval including 0).
 
 ## Result in short (v1)
 
@@ -274,6 +277,98 @@ in this section (the llama3.2:3b differences, the 9 lost queries, the 106-query 
 `reports/routing_test2.csv` (v2 test, with the candidates count and whether all required skills were shown) and
 `reports/routing_v2dev.csv` (the v2 dev runs on v1's queries).
 
+## v3: retrieve on the original text, route on Skill++
+
+In v2 the retriever and the router read the same metadata. Exploratory analysis there suggested two effects in
+opposite directions: Skill++ metadata made the retriever miss required skills, while on the queries both conditions
+retrieved fully the router did somewhat better with Skill++ (interval including 0). v3 separates the two on 120 fresh
+test queries (`test3`, 160 new phrasings in [srl/catalog_v3.py](srl/catalog_v3.py); none repeats a v1 or v2
+phrasing, and the largest character n-gram cosine with an earlier phrasing is 0.739). The hypotheses were committed
+with frozen digests (commit `52d28d9`, [docs/hypotheses_v3.md](docs/hypotheses_v3.md),
+[tests/test_prereg_v3.py](tests/test_prereg_v3.py)) after a dev run on v2's test2 queries and before any `test3`
+routing. Library, routers, prompt, retriever (top 30, TF-IDF) and statistics are v2's.
+
+- **Retrieval source.** A condition `X+r30tfidf@vanilla` retrieves the top 30 on the original metadata, getting the
+  same candidates in the same per-request order as `vanilla+r30tfidf`, and shows the router condition X's metadata for
+  those 30 ([srl/route.py](srl/route.py), `retrieval_source`). Compared with `vanilla+r30tfidf`, only what the router
+  reads changes.
+- **Three seeds at S5 (qwen3:4b).** Every qwen3:4b condition also ran at S5 with seeds 1 and 2 (display order for the
+  full list, candidate shuffle for top 30), and the S5 FC@5 comparisons (N1, D1-D3) use each query's mean over the
+  three seeds. S1-S4, the probes, R1, D4, D5 and llama3.2:3b use seed 0.
+
+### v3 result in short (qwen3:4b, test3)
+
+- **Narrowing again helped a lot.** At S5, Vanilla with 30 candidates scored 72.8% against 42.8% on the full list
+  (both means of three seeds): +30.0 pp (95% CI +23.6 to +36.7). The full-list fall replicated (seed 0: 75.0% at S1 to 50.0%
+  at S5, 25.0 pp, CI 10.8 to 38.9). With narrowing, Vanilla was 72.5% at S1 and 71.7% at S5 (seed 0; a fall of
+  0.8 pp, CI -14.2 to +14.9; not pre-registered).
+- **With the same candidates, Skill++ metadata did not clearly help the router.** 74.7% against 72.8% (+1.9 pp,
+  95% CI -2.8 to +6.4); seed by seed +1.7, -1.7 and +5.8 pp. The short Skill++ without the clause, the best
+  configuration on dev (+10.0 pp there, one seed), gave +1.4 pp (CI -3.3 to +6.1).
+- **Separating retrieval from routing did not clearly beat v2's setup.** Skill++ shown, retrieved on the original
+  metadata: 74.7%; retrieved on the Skill++ metadata: 70.8% (+3.9 pp, CI -1.4 to +9.7).
+- **The retrieval loss replicated on fresh queries.** Under Skill++ metadata all required skills were among the 30
+  for 108 of 120 queries, against 114 under the original metadata (6 lost, none gained, exact McNemar p = 0.031).
+  Retrieval does not depend on the router.
+- **Retrieving on the original metadata costs the new skills' own requests, but this was not tested afresh.**
+  Probe hit@5 was 74/88 against 85/88 (14 lost, 3 gained, p = 0.013). The probes are v1's test probes, and with the
+  same library, candidates and prompts the replies on test3 were the same as in the dev run for all 88 probes. D5
+  holds by its rule but repeats the dev result; the pre-registration did not note this.
+- llama3.2:3b (secondary, seed 0 only, no verdicts): Skill++ shown on Vanilla's candidates 60.8% against 55.0%
+  (+5.8 pp, CI -1.7 to +13.3); Skill++ retrieved on its own metadata 62.5% (+7.5 pp over Vanilla, CI -1.7 to +16.7).
+
+| | Hypothesis (qwen3:4b, test3) | Rule | Result | Verdict |
+|---|---|---|---|---|
+| R1 | Vanilla (full list) falls >= 15 pp from S1 to S5 | point >= 15 pp, CI above 0 | +25.0 pp [10.8, 38.9] | holds |
+| N1 | Narrowing to 30 candidates raises Vanilla at S5 (three-seed means) | point >= 10 pp, CI above 0 | +30.0 pp [23.6, 36.7] | holds |
+| D1 | Same candidates: Skill++ metadata shown beats original metadata shown | CI above 0 | +1.9 pp [-2.8, +6.4] | not supported |
+| D2 | Same candidates: short Skill++ without the clause beats original (chosen on dev) | CI above 0 | +1.4 pp [-3.3, +6.1] | not supported |
+| D3 | Skill++ shown: retrieving on original metadata beats retrieving on Skill++ metadata | CI above 0 | +3.9 pp [-1.4, +9.7] | not supported |
+| D4 | Skill++ metadata loses required skills at retrieval | lost > gained, p < 0.05 | 6 lost, 0 gained, p = 0.031 | holds |
+| D5 | Retrieving on original metadata costs incoming-skill probes | lost > gained, p < 0.05 | 14 lost, 3 gained, p = 0.013 | holds (same replies as dev) |
+
+FC@5 (%) on test3, qwen3:4b, seed 0 for S1-S5. "All required retrieved" is the share of the 120 queries whose required
+skills were all among the 30 at S5.
+
+| Condition | S1 | S2 | S3 | S4 | S5 | S5, mean of 3 seeds | Probe hit@5 | All required retrieved |
+|---|---|---|---|---|---|---|---|---|
+| Vanilla, full list | 75.0 | 46.7 | 51.3 | 50.0 | 50.0 | 42.8 | 41/88 | |
+| Vanilla, top 30 | 72.5 | 86.7 | 75.0 | 69.0 | 71.7 | 72.8 | 58/88 | 95.0% |
+| Skill++ (Haiku), top 30 retrieved on Skill++ metadata | 80.0 | 81.7 | 70.0 | 69.0 | 70.0 | 70.8 | 85/88 | 90.0% |
+| Skill++ (Haiku), top 30 retrieved on original metadata | 75.0 | 83.3 | 75.0 | 67.0 | 73.3 | 74.7 | 74/88 | 95.0% |
+| Short Skill++ without the clause, retrieved on original metadata | 77.5 | 85.0 | 73.8 | 70.0 | 70.8 | 74.2 | 70/88 | 95.0% |
+
+The probe column repeats earlier runs: on the full list the replies are v1's, and with narrowing they are those of
+v2's test2 runs and the v3 dev runs (same prompts, temperature 0). Display order again moved the full list a lot:
+Vanilla at S5 was 50.0%, 45.0% and 33.3% under seeds 0, 1 and 2, while with narrowing the three candidate shuffles
+gave 71.7%, 74.2% and 72.5%.
+
+**llama3.2:3b** on test3 (seed 0; the candidates are the same as for qwen3:4b):
+
+| Condition | S1 | S2 | S3 | S4 | S5 | Probe hit@5 | Replies with fewer than 5 distinct IDs |
+|---|---|---|---|---|---|---|---|
+| Vanilla, top 30 | 75.0 | 68.3 | 63.8 | 60.0 | 55.0 | 58/88 | 49/488 |
+| Skill++ (Haiku), retrieved on Skill++ metadata | 72.5 | 70.0 | 56.3 | 54.0 | 62.5 | 84/88 | 71/488 |
+| Skill++ (Haiku), retrieved on original metadata | 75.0 | 63.3 | 72.5 | 59.0 | 60.8 | 76/88 | 66/488 |
+| Short Skill++ without the clause, retrieved on original metadata | 75.0 | 63.3 | 66.3 | 64.0 | 60.0 | 76/88 | 67/488 |
+
+As for qwen3:4b, the probe replies of the two rows retrieved on their own metadata repeat v2's test2 runs. The two rows
+retrieved on the original metadata are new measurements (llama3.2:3b had no v3 dev run): 76/88 against 84/88 for
+Skill++ retrieved on its own metadata (11 lost, 3 gained, exact McNemar p = 0.057), the same direction as D5 without
+reaching p < 0.05.
+
+**What v3 adds.** Once the list is narrowed to 30 candidates, the rewritten descriptions did not clearly help a 3-4B
+router choose among the same candidates (+1.9 pp, interval -2.8 to +6.4), and the gains seen in the dev run on v2's
+test2 queries (+5.8 and +10.0 pp, one seed) were not confirmed (+1.9 and +1.4 pp here).
+Narrowing itself was again the largest effect measured (+30.0 pp). Where the retriever reads Skill++ metadata, it
+misses required skills more often (replicated); where it reads the original metadata, it finds the new skills less
+often for their own requests (seen on the same probes as dev). On these queries neither choice changed FC@5 clearly.
+
+Tables and pre-registered decisions: [reports/results_test3.md](reports/results_test3.md). The per-seed and llama3.2:3b
+differences and the narrowed Vanilla fall above were computed from the raw runs and are not in that file; it prints
+"not run" for llama3.2:3b D1-D3 because those rules need three seeds and llama3.2:3b ran seed 0 only. Every routing decision:
+`reports/routing_test3.csv` and `reports/routing_v3dev.csv` (the v3 dev runs on test2).
+
 ## What was built
 
 **Skills.** 157 synthetic skills for financial analysis in a Korean-market setting (English text), written one by one
@@ -344,14 +439,23 @@ has a character n-gram cosine of 0.80 (Haiku) and 0.87 (qwen3:4b); two per write
    apart from crowding.
 3. Test split routed by a detached launcher that ran without restarting. One qwen3:4b call (query t042, Skill++
    written by qwen3:4b, S3) took 15.9 hours overnight before it returned; two other calls took 36 and 69 minutes.
+   Checked later against the Windows event log, all three spanned sleeps of the laptop (2026-11-20 17:00 to
+   2026-11-21 08:53, 09:36 to 10:11 and 12:29 to 13:38); each returned a normal reply.
    Per-block median call times were 3.1-3.8 s for qwen3:4b, except one block at 8.3 s, and 2.5-2.9 s for llama3.2:3b.
 4. An independent audit of this README (next section).
 5. v2: length-controlled rewrites and the retrieval step built and tried on v1's dev and test queries (S5 only); the
    test2 queries (committed in `3dd714d`) were frozen by digest together with the rules in `e88776f`, before any
    test2 routing. test2 was routed by
    the same detached launcher from 2026-11-22 15:18. During the llama3.2:3b runs the launcher and the local Ollama
-   server stopped at about 20:41 (the logs show no error); the run resumed the next morning from the saved block
+   server stopped at about 20:41, when the laptop went to sleep until 07:24 the next morning (Windows event log; the
+   run logs show no error); the run resumed that morning from the saved block
    state (written every 5 requests), and the partly finished block continued from its 40 saved requests.
+6. v3: the retrieval-source option built and a dev run on v2's test2 queries (S5, qwen3:4b, seed 0) started; the
+   test3 queries were written while it ran; then the hypotheses, decision code and digests were committed (`52d28d9`)
+   before any test3 routing. test3 was routed from 2026-11-23 16:22. One call (query w013, Vanilla top 30, S4)
+   spanned a sleep of the laptop from 17:00 to 19:59 (Windows event log) and returned a normal reply after 10,749 s
+   of wall-clock time. The run stopped at 21:16 when the laptop logged off and went to sleep (power source change,
+   logoff, sleep), resumed on 2026-11-24 at 07:50 from the saved block state and finished at 11:54.
 
 ## Limitations
 
@@ -376,13 +480,17 @@ has a character n-gram cosine of 0.80 (Haiku) and 0.87 (qwen3:4b); two per write
   display orders. The 106-query comparison and the other unlabelled differences in the v2 section are exploratory.
 - v2's retriever is character n-gram TF-IDF over names and descriptions; the paper's retrieval baselines were still
   not run.
+- v3: the test3 phrasings were written after v2's results were known (before any test3 routing) and use the same
+  skills and companies (233 uses of 160 phrasings, up to 2 each). The probes are v1's test probes again, so D5
+  repeats the dev result rather than testing it. D2's configuration was chosen on dev, and D1 and D2 share one
+  baseline with no multiplicity correction. llama3.2:3b ran one seed.
 
 ## Cost
 
 Claude Haiku 5.5, all calls: $0.3431 under a $3 cap enforced in code. v1: $0.2244 (rewrites $0.0654, router dev
 $0.0414, router test $0.1174, one smoke-test call $0.0002). v2: $0.1187 for the short rewrites over four runs (three
 earlier runs that enforced 110 characters exactly fell back to the original description for 58 to 64 of 117 skills;
-they are kept in `data/rewrites/archive/` and cost $0.1027, the final run $0.0160). v2 routing used only local models. Prices: $0.10 / $0.50 per million input / output tokens; cache reads 0.1x
+they are kept in `data/rewrites/archive/` and cost $0.1027, the final run $0.0160). v2 and v3 routing used only local models; v3 made no Claude calls. Prices: $0.10 / $0.50 per million input / output tokens; cache reads 0.1x
 and cache writes 1.25x the input price.
 Local models ran on a laptop RTX 2060 (6 GB).
 
@@ -397,10 +505,14 @@ python -m venv .venv
 .venv\Scripts\python -m srl route --router qwen3:4b --split test2 --conds vanilla,spp_haiku,vanilla+r30tfidf,spp_haiku+r30tfidf
 .venv\Scripts\python -m srl.report_v2 test2
 .venv\Scripts\python -m srl.export test2
+.venv\Scripts\python -m srl route --router qwen3:4b --split test3 --conds vanilla+r30tfidf,spp_haiku+r30tfidf@vanilla
+.venv\Scripts\python -m srl.report_v3 test3
+.venv\Scripts\python -m srl.export test3
 ```
 
-The full list of v2 runs (conditions, display-order seeds, llama3.2:3b) is in
-[docs/hypotheses_v2.md](docs/hypotheses_v2.md) under "Fixed setup".
+The full lists of v2 and v3 runs (conditions, seeds, llama3.2:3b) are in [docs/hypotheses_v2.md](docs/hypotheses_v2.md)
+and [docs/hypotheses_v3.md](docs/hypotheses_v3.md) under "Fixed setup". `python -m srl.build_v3` rebuilds
+`data/queries_v3.json`.
 
 The committed rewrites in `data/rewrites/` are what the results use. To regenerate them:
 `python -m srl rewrite --gen qwen3:4b` and `python -m srl rewrite --gen haiku` (needs `ANTHROPIC_API_KEY`; spend capped
@@ -422,8 +534,10 @@ file and skips skills already in it; needs the API key, as above).
 | `srl/rewrite_v2.py` | v2 length-controlled Skill++ -> `data/rewrites/haiku_short.json` |
 | `srl/retrieve.py` | v2 candidate narrowing (TF-IDF; nomic-embed-text was compared on dev) |
 | `srl/prereg_v2.py`, `srl/report_v2.py` | v2 pre-registered decisions and tables |
+| `srl/catalog_v3.py`, `srl/build_v3.py` | v3 phrasings -> `data/queries_v3.json` (test3) |
+| `srl/prereg_v3.py`, `srl/report_v3.py` | v3 pre-registered decisions and tables (the `@` retrieval source is in `srl/route.py`) |
 | `srl/export.py` | Routing decisions -> `reports/routing_*.csv` |
-| `srl/dashboard_data.py` | Data files for a v2 results dashboard (`python -m srl.dashboard_data <out_dir>`), from the raw test2 runs |
+| `srl/dashboard_data.py` | Data files for a v2/v3 results dashboard (`python -m srl.dashboard_data <out_dir>`, add `--v3` for test3), from the raw runs |
 | `data/rewrites/` | Haiku- and qwen3:4b-written rewrites, with every call's usage |
 | `reports/` | Result tables, routing decisions (CSV), overlap check |
 | `runs/route/` | Raw router replies with token counts and timings (needed by `srl report`) |
@@ -446,6 +560,16 @@ then llama3.2:3b, the generated report and CSV, and a re-read of the fixes). It 
 the full-list probe results repeat v1's replies exactly. Each finding was rechecked against the raw files before
 the fix ([docs/claims_audit_v2.json](docs/claims_audit_v2.json)). Coverage: all 71 test2 blocks complete;
 `routing_test2.csv` (7,064 rows) and `routing_v2dev.csv` (936 rows) match the raw runs.
+
+The v3 parts were audited by another agent that had not written them. It recomputed 490 numbers (165 in the README,
+303 cells of `reports/results_test3.md`, 22 in `docs/hypotheses_v3.md`) and compared `routing_test3.csv` (5,592 rows)
+and `routing_v3dev.csv` (416 rows) field by field with the raw runs; no number was wrong. Of 38 claims, 10 had
+problems: 8 were fixed in this README, one (the seeds sentence of the pre-registration) got a dated note in
+`docs/hypotheses_v3.md`, and one (llama3.2:3b verdict lines in the report, already marked "no verdict counted")
+needed no change. The largest was that the 10,749 s call spanned a sleep of the laptop. Its further note that v1's
+15.9-hour, 36- and 69-minute calls and v2's 20:41 stop line up with sleeps in the Windows event log was checked
+against the event log and the call times and added to the Process section
+([docs/claims_audit_v3.json](docs/claims_audit_v3.json)). Coverage: all 55 test3 blocks complete.
 
 Paper: Zhang et al., "Skill++: Towards Lifelong Agents via Routing-Aware Skill Refinement", arXiv:2611.00544. The
 paper links no code repository; nothing from the paper's benchmark data is used here. Code: MIT License.

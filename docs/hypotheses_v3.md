@@ -78,3 +78,10 @@ p < 0.05.
 `spp_haiku+r30tfidf@vanilla` against `spp_haiku+r30tfidf`: more probes lost than gained, exact McNemar p < 0.05.
 
 Reported without verdicts: all FC@5 tables, retrieval ceilings, probes, error forms, the seed table, llama3.2:3b.
+
+## Note added after the test3 run (2026-11-24)
+
+"In v3 every condition runs at S5 with seeds 0, 1 and 2" under "What is new" holds for qwen3:4b only; as "Fixed
+setup" says, llama3.2:3b ran seed 0 only, so its D1-D3 are printed as "not run" in reports/results_test3.md. The
+probes are v1's test probes, as stated above; with the same library, candidates and prompts their replies on test3
+were identical to the dev run, so D5 on test3 repeats the dev result. No rule, setting or digest was changed.

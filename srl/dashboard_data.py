@@ -1,6 +1,7 @@
-"""Data files for the v2 results dashboard, computed from the raw test2 runs.
+"""Data files for the v2 and v3 results dashboard, computed from the raw test2 and test3 runs.
 
-    python -m srl.dashboard_data <out_dir>
+    python -m srl.dashboard_data <out_dir>          v2 files (test2)
+    python -m srl.dashboard_data <out_dir> --v3     v3 files (test3): fc3.json, decisions3.json, seeds3.json
 
 Writes fc.json, decisions.json, extras.json, order.json, ceiling.json and probes.json, each {rows, meta}, where meta
 holds this script's own text. Uses the same scoring and statistics code as reports/results_test2.md
@@ -187,8 +188,78 @@ def main(out: Path) -> None:
     dump("probes.json", pr)
 
 
+def main_v3(out: Path) -> None:
+    """v3 files (split test3): fc3.json, decisions3.json, seeds3.json. Same code paths as reports/results_test3.md."""
+    from . import prereg_v3 as P3
+    R = Runs("test3")
+    n = len(R.D.qs("test3"))
+    code = Path(__file__).read_text(encoding="utf-8")
+    meta = [{"label": "dashboard_data.py", "value": code, "type": "code", "lang": "python"},
+            {"label": "Input", "value": "runs/route/<router>/<condition>/test3/S<c>_o<seed>.json, data/queries_v3.json "
+                                        "(github.com/sinkytiger/skill-route-lite)"}]
+
+    def dump(name, rows):
+        (out / name).write_text(json.dumps({"rows": rows, "meta": meta}, ensure_ascii=False, indent=1),
+                                encoding="utf-8")
+
+    conds = ["vanilla", P3.VAN, P3.SPP, P3.DEC_SPP, P3.DEC_SHORT]
+    fc = []
+    for router, cs in ((QWEN, conds), (LLAMA, conds[1:])):
+        for cond in cs:
+            for c in CPS:
+                f = R.fc(router, cond, c)
+                fc.append({"key": f"{router}|{cond}|S{c}", "router": router, "condition": cond,
+                           "checkpoint": f"S{c}", "queries": len(f), "correct": sum(f.values()),
+                           "fc5": pc(statistics.mean(f.values()))})
+    dump("fc3.json", fc)
+
+    seeds = []
+    for cond in conds:
+        for s in (0, 1, 2):
+            seeds.append({"key": f"{cond}|{s}", "condition": cond, "seed": str(s),
+                          "fc5": pc(statistics.mean(R.fc(QWEN, cond, 5, s).values()))})
+        seeds.append({"key": f"{cond}|mean", "condition": cond, "seed": "mean",
+                      "fc5": pc(statistics.mean(seed_mean(R, QWEN, cond).values()))})
+    dump("seeds3.json", seeds)
+
+    def pair(a, b):
+        k = sorted(a)
+        return boot_paired([a[i] for i in k], [b[i] for i in k])
+
+    dec = []
+    d = boot_stat(n, _fall_stat(R, QWEN, "vanilla"))
+    dec.append({"id": "R1", "value": f1(100 * d[0]), "ci_low": f1(100 * d[1]), "ci_high": f1(100 * d[2]),
+                "verdict": "holds" if d[0] >= P3.R1_DROP and d[1] > 0 else "not supported", "threshold": 15.0})
+    for id_, a, b, thr in (("N1", P3.VAN, "vanilla", 10.0), ("D1", P3.DEC_SPP, P3.VAN, 0.0),
+                           ("D2", P3.DEC_SHORT, P3.VAN, 0.0), ("D3", P3.DEC_SPP, P3.SPP, 0.0)):
+        d = pair(seed_mean(R, QWEN, a), seed_mean(R, QWEN, b))
+        ok = d[1] > 0 and (d[0] >= thr / 100 if thr else True)
+        dec.append({"id": id_, "value": f1(100 * d[0]), "ci_low": f1(100 * d[1]), "ci_high": f1(100 * d[2]),
+                    "verdict": "holds" if ok else "not supported", "threshold": thr})
+    v, s = P3.all_retrieved(R, QWEN, P3.VAN), P3.all_retrieved(R, QWEN, P3.SPP)
+    lost = sum(1 for q in v if v[q] and not s[q])
+    gained = sum(1 for q in v if s[q] and not v[q])
+    p = mcnemar_exact(lost, gained)
+    dec.append({"id": "D4", "lost": lost, "gained": gained, "p": round(p, 4), "retrieved_original": sum(v.values()),
+                "retrieved_skillpp": sum(s.values()), "verdict": "holds" if lost > gained and p < P3.ALPHA else
+                "not supported"})
+    pa, pb = R.probes(QWEN, P3.DEC_SPP), R.probes(QWEN, P3.SPP)
+    lost = sum(1 for x, y in zip(pa[0], pb[0]) if y and not x)
+    gained = sum(1 for x, y in zip(pa[0], pb[0]) if x and not y)
+    p = mcnemar_exact(lost, gained)
+    dec.append({"id": "D5", "lost": lost, "gained": gained, "p": round(p, 4), "hit5_original": int(np.sum(pa[0])),
+                "hit5_skillpp": int(np.sum(pb[0])), "verdict": "holds" if lost > gained and p < P3.ALPHA else
+                "not supported", "note": "same replies as the v3 dev run (same probes, candidates and prompts)"})
+    for row in dec:
+        row["router"] = QWEN
+    dump("decisions3.json", dec)
+
+
 if __name__ == "__main__":
     out = Path(sys.argv[1])
     out.mkdir(parents=True, exist_ok=True)
-    main(out)
+    if "--v3" in sys.argv:
+        main_v3(out)
+    else:
+        main(out)
     print("wrote", sorted(p.name for p in out.glob("*.json")))
